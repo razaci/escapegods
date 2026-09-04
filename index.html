@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gods of Escape</title>
+<style>
+:root{--bg:#070a10;--panel:#111722;--text:#eef4ff;--muted:#98a7bd;--gold:#e8c96d;--cyan:#58d7ff;--purple:#c58cff}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+body{min-height:100vh;background-image:linear-gradient(rgba(7,10,16,.45),rgba(7,10,16,.9)),url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNTAwIj4KPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMwNzExMWYiLz48c3RvcCBvZmZzZXQ9Ii41NSIgc3RvcC1jb2xvcj0iIzE5MjYzZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzNiMTczZiIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJwIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmVmYWQiLz48c3RvcCBvZmZzZXQ9Ii4zIiBzdG9wLWNvbG9yPSIjZmY5YjYzIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNzgyMzRmIi8+PC9yYWRpYWxHcmFkaWVudD4KPC9kZWZzPgo8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNnKSIvPgo8Y2lyY2xlIGN4PSI2MjUiIGN5PSIxMTUiIHI9Ijc4IiBmaWxsPSJ1cmwoI3ApIi8+CjxnIGZpbGw9IiNmZmYiPjxjaXJjbGUgY3g9IjE3MCIgY3k9Ijk1IiByPSIyIi8+PGNpcmNsZSBjeD0iMjM1IiBjeT0iNTUiIHI9IjEuNSIvPjxjaXJjbGUgY3g9IjQxMCIgY3k9Ijg4IiByPSIxLjQiLz48Y2lyY2xlIGN4PSI2OTAiIGN5PSI1NSIgcj0iMS40Ii8+PGNpcmNsZSBjeD0iNzQ1IiBjeT0iMTc1IiByPSIxLjIiLz48L2c+CjxwYXRoIGQ9Ik0wIDM1NSBMOTAgMzA1IEwxNjAgMzQ1IEwyMzUgMjgwIEwzMDAgMzQwIEwzNjUgMjkwIEw0NDAgMzQwIEw1MDUgMzAwIEw1ODAgMzUwIEw2NTUgMjkwIEw4MDAgMzUwIEw4MDAgNTAwIEwwIDUwMFoiIGZpbGw9IiMwNzBiMTIiLz4KPHJlY3QgeD0iMjU1IiB5PSIyMTUiIHdpZHRoPSIyOTAiIGhlaWdodD0iMTcwIiByeD0iMTAiIGZpbGw9IiMxMTE3MjIiIHN0cm9rZT0iIzY4N2I5OCIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxyZWN0IHg9IjMwMCIgeT0iMTgwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUyIiByeD0iNiIgZmlsbD0iIzBhMGYxOCIgc3Ryb2tlPSIjNjg3Yjk4IiBzdHJva2Utd2lkdGg9IjQiLz4KPGcgZmlsbD0iIzI1MzE0NyIgc3Ryb2tlPSIjOGJhMWJkIiBzdHJva2Utd2lkdGg9IjIiPgo8cmVjdCB4PSIyODAiIHk9IjI0NSIgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIi8+PHJlY3QgeD0iMzUwIiB5PSIyNDUiIHdpZHRoPSI1MiIgaGVpZ2h0PSI1MiIvPgo8cmVjdCB4PSI0MjAiIHk9IjI0NSIgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIi8+PHJlY3QgeD0iNDkwIiB5PSIyNDUiIHdpZHRoPSIzMiIgaGVpZ2h0PSI1MiIvPgo8cmVjdCB4PSIyODAiIHk9IjMxNSIgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIi8+PHJlY3QgeD0iMzUwIiB5PSIzMTUiIHdpZHRoPSI1MiIgaGVpZ2h0PSI1MiIvPgo8cmVjdCB4PSI0MjAiIHk9IjMxNSIgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIi8+PHJlY3QgeD0iNDkwIiB5PSIzMTUiIHdpZHRoPSIzMiIgaGVpZ2h0PSI1MiIvPgo8L2c+CjxwYXRoIGQ9Ik0yMjAgMzkwIEw1ODAgMzkwIEw2MjUgNDYwIEwxNzUgNDYwIFoiIGZpbGw9IiMxMDE3MjIiIHN0cm9rZT0iIzU1NmE4NyIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjx0ZXh0IHg9IjQwMCIgeT0iNDI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZThjOTZkIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCI+TlVMTCBDSVRBREVMIC8vIEstNzc8L3RleHQ+Cjwvc3ZnPg==);background-size:cover;background-position:center;background-attachment:fixed}
+button{font:inherit}.app{max-width:860px;margin:auto;padding:14px 14px 95px}
+.hero{border:1px solid #33415a;background:linear-gradient(180deg,rgba(17,23,34,.95),rgba(9,13,20,.92));border-radius:22px;padding:18px;box-shadow:0 18px 50px #0008}
+.kicker{font-size:12px;letter-spacing:.18em;color:var(--gold);font-weight:800}h1{margin:5px 0 8px;font-size:clamp(28px,8vw,54px);line-height:.9}
+.subtitle{color:#b8c5d8;max-width:690px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.stat{background:#0b1018;border:1px solid #2a3549;padding:10px;border-radius:14px;text-align:center}.stat b{display:block;font-size:18px}.stat span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.section{margin-top:14px;background:rgba(12,17,26,.94);border:1px solid #273348;border-radius:20px;padding:14px}.section h2{margin:0 0 4px;font-size:20px}.small{font-size:12px;color:var(--muted)}
+.route{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}.card{background:linear-gradient(135deg,#151d2a,#0d121c);border:1px solid #33415a;border-radius:17px;padding:13px;position:relative;overflow:hidden}.card.locked{opacity:.48;filter:saturate(.5)}
+.tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#212d41;font-size:10px;color:#bcd0ed}.card h3{margin:8px 0 4px}.card p{margin:0;color:#9fb0c7;font-size:13px;line-height:1.35}
+.actions{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}.btn{border:0;border-radius:12px;padding:11px 10px;background:#24334a;color:white;font-weight:750;box-shadow:inset 0 0 0 1px #ffffff12;cursor:pointer}.btn:active{transform:scale(.98)}
+.btn.gold{background:linear-gradient(135deg,#725a17,#b28c2f);color:#fff8d3}.btn.cyan{background:linear-gradient(135deg,#12506a,#157ca1)}
+.meter{height:9px;background:#242c39;border-radius:999px;overflow:hidden;margin-top:7px}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple));width:0%}
+.log{height:175px;overflow:auto;background:#080c12;border-radius:12px;padding:10px;border:1px solid #222b39;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.45}
+.inv{display:flex;gap:7px;overflow:auto;padding-bottom:4px}.item{min-width:118px;border:1px solid #33415a;background:#111a28;border-radius:13px;padding:10px}.item .icon{font-size:27px}.item b{display:block;font-size:12px}.item span{font-size:10px;color:#9bacbf}
+.bottom{position:fixed;left:0;right:0;bottom:0;padding:9px 12px calc(9px + env(safe-area-inset-bottom));background:#060910ef;border-top:1px solid #2b3545;display:flex;gap:7px;justify-content:center;z-index:10}.bottom button{max-width:170px;flex:1;border:0;border-radius:13px;padding:11px 6px;background:#182233;color:#dce8f8;font-size:12px;font-weight:800}
+.modal{position:fixed;inset:0;background:#05070bef;display:none;align-items:center;justify-content:center;padding:16px;z-index:50}.modal.show{display:flex}.modalbox{max-width:620px;width:100%;max-height:85vh;overflow:auto;background:#111722;border:1px solid #3b4860;border-radius:22px;padding:18px}
+.choice{width:100%;text-align:left;border:1px solid #3b4860;background:#151f2f;color:white;border-radius:14px;padding:12px;margin:6px 0}.choice strong{display:block}.choice span{font-size:11px;color:#9fb0c7}
+.notice{border-left:3px solid var(--gold);padding:9px 11px;background:#332b151a;color:#d8cfae;font-size:12px;border-radius:8px}
+@media(min-width:700px){.route{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<section class="hero">
+<div class="kicker">GODS OF ESCAPE // UNKNOWN GALAXY</div>
+<h1>NULL CITADEL</h1>
+<div class="subtitle">You awaken in Supermax K-77, a prison moon orbiting a dead star. Six mythic inmates vanished before you. Every failed escape left behind a fragment of an impossible route.</div>
+<div class="grid"><div class="stat"><b id="turn">1</b><span>Cycle</span></div><div class="stat"><b id="heat">8</b><span>Heat</span></div><div class="stat"><b id="focus">72</b><span>Focus</span></div><div class="stat"><b id="intel">0</b><span>Intel</span></div></div>
+</section>
+
+<section class="section">
+<h2>Current Objective</h2><div class="small" id="objective"></div><div class="meter"><i id="progress"></i></div>
+<div class="actions"><button class="btn cyan" onclick="observe()">👁 Observe</button><button class="btn gold" onclick="openPlan()">⚡ Attempt</button></div>
+</section>
+
+<section class="section"><h2>Escape Route</h2><div class="small">Timing, resource management, deception, and fictional security puzzles drive the escape.</div><div class="route" id="route"></div></section>
+<section class="section"><h2>Contraband Inventory</h2><div class="inv" id="inventory"></div></section>
+<section class="section"><h2>Prison Console</h2><div class="log" id="log"></div></section>
+<section class="section"><h2>God Fragments</h2><div class="small">Complete stages to awaken fictional “escape gods,” each granting a mythic passive fragment.</div><div id="gods" style="margin-top:10px"></div></section>
+</div>
+
+<div class="bottom"><button onclick="rest()">🛏 Recover</button><button onclick="scavenge()">🧰 Scavenge</button><button onclick="status()">📡 Status</button><button onclick="resetGame()">↻ Reset</button></div>
+<div class="modal" id="modal"><div class="modalbox"><div class="kicker" id="modalKicker"></div><h2 id="modalTitle"></h2>
+<div class="notice">The security, lock, and excavation systems in this game are invented rather than real-world bypass instructions.</div>
+<div id="choices" style="margin-top:12px"></div><button class="btn" style="width:100%;margin-top:10px" onclick="closeModal()">Close</button></div></div>
+
+<script>
+const stages=[
+{name:"Cell Block A",desc:"Learn the block's invented sentinel rhythm, earn trust, and recover the first star-fragment.",need:2,icon:"⛓️"},
+{name:"The Ion Locks",desc:"Defeat a fictional resonance-lock puzzle using rotating glyph timing.",need:5,icon:"🔐"},
+{name:"Maintenance Spine",desc:"Cross service corridors while managing noise, heat, and attention.",need:9,icon:"🛠️"},
+{name:"Subsurface Vault",desc:"Use invented gravitic excavation gear to open an alien passage.",need:14,icon:"🕳️"},
+{name:"Warden's Halo",desc:"Acquire a fictional route key from the orbital command deck.",need:20,icon:"🛰️"},
+{name:"The Black Launch",desc:"Reach an impounded courier craft and break atmosphere before lockdown.",need:28,icon:"🚀"}
+];
+const invPool=[
+["🪙","Memory Coin","Trades for favors"],["🧲","Flux Hook","Fictional utility tool"],["🪞","Prism Shard","Bends scanner light"],
+["🔩","Null Pin","Alien puzzle component"],["🧵","Grav Thread","Stabilizes void seams"],["💠","Halo Chip","Command token"]
+];
+let s=JSON.parse(localStorage.getItem("godsEscapeSave")||"null")||{turn:1,heat:8,focus:72,intel:0,stage:0,inv:[],gods:[]};
+function save(){localStorage.setItem("godsEscapeSave",JSON.stringify(s));render()}
+function log(t){const el=document.getElementById("log");const d=document.createElement("div");d.textContent="["+String(s.turn).padStart(3,"0")+"] "+t;el.prepend(d)}
+function render(){
+document.getElementById("turn").textContent=s.turn;document.getElementById("heat").textContent=s.heat;document.getElementById("focus").textContent=s.focus;document.getElementById("intel").textContent=s.intel;
+document.getElementById("objective").textContent=s.stage>=stages.length?"ESCAPED: survive the starfield and choose your destination.":stages[s.stage].desc;
+document.getElementById("progress").style.width=Math.min(100,(s.intel/(stages[s.stage]?.need||1))*100)+"%";
+document.getElementById("route").innerHTML=stages.map((x,i)=>`<div class="card ${i>s.stage?'locked':''}"><span class="tag">${i<s.stage?'CLEARED':i===s.stage?'ACTIVE':'SEALED'}</span><h3>${x.icon} ${x.name}</h3><p>${x.desc}</p></div>`).join("");
+document.getElementById("inventory").innerHTML=s.inv.length?s.inv.map(x=>`<div class="item"><div class="icon">${x[0]}</div><b>${x[1]}</b><span>${x[2]}</span></div>`).join(""):`<div class="small">Nothing yet. Scavenge carefully.</div>`;
+document.getElementById("gods").innerHTML=s.gods.length?s.gods.map(g=>`<div class="card" style="margin-bottom:8px"><b>✦ ${g}</b><div class="small">Passive fragment awakened.</div></div>`).join(""):`<div class="small">No fragments awakened.</div>`;
+}
+function tick(){s.turn++;s.focus=Math.max(0,s.focus-Math.floor(Math.random()*4));if(Math.random()<.35)s.heat=Math.max(0,s.heat-1)}
+function observe(){tick();let gain=1+Math.floor(Math.random()*3);s.intel+=gain;s.focus=Math.max(0,s.focus-3);log("You watch the block's fictional security patterns. Intel +"+gain+".");if(Math.random()<.18){s.heat+=4;log("A sentinel notices your attention. Heat rises.")}save()}
+function scavenge(){tick();s.focus=Math.max(0,s.focus-5);if(Math.random()<.65){let x=invPool[Math.floor(Math.random()*invPool.length)];if(!s.inv.some(i=>i[1]===x[1])){s.inv.push(x);log("Recovered "+x[1]+".")}else{s.intel++;log("Duplicate salvage converted to Intel.")}}else{s.heat+=3;log("Search came up empty and drew attention.")}save()}
+function rest(){tick();s.focus=Math.min(100,s.focus+18);s.heat=Math.max(0,s.heat-3);log("You recover while prison attention drifts elsewhere.");save()}
+function status(){log("Stage "+Math.min(s.stage+1,stages.length)+"/"+stages.length+" · Heat "+s.heat+" · Focus "+s.focus+" · Intel "+s.intel+".")}
+function openPlan(){
+if(s.stage>=stages.length){show("FREEDOM","The prison is behind you.",[["Enter the unknown galaxy",()=>{log("The courier craft disappears into a violet starfield.");closeModal()}]]);return}
+let st=stages[s.stage];
+if(s.intel<st.need){show("INSUFFICIENT INTEL","You are not ready.",[["Back off and observe",()=>{s.heat=Math.max(0,s.heat-2);tick();log("You abort the attempt before lockdown.");closeModal();save()}]]);return}
+show("STAGE "+(s.stage+1),st.name,[
+["Patient route",()=>resolveAttempt(.78,1),"Wait for a low-attention window. Safer, slower."],
+["Ghost route",()=>resolveAttempt(.62,2),"Spend focus to exploit an invented system anomaly."],
+["God route",()=>resolveAttempt(s.inv.length?.86:.35,3),"Spend contraband for a dramatic fictional shortcut."]
+])}
+function resolveAttempt(chance,mode){
+tick();if(mode===2)s.focus=Math.max(0,s.focus-18);if(mode===3&&s.inv.length)s.inv.shift();
+const pressure=Math.max(0,(s.heat-20)/120);
+if(Math.random()<chance-pressure){const names=["Hermes Null","Janus of Doors","Nyx Unseen","Daedalus Voidborn","Anansi Circuit","Prometheus Run"];let god=names[s.stage]||"Unknown God";if(!s.gods.includes(god))s.gods.push(god);log("SUCCESS: "+stages[s.stage].name+" cleared. Fragment awakened: "+god+".");s.stage++;s.intel=Math.max(0,s.intel-3);s.heat+=6;if(s.stage>=stages.length)log("NULL CITADEL LOCKDOWN FAILED. YOU ARE OUT.")}
+else{s.heat+=11;s.focus=Math.max(0,s.focus-10);log("Attempt failed. The prison adapts; you slip back into cover.")}
+closeModal();save()}
+function show(k,t,opts){document.getElementById("modalKicker").textContent=k;document.getElementById("modalTitle").textContent=t;document.getElementById("choices").innerHTML="";opts.forEach(o=>{let b=document.createElement("button");b.className="choice";b.innerHTML="<strong>"+o[0]+"</strong>"+(o[2]?"<span>"+o[2]+"</span>":"");b.onclick=o[1];document.getElementById("choices").appendChild(b)});document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function resetGame(){if(confirm("Reset Gods of Escape?")){localStorage.removeItem("godsEscapeSave");location.reload()}}
+render();log("Prison moon K-77 online. One phrase remains in your memory: Every wall is a story about fear.");
+</script>
+</body></html>
