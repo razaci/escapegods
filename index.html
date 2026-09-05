@@ -812,9 +812,189 @@ body.matrix-on:before{
 .telemetryStrip b{display:block;font:900 9px ui-monospace,monospace}.telemetryStrip span{font:800 7px ui-monospace,monospace;color:#81939c}
 @media(max-width:560px){.telemetryStrip{grid-template-columns:repeat(2,1fr)}}
 
+
+/* ===== DEEP DECK EXPLORATION ===== */
+.deckExplore{display:grid;gap:7px}
+.deckMap{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.deckZone{min-height:112px;border:1px solid #405059;border-radius:4px;background:#0b1317;padding:7px;position:relative;overflow:hidden}
+.deckZone:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(80,160,190,.08),transparent 55%);pointer-events:none}
+.deckZone b{display:block;font:900 9px ui-monospace,monospace}.deckZone small{display:block;margin:4px 0 7px;font:7px/1.4 ui-monospace,monospace;color:#83959e}
+.deckZone button{width:100%;border:1px solid #46565e;background:#172126;color:#eef5f7;padding:7px;border-radius:2px;font:900 7px ui-monospace,monospace}
+.zonePeople{font:800 7px ui-monospace,monospace;color:#70c5df;margin-top:5px}
+.zonePanel{border:1px solid #41515a;background:#0b1216;border-radius:4px;padding:8px}
+.zonePanel h3{margin:0 0 5px;font:900 13px ui-monospace,monospace}.zonePanel p{font:8px/1.5 ui-monospace,monospace;color:#91a2aa}
+.zoneActions{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin-top:7px}
+.zoneActions button{border:1px solid #46555e;background:#151f24;color:#edf5f7;padding:9px;text-align:left;border-radius:3px;font:900 8px ui-monospace,monospace}
+.zoneActions small{display:block;margin-top:3px;color:#81949d;font:7px/1.35 ui-monospace,monospace}
+.shipExploreGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.shipExploreCard{border:1px solid #41515a;background:#0b1216;border-radius:4px;overflow:hidden}
+.shipExploreCard .art{height:115px;background-size:cover;background-position:center}
+.shipExploreCard .body{padding:7px}.shipExploreCard b{font:900 9px ui-monospace,monospace}.shipExploreCard p{font:8px/1.4 ui-monospace,monospace;color:#84969f}
+.shipExploreCard button{width:100%;border:1px solid #46555e;background:#172126;color:#edf5f7;padding:7px;font:900 7px ui-monospace,monospace}
+@media(max-width:560px){.deckMap{grid-template-columns:repeat(2,1fr)}.zoneActions,.shipExploreGrid{grid-template-columns:1fr}}
+
+
+/* ===== GLOBAL LIVE DATA LAYER ===== */
+.liveTicker{display:flex;gap:6px;overflow:auto;padding:5px 0;margin:5px 0;scrollbar-width:none}
+.liveTicker::-webkit-scrollbar{display:none}
+.liveChip{flex:0 0 auto;border:1px solid #34434b;background:#0b1317;padding:5px 7px;border-radius:2px;font:800 7px ui-monospace,monospace;color:#91a5ae}
+.liveChip b{color:#eaf5f8;margin-right:4px}
+.liveDataGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:6px 0}
+.liveCell{border:1px solid #35444c;background:#0c1418;padding:6px;border-radius:3px}
+.liveCell b{display:block;font:900 10px ui-monospace,monospace}
+.liveCell span{font:800 7px ui-monospace,monospace;color:#81949d}
+.liveFeed{border:1px solid #344149;background:#091115;border-radius:3px;max-height:150px;overflow:auto;padding:5px}
+.liveLine{display:grid;grid-template-columns:auto 1fr;gap:6px;padding:4px 2px;border-bottom:1px solid #172127;font:8px/1.35 ui-monospace,monospace;color:#91a3ac}
+.liveLine:last-child{border-bottom:0}.liveLine em{font-style:normal;color:#5d91a7}.liveLine.warn em{color:#c98949}.liveLine.bad em{color:#d26565}
+.miniWave{height:30px;border:1px solid #2f3b42;background:
+linear-gradient(180deg,transparent 49%,#1b2c34 50%,transparent 51%),
+repeating-linear-gradient(90deg,transparent 0 18px,rgba(80,130,150,.08) 19px 20px);
+position:relative;overflow:hidden}
+.miniWave i{position:absolute;inset:0;background:
+linear-gradient(120deg,transparent 0 8%,rgba(96,197,226,.8) 8.5% 9%,transparent 9.5% 18%,rgba(96,197,226,.8) 18.5% 19%,transparent 19.5% 34%,rgba(96,197,226,.8) 34.5% 35%,transparent 35.5% 100%);
+animation:waveMove 3s linear infinite}
+@keyframes waveMove{to{transform:translateX(45px)}}
+.screenPulse{animation:screenPulse 2.4s ease-in-out infinite}
+@keyframes screenPulse{50%{filter:brightness(1.08)}}
+@media(max-width:560px){.liveDataGrid{grid-template-columns:repeat(2,1fr)}}
+
+
+/* ===== ARCADE DECK / BASKETBALL ===== */
+.arcadeHero{height:220px;border:1px solid #495a62;border-radius:4px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.arcadeHero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(3,7,9,.9))}
+.arcadeHero .cap{position:absolute;left:10px;bottom:8px;z-index:2}.arcadeHero b{display:block;font:900 14px ui-monospace,monospace}.arcadeHero span{font:800 8px ui-monospace,monospace;color:#8fa7b1}
+.arcadeStats{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:7px 0}
+.arcadeStats div{border:1px solid #35444c;background:#0b1317;padding:7px;text-align:center}.arcadeStats b{display:block;font:900 11px ui-monospace,monospace}.arcadeStats span{font:800 7px ui-monospace,monospace;color:#81949d}
+.bballCourt{border:1px solid #40515a;background:#081116;border-radius:4px;padding:9px}
+.scoreboard{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;background:#04090b;border:1px solid #35454d;padding:8px}
+.scoreboard .team{text-align:center;font:900 10px ui-monospace,monospace}.scoreboard .score{font:900 26px ui-monospace,monospace;color:#eff7f9}
+.scoreboard .clock{text-align:center;font:900 12px ui-monospace,monospace;color:#d68d49}
+.shotLane{height:38px;border:1px solid #3a4a52;background:linear-gradient(90deg,#2a1512,#604420 24%,#245b3d 46% 54%,#604420 76%,#2a1512);position:relative;margin:10px 0;overflow:hidden}
+.shotMarker{position:absolute;top:2px;bottom:2px;width:6px;background:#f1f6f7;left:10%;box-shadow:0 0 10px #fff}
+.shotSweet{position:absolute;left:46%;width:8%;top:0;bottom:0;border-left:1px solid #83ffad;border-right:1px solid #83ffad;background:rgba(80,255,130,.08)}
+.arcadeButtons{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.arcadeButtons button{border:1px solid #46565f;background:#151f24;color:#eef6f8;padding:11px 5px;border-radius:3px;font:900 8px ui-monospace,monospace}
+.arcadeFeed{border:1px solid #35444c;background:#081115;padding:7px;max-height:120px;overflow:auto;margin-top:7px}.arcadeFeed div{padding:4px;border-bottom:1px solid #172127;font:8px/1.35 ui-monospace,monospace;color:#91a4ad}
+.arcadeShop{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.arcadeShop button{border:1px solid #46565f;background:#10191d;color:#edf5f7;padding:9px;text-align:left;font:900 8px ui-monospace,monospace}.arcadeShop small{display:block;color:#81949d;margin-top:3px;font:7px/1.35 ui-monospace,monospace}
+@media(max-width:560px){.arcadeHero{height:160px}.arcadeStats{grid-template-columns:repeat(2,1fr)}.arcadeButtons,.arcadeShop{grid-template-columns:1fr}}
+
+
+/* ===== MATRIX RAIN LAB ===== */
+.rainLab{display:grid;gap:7px}
+.rainHero{height:180px;border:1px solid #2d7148;border-radius:4px;background:
+linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.82)),
+repeating-linear-gradient(90deg,rgba(50,255,120,.09) 0 1px,transparent 1px 22px),
+#041008;position:relative;overflow:hidden}
+.rainHero:before{content:"01100101  //  SYMBOL FORGE  //  HELLO ARK-9  //  ∆ Ω λ";position:absolute;left:0;right:0;top:42%;text-align:center;color:#69ff9c;font:900 12px ui-monospace,monospace;text-shadow:0 0 10px #34ff7e}
+.rainHero .cap{position:absolute;left:10px;bottom:9px}.rainHero b{display:block;color:#9effbb;font:900 13px ui-monospace,monospace}.rainHero span{font:800 8px ui-monospace,monospace;color:#67b47e}
+.rainInput{display:grid;grid-template-columns:1fr auto;gap:6px}
+.rainInput input,.rainInput select{min-width:0;border:1px solid #356447;background:#07120b;color:#9effbb;padding:9px;border-radius:3px;font:900 9px ui-monospace,monospace}
+.rainInput button{border:1px solid #3b754e;background:#0b1b11;color:#a8ffc2;padding:9px;border-radius:3px;font:900 8px ui-monospace,monospace}
+.packetList{display:grid;gap:5px}.packet{border:1px solid #315842;background:#07120b;padding:7px;border-radius:3px}
+.packet b{display:block;color:#8cffad;font:900 9px ui-monospace,monospace}.packet small{font:7px/1.35 ui-monospace,monospace;color:#66947a}
+@media(max-width:560px){.rainInput{grid-template-columns:1fr}.rainHero{height:145px}}
+
+
+/* ===== CINEMATIC INTRO + EXPANDED SHIP HUB ===== */
+#introScreen{
+ position:fixed;inset:0;z-index:99999;background:#020609;display:flex;align-items:center;justify-content:center;
+ overflow:hidden;color:#eef7fa;
+}
+#introScreen.hide{animation:introExit .9s ease forwards;pointer-events:none}
+@keyframes introExit{to{opacity:0;transform:scale(1.04);visibility:hidden}}
+.introStars,.introGrid,.introScan,.introNoise,.introRing,.introCode,.introFlash{position:absolute;inset:0;pointer-events:none}
+.introStars{
+ background:
+ radial-gradient(circle at 20% 18%,#fff 0 1px,transparent 1.4px),
+ radial-gradient(circle at 70% 24%,#fff 0 1px,transparent 1.4px),
+ radial-gradient(circle at 54% 70%,#9fd7ea 0 1px,transparent 1.5px),
+ radial-gradient(circle at 84% 61%,#fff 0 1px,transparent 1.4px),
+ radial-gradient(circle at 12% 76%,#fff 0 1px,transparent 1.4px);
+ background-size:180px 180px,230px 230px,260px 260px,310px 310px,350px 350px;
+ animation:starDrift 18s linear infinite;
+ opacity:.75
+}
+@keyframes starDrift{to{transform:translateY(120px)}}
+.introGrid{
+ background:
+ linear-gradient(rgba(74,151,179,.08) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(74,151,179,.08) 1px,transparent 1px);
+ background-size:36px 36px;transform:perspective(600px) rotateX(62deg) scale(1.7) translateY(35%);
+ transform-origin:center bottom;opacity:.38
+}
+.introScan{background:repeating-linear-gradient(180deg,transparent 0 2px,rgba(255,255,255,.025) 3px 4px);animation:scanMove 1.8s linear infinite}
+@keyframes scanMove{to{transform:translateY(8px)}}
+.introNoise{background:radial-gradient(circle at 50% 50%,rgba(45,255,120,.06),transparent 55%);animation:noisePulse 2.1s ease-in-out infinite}
+@keyframes noisePulse{50%{opacity:.25}}
+.introFlash{background:rgba(105,200,255,.08);opacity:0;animation:introFlash 4.8s infinite}
+@keyframes introFlash{0%,91%,100%{opacity:0}92%{opacity:.8}93%{opacity:0}94%{opacity:.45}95%{opacity:0}}
+.introRing{
+ left:50%;top:40%;width:420px;height:420px;right:auto;bottom:auto;margin:-210px 0 0 -210px;border-radius:50%;
+ border:2px solid rgba(111,214,255,.45);box-shadow:0 0 50px rgba(66,193,255,.22),inset 0 0 40px rgba(66,193,255,.12);
+ animation:ringSpin 9s linear infinite;
+}
+.introRing:before,.introRing:after{content:"";position:absolute;border-radius:50%;inset:30px;border:1px dashed rgba(99,255,164,.35)}
+.introRing:after{inset:82px;border-style:solid;border-color:rgba(201,143,72,.28);animation:ringReverse 5s linear infinite}
+@keyframes ringSpin{to{transform:rotate(360deg)}}@keyframes ringReverse{to{transform:rotate(-720deg)}}
+.introCode{
+ color:#62ff95;font:800 10px/1.6 ui-monospace,monospace;opacity:.18;white-space:pre;overflow:hidden;
+ transform:translateX(68%);animation:codeFall 8s linear infinite;
+}
+@keyframes codeFall{to{transform:translate(68%,160px)}}
+.introCore{position:relative;z-index:3;width:min(92vw,760px);text-align:center;padding:18px}
+.introKicker{font:900 8px ui-monospace,monospace;letter-spacing:.26em;color:#65c6df}
+.introTitle{font:900 clamp(28px,8vw,74px)/.92 ui-monospace,monospace;letter-spacing:.05em;margin:10px 0;text-shadow:0 0 24px rgba(97,207,255,.24)}
+.introSub{font:800 10px/1.5 ui-monospace,monospace;color:#90a8b3;letter-spacing:.08em}
+.introBoot{margin:16px auto 10px;max-width:560px;text-align:left;border:1px solid #35464f;background:rgba(5,12,16,.78);padding:9px;border-radius:3px}
+.introBoot div{font:800 8px/1.5 ui-monospace,monospace;color:#80a0ad;opacity:.35;animation:bootLine 2.8s forwards}
+.introBoot div:nth-child(2){animation-delay:.35s}.introBoot div:nth-child(3){animation-delay:.7s}.introBoot div:nth-child(4){animation-delay:1.05s}.introBoot div:nth-child(5){animation-delay:1.4s}
+@keyframes bootLine{to{opacity:1;color:#b8ecff}}
+.introEnter{
+ margin-top:10px;border:1px solid #6b8995;background:linear-gradient(#173341,#0b171d);color:#f0f8fa;
+ padding:13px 22px;border-radius:3px;font:900 10px ui-monospace,monospace;letter-spacing:.12em;min-width:220px;
+ box-shadow:0 0 22px rgba(86,193,226,.12);animation:enterPulse 1.5s ease-in-out infinite
+}
+@keyframes enterPulse{50%{filter:brightness(1.28);transform:translateY(-1px)}}
+
+.shipHubHero{height:220px;border:1px solid #465761;border-radius:4px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.shipHubHero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 48%,rgba(2,6,8,.9))}
+.shipHubHero .cap{position:absolute;left:10px;bottom:9px;z-index:2}.shipHubHero b{display:block;font:900 14px ui-monospace,monospace}.shipHubHero span{font:800 8px ui-monospace,monospace;color:#8da5af}
+.shipAreaGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.shipAreaCard{border:1px solid #3f5059;background:#0b1216;border-radius:4px;overflow:hidden}
+.shipAreaCard .art{height:94px;background-size:cover;background-position:center}
+.shipAreaCard .body{padding:7px}.shipAreaCard b{display:block;font:900 9px ui-monospace,monospace}.shipAreaCard p{font:8px/1.35 ui-monospace,monospace;color:#82949d;min-height:32px}
+.shipAreaCard button{width:100%;border:1px solid #46565f;background:#172126;color:#eef5f7;padding:7px;border-radius:2px;font:900 7px ui-monospace,monospace}
+@media(max-width:650px){.shipAreaGrid{grid-template-columns:repeat(2,1fr)}.shipHubHero{height:160px}.introRing{width:300px;height:300px;margin:-150px 0 0 -150px}}
+
 </style>
 </head>
 <body>
+<section id="introScreen">
+  <div class="introStars"></div>
+  <div class="introGrid"></div>
+  <div class="introScan"></div>
+  <div class="introNoise"></div>
+  <div class="introFlash"></div>
+  <div class="introRing"></div>
+  <div class="introCode">01001101 01000001 01010100 01010010 01001001 01011000
+ARK-9 // RING ACCESS // ORION-4 // SIMULATION LAYER
+00101101 11100101 01010110 10110011 00011101
+UNKNOWN SIGNAL // DARK GATE // BLACK TRANSIT
+10100110 01110110 01001101 11001011 00101011</div>
+  <div class="introCore">
+    <div class="introKicker">ESCAPE GODS // ARK-9</div>
+    <div class="introTitle">BEYOND THE RING<br>WITHIN THE CODE</div>
+    <div class="introSub">STARSHIP COLONY / HARD-SF OPERATIONS / SIMULATION BREACH</div>
+    <div class="introBoot">
+      <div>BOOT // REACTOR BUS ................................ ONLINE</div>
+      <div>BOOT // RING NAVIGATION ............................. LINKED</div>
+      <div>BOOT // ORION-4 ..................................... LISTENING</div>
+      <div>BOOT // SIMULATION LAYER ............................ UNSTABLE</div>
+      <div>BOOT // CREW HABITATION / FLIGHT / ARCades .......... READY</div>
+    </div>
+    <button class="introEnter" onclick="enterArk9()">ENTER ARK-9</button>
+  </div>
+</section>
+
 <canvas id="matrixRain" aria-hidden="true"></canvas>
 
 <div class="app" id="baseApp">
@@ -920,7 +1100,25 @@ body.matrix-on:before{
    <div><b id="dashXenoCredit">--</b><span>XENO CREDIT</span></div>
    <div><b id="dashXenoItems">--</b><span>ITEMS</span></div>
   </div>
-  <div class="quickGrid"><button onclick="openRingAccess()"><span>◎</span>ENTER RING</button><button onclick="openAreaHub()"><span>▦</span>SPECIAL AREAS</button><button onclick="openSimulationLayer()"><span>⌘</span>SIMULATION</button><button onclick="openVisualGallery()"><span>▦</span>VISUAL MAP</button><button onclick="openXenoCodex()"><span>◌</span>XENO CODEX</button><button onclick="openExoticCargo()"><span>◇</span>EXOTIC CARGO</button><button onclick="ringScan()"><span>◉</span>ALIEN SCAN</button></div>
+  <div class="quickGrid"><button onclick="openRingAccess()"><span>◎</span>ENTER RING</button><button onclick="openAreaHub()"><span>▦</span>SPECIAL AREAS</button><button onclick="openSimulationLayer()"><span>⌘</span>SIMULATION</button><button onclick="openRainLab()"><span>01</span>RAIN LAB</button><button onclick="openVisualGallery()"><span>▦</span>VISUAL MAP</button><button onclick="openExpandedShipHub()"><span>◇</span>EXPLORE SHIP</button><button onclick="openArcadeDeck()"><span>🏀</span>ARCADE</button><button onclick="openXenoCodex()"><span>◌</span>XENO CODEX</button><button onclick="openExoticCargo()"><span>◇</span>EXOTIC CARGO</button><button onclick="ringScan()"><span>◉</span>ALIEN SCAN</button></div>
+ </div>
+ <div class="dashPanel screenPulse">
+  <div class="dashHead"><b>LIVE SHIP DATA</b><span id="liveShipClock">00:00:00</span></div>
+  <div class="liveTicker">
+   <div class="liveChip"><b>WATCH</b><span id="liveWatch">--</span></div>
+   <div class="liveChip"><b>SENSOR</b><span id="liveConfidence">--</span></div>
+   <div class="liveChip"><b>NOISE</b><span id="liveNoise">--</span></div>
+   <div class="liveChip"><b>LATENCY</b><span id="liveLatency">--</span></div>
+   <div class="liveChip"><b>THERMAL</b><span id="liveThermal">--</span></div>
+  </div>
+  <div class="liveDataGrid">
+   <div class="liveCell"><b id="liveDemand">--</b><span>POWER DEMAND</span></div>
+   <div class="liveCell"><b id="liveOxygenFlow">--</b><span>O2 FLOW</span></div>
+   <div class="liveCell"><b id="liveSignalDrift">--</b><span>SIGNAL DRIFT</span></div>
+   <div class="liveCell"><b id="liveFoodCycles">--</b><span>RATION CYCLES</span></div>
+  </div>
+  <div class="miniWave"><i></i></div>
+  <div class="liveFeed" id="globalLiveFeed"></div>
  </div>
  <div class="dashPanel">
   <div class="dashHead"><b>SIMULATION STATUS</b><span id="dashMatrixState">LAYER OFFLINE</span></div>
@@ -1225,6 +1423,13 @@ if(state.simFragments===undefined)state.simFragments=0;
 if(state.simThreat===undefined)state.simThreat=18;
 if(state.simMissions===undefined)state.simMissions=0;
 if(state.matrixGlyphSet===undefined)state.matrixGlyphSet='mixed';
+if(state.matrixCustomText===undefined)state.matrixCustomText='ARK9';
+if(state.matrixCustomWeight===undefined)state.matrixCustomWeight=.18;
+if(state.matrixPacketMode===undefined)state.matrixPacketMode='letters';
+if(state.matrixPackets===undefined)state.matrixPackets=0;
+if(state.matrixSignalHits===undefined)state.matrixSignalHits=0;
+if(!Array.isArray(state.matrixWords))state.matrixWords=['ARK9','RING','ORION'];
+
 if(state.reduceMotion===undefined)state.reduceMotion=false;
 if(state.uiDensity===undefined)state.uiDensity='rich';
 if(state.heading===undefined)state.heading=87;
@@ -1246,6 +1451,38 @@ if(state.telemetryTick===undefined)state.telemetryTick=0;
 if(state.autopilot===undefined)state.autopilot=false;
 if(state.navLock===undefined)state.navLock=true;
 if(state.rcsMode===undefined)state.rcsMode='AUTO';
+if(state.waterReserve===undefined)state.waterReserve=79;
+if(state.hygiene===undefined)state.hygiene=73;
+if(state.hydroYield===undefined)state.hydroYield=44;
+if(state.crewFitness===undefined)state.crewFitness=51;
+if(state.crewTrust===undefined)state.crewTrust=62;
+if(state.coffee===undefined)state.coffee=7;
+if(state.suitOxygen===undefined)state.suitOxygen=86;
+if(state.personalClues===undefined)state.personalClues=0;
+if(!state.zoneProgress)state.zoneProgress={bunks:30,cabins:18,galley:42,mess:25,gym:12,rec:10,hydro:33,observation:8,suits:40,hygiene:55};
+if(state.shipClock===undefined)state.shipClock=0;
+if(state.dataNoise===undefined)state.dataNoise=12;
+if(state.sensorConfidence===undefined)state.sensorConfidence=84;
+if(state.thermalLoad===undefined)state.thermalLoad=36;
+if(state.networkLatency===undefined)state.networkLatency=18;
+if(state.crewOnWatch===undefined)state.crewOnWatch='Mara / Ivo';
+if(!Array.isArray(state.liveEvents))state.liveEvents=[];
+if(state.signalDrift===undefined)state.signalDrift=4;
+if(state.powerDemand===undefined)state.powerDemand=58;
+if(state.oxygenFlow===undefined)state.oxygenFlow=92;
+if(state.foodCycles===undefined)state.foodCycles=14;
+if(state.arcadeTickets===undefined)state.arcadeTickets=0;
+if(state.arcadeHighScore===undefined)state.arcadeHighScore=0;
+if(state.basketScore===undefined)state.basketScore=0;
+if(state.basketShots===undefined)state.basketShots=0;
+if(state.basketMakes===undefined)state.basketMakes=0;
+if(state.basketStreak===undefined)state.basketStreak=0;
+if(state.arcadeLevel===undefined)state.arcadeLevel=1;
+if(state.arcadeWins===undefined)state.arcadeWins=0;
+if(!Array.isArray(state.arcadeFeed))state.arcadeFeed=[];
+
+
+
 if(state.soundEnabled===undefined)state.soundEnabled=true;
 if(state.hapticsEnabled===undefined)state.hapticsEnabled=true;
 
@@ -1439,6 +1676,7 @@ function openSpecialArea(id){
  let body=`<div class="areaHero" style="background-image:url('${visualAtlas[a.visual]||ringArt[a.art]}')"><div class="cap"><b>${a.name}</b><span>${a.tag}</span></div></div>
  <div class="areaStats">${stats}</div><div class="areaFeed">${feed}</div><div class="areaActionGrid">${actions}</div>
  <div class="sectionJump"><button onclick="openAreaHub()">SPECIAL OPERATIONS HUB</button><button onclick="openRingAccess()">RING ACCESS</button></div>`;
+ body+=globalLiveBlock(a.name+' LIVE DATA');
  openSheet(a.name,body);
 }
 function areaStat(v,l){return `<div><b>${v}</b><span>${l}</span></div>`}
@@ -1513,6 +1751,7 @@ function openRingAccess(){
   ${action('RING SCAN','Spend power to discover lore / credit','ringScan()')}
   ${action('QUARANTINE','Reduce contamination in Medical','ringQuarantine()')}
  </div>`;
+ body+=globalLiveBlock('RING NETWORK LIVE DATA');
  openSheet('◉ RING ACCESS',body);
 }
 function openXenoCodex(filter='ALL'){
@@ -1523,12 +1762,14 @@ function openXenoCodex(filter='ALL'){
    let unlocked=state.codexUnlocked.includes(x.id);
    return `<div class="codexCard ${unlocked?'':'locked'}"><div class="codexArt" style="background-image:url('${ringArt[x.art]}')"></div><div class="codexBody"><span class="tag">${x.type} / ${x.canon?'EXPANSE LORE':'ARK-9 ORIGINAL'}</span><b>${unlocked?x.name:'UNRESOLVED ENTRY'}</b><p>${unlocked?x.desc:'Collect scans or survive Ring encounters to unlock this entry.'}</p><small>${unlocked?'GAME EFFECT: '+x.game:'RISK: UNKNOWN'}</small></div></div>`;
  }).join('')}</div>`;
+ body+=globalLiveBlock('CODEX SENSOR FEED');
  openSheet('XENO CODEX',body);
 }
 function openExoticCargo(){
  let body=`<div class="ringHero" style="background-image:url('${ringArt.artifacts}')"><div class="ringTitle"><b>EXOTIC CARGO</b><span>QUARANTINED / SHIELDED / NONSTANDARD MATERIAL</span></div></div>
  <div class="ringStats"><div><b>${state.xenoCredits}</b><span>XENO CREDIT</span></div><div><b>${state.xenoInventory.length}</b><span>OWNED</span></div><div><b>${state.contamination}%</b><span>CONTAM</span></div><div><b>${state.research}</b><span>RESEARCH</span></div></div>
  <div class="itemGrid">${exoticItems.map(x=>`<div class="itemCard"><b>${state.xenoInventory.includes(x.id)?'✓ ':''}${x.name}</b><p>${x.desc}<br>Effect: +${x.amount} ${x.bonus} · contamination risk ${x.risk}%</p><button onclick="acquireExotic('${x.id}')">${state.xenoInventory.includes(x.id)?'INSTALLED':'ACQUIRE '+x.cost}</button></div>`).join('')}</div>`;
+ body+=globalLiveBlock('CARGO MONITOR');
  openSheet('EXOTIC CARGO',body);
 }
 function acquireExotic(id){
@@ -1840,7 +2081,356 @@ function render(){
 function openSheet(title,body){document.getElementById('sheetTitle').textContent=title;document.getElementById('sheetBody').innerHTML=body;document.getElementById('overlay').classList.add('show')}
 function closeSheet(){document.getElementById('overlay').classList.remove('show')}
 function action(n,d,f){return `<button class="action" onclick="${f}"><strong>${n}</strong><span>${d}</span></button>`}
-function openRoom(id){
+
+const crewZones=[
+ {id:'bunks',name:'BUNK MODULE',desc:'Sleep pods, watch schedules and personal recovery.',people:'Kei / Ivo'},
+ {id:'cabins',name:'PRIVATE CABINS',desc:'Crew possessions, private logs, relationships and hidden clues.',people:'Mara / Nyx'},
+ {id:'galley',name:'GALLEY',desc:'Rations become meals. Water, coffee and food preparation live here.',people:'Sato'},
+ {id:'mess',name:'MESS HALL',desc:'Crew meetings, arguments, celebrations and shared meals.',people:'Bram / Tala'},
+ {id:'gym',name:'HIGH-G GYM',desc:'Resistance training for hard burns and EVA conditioning.',people:'Ivo'},
+ {id:'rec',name:'REC ROOM',desc:'Games, music, films and morale recovery between crises.',people:'Tala / Kei'},
+ {id:'arcade',name:'ARCADE DECK',desc:'Gravity basketball, crew league, prize counter and simulation cabinets.',people:'Tala / Bram / Kei'},
+ {id:'hydro',name:'HYDROPONICS',desc:'Food growth, oxygen support and questionable alien samples.',people:'Nyx'},
+ {id:'observation',name:'OBSERVATION',desc:'A protected optics blister for stars, conversations and anomalies.',people:'ORION feed'},
+ {id:'suits',name:'SUIT LOCKER',desc:'Pressure suits, EVA oxygen, batteries and mission loadouts.',people:'Bram'},
+ {id:'hygiene',name:'HYGIENE / WATER',desc:'Showers, laundry, greywater recycling and crew sanitation.',people:'Sato'}
+];
+function zp(id){return Math.round((state.zoneProgress&&state.zoneProgress[id])||0)}
+function zb(id,n){state.zoneProgress[id]=clamp((state.zoneProgress[id]||0)+n)}
+
+const arcadeArt="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYyMCI+CjxkZWZzPgogPGxpbmVhckdyYWRpZW50IGlkPSJiZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIHN0b3AtY29sb3I9IiMwODExMTciLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMDFkMjQiLz48L2xpbmVhckdyYWRpZW50PgogPGxpbmVhckdyYWRpZW50IGlkPSJmbG9vciIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIHN0b3AtY29sb3I9IiMyODM1M2EiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxMDE4MWMiLz48L2xpbmVhckdyYWRpZW50PgogPHJhZGlhbEdyYWRpZW50IGlkPSJiYWxsIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZhZDU1Ii8+PHN0b3Agb2Zmc2V0PSIuNyIgc3RvcC1jb2xvcj0iI2Q0NmMyNCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzdjMzUxNSIvPjwvcmFkaWFsR3JhZGllbnQ+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjIwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8cGF0aCBkPSJNMCA0NzAgTDEyMDAgNDcwIEwxMDQwIDYyMCBMMTYwIDYyMCBaIiBmaWxsPSJ1cmwoI2Zsb29yKSIgc3Ryb2tlPSIjNTA2MTZhIiBzdHJva2Utd2lkdGg9IjQiLz4KPGcgc3Ryb2tlPSIjNmZhMmIyIiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9Ii41NSIgZmlsbD0ibm9uZSI+CiA8cGF0aCBkPSJNNjAwIDQ3MCBMNjAwIDYyMCIvPjxlbGxpcHNlIGN4PSI2MDAiIGN5PSI1MzAiIHJ4PSIxMTAiIHJ5PSI0MiIvPgogPHBhdGggZD0iTTIxMCA0NzAgTDIxMCA2MjAgTTk5MCA0NzAgTDk5MCA2MjAiLz4KIDxwYXRoIGQ9Ik0yMTAgNTMwIFEzODAgNDcwIDQ4MCA1MzAgTTk5MCA1MzAgUTgyMCA0NzAgNzIwIDUzMCIvPgo8L2c+CjxnIHN0cm9rZT0iI2Q1ZTZlYiIgc3Ryb2tlLXdpZHRoPSI4IiBmaWxsPSJub25lIj4KIDxwYXRoIGQ9Ik0xMDUwIDIwNSBWMzkwIi8+PHJlY3QgeD0iOTQwIiB5PSIxNjUiIHdpZHRoPSIxMTAiIGhlaWdodD0iODAiLz4KIDxlbGxpcHNlIGN4PSI5MjUiIGN5PSIyODUiIHJ4PSI1OCIgcnk9IjE4IiBzdHJva2U9IiNlODgzM2QiLz4KIDxwYXRoIGQ9Ik05MjUgMzAyIEw5MDUgMzYwIE05MjUgMzAyIEw5NDUgMzYwIE05MDUgMzYwIEw5NDUgMzYwIiBzdHJva2U9IiNjMmQxZDUiIHN0cm9rZS13aWR0aD0iMyIvPgo8L2c+CjxnIG9wYWNpdHk9Ii45Ij48Y2lyY2xlIGN4PSI4MjAiIGN5PSIzNTAiIHI9IjM0IiBmaWxsPSJ1cmwoI2JhbGwpIi8+CiA8cGF0aCBkPSJNNzg4IDM1MGg2NE04MjAgMzE2Yy0yMiAxOC0yMiA1MCAwIDY4TTgyMCAzMTZjMjIgMTggMjIgNTAgMCA2OCIgc3Ryb2tlPSIjNTUyNTBmIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9Im5vbmUiLz4KPC9nPgo8ZyBmaWxsPSIjOTJkN2U3IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIj4KIDx0ZXh0IHg9IjYwIiB5PSI3MCIgZm9udC1zaXplPSIzNCIgZm9udC13ZWlnaHQ9ImJvbGQiPkFSSy05IC8vIEFSQ0FERSBERUNLPC90ZXh0PgogPHRleHQgeD0iNjAiIHk9IjEwNSIgZm9udC1zaXplPSIxNiI+R1JBVklUWSBDT1VSVCAwMSDCtyBCQVNLRVRCQUxMIFNJTVVMQVRJT048L3RleHQ+CjwvZz4KPGcgZmlsbD0iIzY1ZmY5YiIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxNiI+CiA8dGV4dCB4PSI2MCIgeT0iMTcwIj5TSE9UIFRSQUNLSU5HIE9OTElORTwvdGV4dD48dGV4dCB4PSI2MCIgeT0iMTk4Ij5DUkVXIExFQUdVRSBSRUFEWTwvdGV4dD4KIDx0ZXh0IHg9IjYwIiB5PSIyMjYiPlNJTVVMQVRJT04gQVNTSVNUOiBBVkFJTEFCTEU8L3RleHQ+CjwvZz4KPHJlY3QgeD0iNTUiIHk9IjI2MCIgd2lkdGg9IjM2MCIgaGVpZ2h0PSIxNDUiIHJ4PSI4IiBmaWxsPSIjMDgxMDEzIiBzdHJva2U9IiM0MDUxNTkiLz4KPGcgZmlsbD0iI2I3YzhjZSIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIxNSI+CiA8dGV4dCB4PSI3OCIgeT0iMjk1Ij5DT1VSVCBHUkFWSVRZICAgICAxLjAwIEc8L3RleHQ+CiA8dGV4dCB4PSI3OCIgeT0iMzI1Ij5SSU0gRElTVEFOQ0UgICAgICA3LjIgTTwvdGV4dD4KIDx0ZXh0IHg9Ijc4IiB5PSIzNTUiPlNIT1QgQ0xPQ0sgICAgICAgIDI0IFM8L3RleHQ+CiA8dGV4dCB4PSI3OCIgeT0iMzg1Ij5DUkVXIE1PUkFMRSBMSU5LICBBQ1RJVkU8L3RleHQ+CjwvZz4KPC9zdmc+";
+let basketRAF=0,basketPos=0,basketDir=1,basketPlaying=false,basketSeconds=24,basketClockTimer=0,basketOpponent=0;
+
+function arcadeLog(msg){
+ state.arcadeFeed.unshift(msg);state.arcadeFeed=state.arcadeFeed.slice(0,12);
+}
+function openArcadeDeck(){
+ let accuracy=state.basketShots?Math.round(state.basketMakes/state.basketShots*100):0;
+ let body=`<div class="arcadeHero" style="background-image:url('${arcadeArt}')"><div class="cap"><b>ARK-9 ARCADE DECK</b><span>GRAVITY COURT / CREW LEAGUE / SIM CABINETS</span></div></div>
+ <div class="arcadeStats">
+  <div><b>${state.arcadeTickets}</b><span>TICKETS</span></div><div><b>${state.arcadeHighScore}</b><span>HIGH SCORE</span></div>
+  <div><b>${accuracy}%</b><span>SHOT %</span></div><div><b>${state.arcadeWins}</b><span>LEAGUE WINS</span></div>
+ </div>
+ <div class="actiongrid">
+  ${action('GRAVITY BASKETBALL','Playable timing-based shooting challenge','openBasketball()')}
+  ${action('CREW LEAGUE','Face a simulated crew opponent','startCrewLeague()')}
+  ${action('ARCADE PRIZE COUNTER','Spend tickets on ship and crew bonuses','openArcadeShop()')}
+  ${action('SIMULATION CABINET','Convert arcade play into simulation fragments','arcadeSimulation()')}
+ </div>
+ ${globalLiveBlock('ARCADE DECK LIVE DATA')}`;
+ openSheet('ARCADE DECK',body);
+}
+function openBasketball(){
+ basketPlaying=false;cancelAnimationFrame(basketRAF);if(basketClockTimer)clearInterval(basketClockTimer);
+ let body=`<div class="arcadeHero" style="background-image:url('${arcadeArt}')"><div class="cap"><b>GRAVITY BASKETBALL</b><span>TIME THE SHOT INSIDE THE GREEN WINDOW</span></div></div>
+ <div class="bballCourt">
+   <div class="scoreboard"><div class="team">ARK-9<br><span class="score" id="bbScore">${state.basketScore}</span></div><div class="clock" id="bbClock">24</div><div class="team">OPP<br><span class="score" id="bbOpp">${basketOpponent}</span></div></div>
+   <div class="shotLane"><div class="shotSweet"></div><div class="shotMarker" id="shotMarker"></div></div>
+   <div class="arcadeButtons">
+     <button onclick="startBasketRound()">START ROUND</button>
+     <button onclick="shootBasket()">SHOOT</button>
+     <button onclick="basketBoost()">SIM ASSIST</button>
+   </div>
+   <div class="arcadeStats"><div><b id="bbStreak">${state.basketStreak}</b><span>STREAK</span></div><div><b>${state.basketMakes}</b><span>MAKES</span></div><div><b>${state.basketShots}</b><span>SHOTS</span></div><div><b>${state.arcadeTickets}</b><span>TICKETS</span></div></div>
+   <div class="arcadeFeed" id="bbFeed">${state.arcadeFeed.map(x=>`<div>${x}</div>`).join('')}</div>
+ </div>
+ <div class="sectionJump"><button onclick="endBasketRound();openArcadeDeck()">ARCADE DECK</button><button onclick="openCrewDeckDeep()">LIVING QUARTERS</button></div>`;
+ openSheet('GRAVITY BASKETBALL',body);
+}
+function basketAnimate(){
+ if(!basketPlaying)return;
+ basketPos+=basketDir*1.55;
+ if(basketPos>=100){basketPos=100;basketDir=-1}else if(basketPos<=0){basketPos=0;basketDir=1}
+ let m=document.getElementById('shotMarker');if(m)m.style.left=`calc(${basketPos}% - 3px)`;
+ basketRAF=requestAnimationFrame(basketAnimate);
+}
+function startBasketRound(){
+ if(basketPlaying)return toast('Round already active');
+ basketPlaying=true;basketSeconds=24;basketOpponent=0;state.basketScore=0;basketPos=8;basketDir=1;
+ arcadeLog('ROUND START // 24 SECOND GRAVITY COURT');
+ basketAnimate();
+ if(basketClockTimer)clearInterval(basketClockTimer);
+ basketClockTimer=setInterval(()=>{
+   basketSeconds--;let c=document.getElementById('bbClock');if(c)c.textContent=basketSeconds;
+   if(Math.random()<.22){basketOpponent+=Math.random()<.7?2:3;let o=document.getElementById('bbOpp');if(o)o.textContent=basketOpponent}
+   if(basketSeconds<=0)endBasketRound();
+ },1000);
+ updateBasketUI();
+}
+function shootBasket(){
+ if(!basketPlaying)return toast('Press START ROUND');
+ state.basketShots++;
+ let dist=Math.abs(basketPos-50);
+ let pts=0,label='MISS';
+ if(dist<=4){pts=3;label='PERFECT 3';state.basketStreak++;}
+ else if(dist<=10){pts=2;label='BUCKET';state.basketStreak++;}
+ else if(dist<=17){pts=1;label='RIM IN';state.basketStreak++;}
+ else {state.basketStreak=0;}
+ if(pts){state.basketMakes++;state.basketScore+=pts;state.arcadeTickets+=pts+Math.min(4,state.basketStreak);state.morale=clamp(state.morale+.4);}
+ arcadeLog(label+' // '+pts+' PTS // STREAK '+state.basketStreak);
+ if(navigator.vibrate&&state.hapticsEnabled)navigator.vibrate(pts?[25,20,25]:18);
+ updateBasketUI();render();
+}
+function updateBasketUI(){
+ let s=document.getElementById('bbScore'),st=document.getElementById('bbStreak'),f=document.getElementById('bbFeed');
+ if(s)s.textContent=state.basketScore;if(st)st.textContent=state.basketStreak;
+ if(f)f.innerHTML=state.arcadeFeed.map(x=>`<div>${x}</div>`).join('');
+}
+function endBasketRound(){
+ if(!basketPlaying)return;
+ basketPlaying=false;cancelAnimationFrame(basketRAF);basketRAF=0;
+ if(basketClockTimer){clearInterval(basketClockTimer);basketClockTimer=0}
+ let win=state.basketScore>basketOpponent;
+ if(win){state.arcadeWins++;state.arcadeTickets+=8;state.crewTrust=clamp(state.crewTrust+3);state.morale=clamp(state.morale+5);arcadeLog('ARK-9 WINS // +8 BONUS TICKETS');}
+ else arcadeLog('ROUND COMPLETE // OPPONENT TAKES IT');
+ state.arcadeHighScore=Math.max(state.arcadeHighScore,state.basketScore);
+ state.arcadeLevel=1+Math.floor(state.arcadeWins/3);
+ render();updateBasketUI();toast(win?'Crew league win!':'Round complete');
+}
+function basketBoost(){
+ if(state.simFragments<1)return toast('Need 1 simulation fragment');
+ state.simFragments--;basketPos=50;arcadeLog('SIM ASSIST LOCKED THE RELEASE WINDOW');updateBasketUI();toast('Perfect-release assist armed');
+}
+function startCrewLeague(){
+ openBasketball();setTimeout(startBasketRound,50);
+}
+function openArcadeShop(){
+ let body=`<div class="arcadeHero" style="background-image:url('${arcadeArt}')"><div class="cap"><b>PRIZE COUNTER</b><span>${state.arcadeTickets} TICKETS AVAILABLE</span></div></div>
+ <div class="arcadeShop">
+  <button onclick="buyArcadePrize('coffee',12)">COFFEE PACK<small>12 tickets · +3 coffee</small></button>
+  <button onclick="buyArcadePrize('morale',18)">CREW PARTY TOKEN<small>18 tickets · +10 morale</small></button>
+  <button onclick="buyArcadePrize('fitness',22)">GYM BOOST<small>22 tickets · +8 crew fitness</small></button>
+  <button onclick="buyArcadePrize('sim',28)">SIMULATION KEY<small>28 tickets · +1 simulation key</small></button>
+  <button onclick="buyArcadePrize('xeno',34)">XENO VOUCHER<small>34 tickets · +8 xeno credits</small></button>
+  <button onclick="buyArcadePrize('research',24)">PUZZLE CORE<small>24 tickets · +8 research</small></button>
+ </div><div class="sectionJump"><button onclick="openArcadeDeck()">BACK TO ARCADE</button></div>`;
+ openSheet('ARCADE PRIZE COUNTER',body);
+}
+function buyArcadePrize(type,cost){
+ if(state.arcadeTickets<cost)return toast('Need '+cost+' tickets');
+ state.arcadeTickets-=cost;
+ if(type==='coffee')state.coffee+=3;
+ if(type==='morale')state.morale=clamp(state.morale+10);
+ if(type==='fitness')state.crewFitness=clamp(state.crewFitness+8);
+ if(type==='sim')state.simKeys++;
+ if(type==='xeno')state.xenoCredits+=8;
+ if(type==='research')state.research+=8;
+ arcadeLog('Prize redeemed: '+type.toUpperCase());render();openArcadeShop();
+}
+function arcadeSimulation(){
+ if(state.arcadeTickets<10)return toast('Need 10 tickets');
+ state.arcadeTickets-=10;state.simFragments+=2;state.morale=clamp(state.morale+3);
+ arcadeLog('Arcade cabinet produced 2 simulation fragments.');render();openArcadeDeck();
+}
+
+function openCrewDeckDeep(){
+ let body=`<div class="roomArt" style="background-image:url('${embeddedArt.quarters}')"></div>
+ <div class="roomMetrics">${roomStat(state.morale+'%','MORALE')}${roomStat(state.crewRest+'%','REST')}${roomStat(state.crewTrust+'%','TRUST')}${roomStat(state.waterReserve+'%','WATER')}</div>
+ <div class="deckMap">${crewZones.map(z=>`<div class="deckZone"><b>${z.name}</b><small>${z.desc}</small><button onclick="openCrewZone('${z.id}')">EXPLORE · ${zp(z.id)}%</button><div class="zonePeople">ON DECK: ${z.people}</div></div>`).join('')}</div>
+ <div class="sectionJump"><button onclick="openCrew()">CREW ROSTER</button><button onclick="openExpandedShipHub()">EXPLORE WHOLE SHIP</button></div>`;
+ body+=globalLiveBlock('CREW DECK LIVE DATA');
+ openSheet('CREW DECK / LIVING QUARTERS',body);
+}
+function openCrewZone(id){if(id==='arcade'){openArcadeDeck();return}
+ let z=crewZones.find(x=>x.id===id);if(!z)return;
+ let stats='',acts='',story='';
+ if(id==='bunks'){stats=roomStat(state.crewRest+'%','REST')+roomStat(state.morale+'%','MORALE')+roomStat(zp(id)+'%','ORDER');acts=za('Run Sleep Cycle','Recover crew rest',"zoneRest()")+za('Set Watch Rotation','Improve readiness',"zoneWatch()")+za('Inspect Empty Bunk','Chance of private clue',"zoneClue('bunks')")+za('Dim Ship Cycle','Morale + rest',"zoneDim()");story='The bunks are strapped along the thrust axis. Every sleeping crewmember is one alarm away from becoming damage control.'}
+ if(id==='cabins'){stats=roomStat(state.crewTrust+'%','TRUST')+roomStat(state.personalClues,'CLUES')+roomStat(zp(id)+'%','EXPLORED');acts=za('Visit Mara Cabin','Engineering conversation',"zoneTalk('Mara')")+za('Visit Sato Cabin','Medical conversation',"zoneTalk('Sato')")+za('Read Authorized Log','Discover personal clue',"zoneClue('cabins')")+za('Crew Privacy Check','Increase trust',"zonePrivacy()");story='Eight tiny private compartments hold more history than the official mission archive.'}
+ if(id==='galley'){stats=roomStat(state.food+'%','FOOD')+roomStat(state.waterReserve+'%','WATER')+roomStat(state.coffee,'COFFEE');acts=za('Cook Crew Meal','Food → morale',"zoneMeal()")+za('Brew Coffee','Use coffee stock',"zoneCoffee()")+za('Recycle Water','Power → water',"zoneWater()")+za('Emergency Rations','Conserve food',"zoneRations()");story='The galley is where percentages turn back into something human enough to eat.'}
+ if(id==='mess'){stats=roomStat(state.crewTrust+'%','TRUST')+roomStat(state.morale+'%','MORALE')+roomStat(zp(id)+'%','COHESION');acts=za('Hold Crew Dinner','Food → trust',"zoneDinner()")+za('Captain Briefing','Research → trust',"zoneBrief()")+za('Resolve Argument','Improve morale',"zoneResolve()")+za('Tell Ring Story','Risk strange memory event',"zoneRingStory()");story='Every strategic disagreement eventually reaches this table.'}
+ if(id==='gym'){stats=roomStat(state.crewFitness+'%','FITNESS')+roomStat(state.crewRest+'%','REST')+roomStat(state.accel+'G','BURN SET');acts=za('High-G Training','Fitness + / rest -',"zoneTrain()")+za('EVA Conditioning','Suit oxygen + fitness',"zoneEvaTrain()")+za('Medical Stress Test','Readiness +',"zoneStress()")+za('Recovery Session','Rest +',"zoneRecovery()");story='Resistance frames simulate the body load of sustained acceleration.'}
+ if(id==='rec'){stats=roomStat(state.morale+'%','MORALE')+roomStat(state.crewTrust+'%','TRUST')+roomStat(zp(id)+'%','REC');acts=za('Card Tournament','Morale +',"zoneCards()")+za('Movie Night','Rest + morale',"zoneMovie()")+za('Simulation Game','Simulation fragments +',"zoneSimGame()")+za('Music Session','Trust +',"zoneMusic()");story='The smallest room on the ship becomes enormous when nobody is trying to save the universe for twenty minutes.'}
+ if(id==='hydro'){stats=roomStat(state.hydroYield+'%','YIELD')+roomStat(state.oxygen+'%','OXYGEN')+roomStat(state.food+'%','FOOD');acts=za('Harvest Greens','Food +',"zoneHarvest()")+za('Tune Grow Lights','Power → yield',"zoneGrow()")+za('Oxygen Cycle','Oxygen +',"zoneOxygen()")+za('Inspect Alien Growth','Research / contamination risk',"zoneAlienPlant()");story='Rows of green under artificial light. One tray is growing faster since the last Ring transit.'}
+ if(id==='observation'){stats=roomStat(state.ringStability+'%','RING')+roomStat(state.simThreat+'%','SIM THREAT')+roomStat(state.personalClues,'CLUES');acts=za('Watch the Stars','Morale +',"zoneStars()")+za('Optical Anomaly Scan','Research +',"zoneOptics()")+za('Private Conversation','Trust +',"zoneTalk('Tala')")+za('Watch During Burn','Chance of Void Shadow clue',"zoneVoidWatch()");story='No window: armored cameras reconstruct the outside sky. Sometimes they reconstruct too much.'}
+ if(id==='suits'){stats=roomStat(state.suitOxygen+'%','SUIT O2')+roomStat(state.hangarReady+'%','HANGAR')+roomStat(state.securityLevel+'%','SECURITY');acts=za('Recharge Suit O2','Power → oxygen',"zoneSuitO2()")+za('Seal Check','Improve EVA readiness',"zoneSuitSeal()")+za('Build EVA Loadout','Scrap → readiness',"zoneLoadout()")+za('Emergency Drill','Security +',"zoneDrill()");story='Every suit is a one-person spacecraft hanging on a rack.'}
+ if(id==='hygiene'){stats=roomStat(state.hygiene+'%','HYGIENE')+roomStat(state.waterReserve+'%','WATER')+roomStat(state.morale+'%','MORALE');acts=za('Water Recycle','Power → water',"zoneWater()")+za('Laundry Cycle','Water → hygiene',"zoneLaundry()")+za('Crew Shower Cycle','Water → morale',"zoneShower()")+za('Filter Maintenance','Scrap → efficiency',"zoneFilter()");story='Luxury aboard ARK-9 means warm water and a filter that does not smell like yesterday.'}
+ openSheet(z.name,`<div class="zonePanel"><h3>${z.name}</h3><p>${story}</p><div class="roomMetrics">${stats}</div><div class="zoneActions">${acts}</div></div>${globalLiveBlock(z.name+' LIVE DATA')}<div class="sectionJump"><button onclick="openCrewDeckDeep()">LIVING QUARTERS MAP</button><button onclick="openExpandedShipHub()">SHIP EXPLORATION</button></div>`);
+}
+function za(n,d,f){return `<button onclick="${f}">${n}<small>${d}</small></button>`}
+function zrefresh(id){zb(id,5);render();openCrewZone(id)}
+function zoneRest(){state.crewRest=clamp(state.crewRest+14);state.morale=clamp(state.morale+3);zrefresh('bunks')}
+function zoneWatch(){state.crewRest=clamp(state.crewRest-3);state.securityLevel=clamp(state.securityLevel+7);state.crewTrust=clamp(state.crewTrust+2);zrefresh('bunks')}
+function zoneClue(id){state.personalClues++;state.research+=3;log('A private crew detail was added to the captain’s contextual archive.');zrefresh(id)}
+function zoneDim(){state.crewRest=clamp(state.crewRest+7);state.morale=clamp(state.morale+4);zrefresh('bunks')}
+function zoneTalk(n){state.crewTrust=clamp(state.crewTrust+4);state.morale=clamp(state.morale+2);log(n+' spoke privately with the captain.');render();toast(n+' trust increased')}
+function zonePrivacy(){state.crewTrust=clamp(state.crewTrust+8);zrefresh('cabins')}
+function zoneMeal(){if(state.food<5)return toast('Need 5 food');state.food-=5;state.morale=clamp(state.morale+9);state.crewRest=clamp(state.crewRest+3);zrefresh('galley')}
+function zoneCoffee(){if(state.coffee<1)return toast('Coffee locker empty');state.coffee--;state.crewRest=clamp(state.crewRest+5);state.morale=clamp(state.morale+4);zrefresh('galley')}
+function zoneWater(){if(state.power<3)return toast('Need 3 power');state.power-=3;state.waterReserve=clamp(state.waterReserve+12);render();toast('Water reserve recycled')}
+function zoneRations(){state.food=clamp(state.food+3);state.morale=clamp(state.morale-2);zrefresh('galley')}
+function zoneDinner(){if(state.food<7)return toast('Need 7 food');state.food-=7;state.crewTrust=clamp(state.crewTrust+10);state.morale=clamp(state.morale+6);zrefresh('mess')}
+function zoneBrief(){if(state.research<3)return toast('Need 3 research');state.research-=3;state.crewTrust=clamp(state.crewTrust+7);zrefresh('mess')}
+function zoneResolve(){state.crewTrust=clamp(state.crewTrust+4);state.morale=clamp(state.morale+5);zrefresh('mess')}
+function zoneRingStory(){state.morale=clamp(state.morale+3);if(Math.random()<.35){state.personalClues++;state.simThreat=clamp(state.simThreat+4);log('Two crewmembers remembered the same Ring transit differently.')}zrefresh('mess')}
+function zoneTrain(){state.crewFitness=clamp(state.crewFitness+9);state.crewRest=clamp(state.crewRest-5);zrefresh('gym')}
+function zoneEvaTrain(){state.crewFitness=clamp(state.crewFitness+6);state.suitOxygen=clamp(state.suitOxygen+3);zrefresh('gym')}
+function zoneStress(){state.medReadiness=clamp(state.medReadiness+6);state.crewFitness=clamp(state.crewFitness+3);zrefresh('gym')}
+function zoneRecovery(){state.crewRest=clamp(state.crewRest+8);zrefresh('gym')}
+function zoneCards(){state.morale=clamp(state.morale+7);state.crewTrust=clamp(state.crewTrust+3);zrefresh('rec')}
+function zoneMovie(){state.morale=clamp(state.morale+6);state.crewRest=clamp(state.crewRest+4);zrefresh('rec')}
+function zoneSimGame(){state.simFragments+=1;state.morale=clamp(state.morale+3);zrefresh('rec')}
+function zoneMusic(){state.crewTrust=clamp(state.crewTrust+4);state.morale=clamp(state.morale+5);zrefresh('rec')}
+function zoneHarvest(){state.food=clamp(state.food+10);state.hydroYield=clamp(state.hydroYield-8);zrefresh('hydro')}
+function zoneGrow(){if(state.power<4)return toast('Need 4 power');state.power-=4;state.hydroYield=clamp(state.hydroYield+14);zrefresh('hydro')}
+function zoneOxygen(){state.oxygen=clamp(state.oxygen+6);state.hydroYield=clamp(state.hydroYield-3);zrefresh('hydro')}
+function zoneAlienPlant(){state.research+=7;if(Math.random()<.28)state.contamination=clamp(state.contamination+5);zrefresh('hydro')}
+function zoneStars(){state.morale=clamp(state.morale+5);zrefresh('observation')}
+function zoneOptics(){state.research+=5;state.deepScanCharge=clamp(state.deepScanCharge+5);zrefresh('observation')}
+function zoneVoidWatch(){state.research+=6;if(Math.random()<.4){state.personalClues++;log('Observation optics recorded a star-field discontinuity during thrust.')}zrefresh('observation')}
+function zoneSuitO2(){if(state.power<3)return toast('Need 3 power');state.power-=3;state.suitOxygen=clamp(state.suitOxygen+15);zrefresh('suits')}
+function zoneSuitSeal(){state.hangarReady=clamp(state.hangarReady+5);zrefresh('suits')}
+function zoneLoadout(){if(state.scrap<4)return toast('Need 4 scrap');state.scrap-=4;state.hangarReady=clamp(state.hangarReady+8);state.securityLevel=clamp(state.securityLevel+3);zrefresh('suits')}
+function zoneDrill(){state.securityLevel=clamp(state.securityLevel+7);state.crewRest=clamp(state.crewRest-2);zrefresh('suits')}
+function zoneLaundry(){if(state.waterReserve<4)return toast('Need 4 water');state.waterReserve-=4;state.hygiene=clamp(state.hygiene+12);zrefresh('hygiene')}
+function zoneShower(){if(state.waterReserve<6)return toast('Need 6 water');state.waterReserve-=6;state.hygiene=clamp(state.hygiene+8);state.morale=clamp(state.morale+5);zrefresh('hygiene')}
+function zoneFilter(){if(state.scrap<3)return toast('Need 3 scrap');state.scrap-=3;state.hygiene=clamp(state.hygiene+7);state.waterReserve=clamp(state.waterReserve+4);zrefresh('hygiene')}
+
+
+let globalDataTimer=0;
+const rotatingCrew=[
+ 'Mara / Ivo','Sato / Bram','Nyx / Kei','Tala / Ivo','Mara / Bram','Sato / Tala'
+];
+const ambientEvents=[
+ ['INFO','Sensor fusion recalibrated against star tracker.'],
+ ['INFO','Hydroponics nutrient loop nominal.'],
+ ['INFO','ORION-4 reconciled navigation cache.'],
+ ['INFO','Galley recycler completed cycle.'],
+ ['WARN','Transient Ring-frequency carrier detected.'],
+ ['INFO','RCS manifold pressure balanced.'],
+ ['WARN','Simulation layer produced a low-confidence ghost contact.'],
+ ['INFO','Medical inventory checksum complete.'],
+ ['INFO','Cargo restraint load within tolerance.'],
+ ['WARN','Optics reported one-frame star-field discontinuity.'],
+ ['INFO','Crew watch rotation acknowledged.'],
+ ['INFO','Radiator loop thermal delta stabilizing.']
+];
+function pushLiveEvent(level,msg){
+ let t=new Date();
+ let stamp=t.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'});
+ state.liveEvents.unshift([stamp,level,msg]);
+ state.liveEvents=state.liveEvents.slice(0,18);
+}
+function startGlobalData(){
+ if(globalDataTimer)return;
+ globalDataTimer=setInterval(updateGlobalData,1000);
+}
+function updateGlobalData(){
+ state.shipClock++;
+ // Small drifting values so screens feel active without breaking gameplay.
+ state.dataNoise=Math.max(1,Math.min(99,state.dataNoise+(Math.random()-.5)*2));
+ state.sensorConfidence=Math.max(35,Math.min(99,state.sensorConfidence+(Math.random()-.5)*1.5-(state.simThreat||0)*0.002));
+ state.thermalLoad=Math.max(5,Math.min(99,
+   (state.thermalLoad||36)*.88 + (state.reactorTemp||61)*.12 + (Math.random()-.5)*1.2
+ ));
+ state.networkLatency=Math.max(4,Math.min(160,state.networkLatency+(Math.random()-.5)*3+(state.simThreat||0)*.01));
+ state.signalDrift=Math.max(0,Math.min(99,state.signalDrift+(Math.random()-.5)*1.1+(state.ringStability<60?.15:-.05)));
+ state.powerDemand=Math.max(10,Math.min(99,45+(state.lifeSupportLoad||42)*.25+(state.reactorTemp||61)*.1+(Math.random()-.5)*2));
+ state.oxygenFlow=Math.max(20,Math.min(110,(state.oxygen||88)+4+(Math.random()-.5)*1.5));
+ state.foodCycles=Math.max(0,Math.round((state.food||0)/4));
+ if(state.shipClock%45===0)state.crewOnWatch=rotatingCrew[(rotatingCrew.indexOf(state.crewOnWatch)+1+rotatingCrew.length)%rotatingCrew.length];
+ if(state.shipClock%8===0){
+   let e=ambientEvents[Math.floor(Math.random()*ambientEvents.length)];
+   pushLiveEvent(e[0],e[1]);
+ }
+ updateVisibleLiveData();
+}
+function fmtClock(){
+ let sec=state.shipClock||0;
+ let h=Math.floor(sec/3600)%24,m=Math.floor(sec/60)%60,s=sec%60;
+ return [h,m,s].map(x=>String(x).padStart(2,'0')).join(':');
+}
+function liveVal(id,val){
+ let e=document.getElementById(id);if(e)e.textContent=val;
+}
+function updateVisibleLiveData(){
+ liveVal('liveShipClock',fmtClock());
+ liveVal('liveNoise',Math.round(state.dataNoise)+'%');
+ liveVal('liveConfidence',Math.round(state.sensorConfidence)+'%');
+ liveVal('liveThermal',Math.round(state.thermalLoad)+'%');
+ liveVal('liveLatency',Math.round(state.networkLatency)+' MS');
+ liveVal('liveWatch',state.crewOnWatch);
+ liveVal('liveSignalDrift',Math.round(state.signalDrift)+'%');
+ liveVal('liveDemand',Math.round(state.powerDemand)+'%');
+ liveVal('liveOxygenFlow',Math.round(state.oxygenFlow)+'%');
+ liveVal('liveFoodCycles',state.foodCycles);
+ let feed=document.getElementById('globalLiveFeed');
+ if(feed)feed.innerHTML=state.liveEvents.slice(0,8).map(x=>`<div class="liveLine ${x[1]==='WARN'?'warn':''}"><em>${x[0]}</em><span>${x[2]}</span></div>`).join('');
+}
+function globalLiveBlock(title='LIVE SHIP DATA'){
+ return `<div class="liveTicker">
+  <div class="liveChip"><b>CLOCK</b><span id="liveShipClock">${fmtClock()}</span></div>
+  <div class="liveChip"><b>WATCH</b><span id="liveWatch">${state.crewOnWatch}</span></div>
+  <div class="liveChip"><b>SENSOR</b><span id="liveConfidence">${Math.round(state.sensorConfidence)}%</span></div>
+  <div class="liveChip"><b>NOISE</b><span id="liveNoise">${Math.round(state.dataNoise)}%</span></div>
+  <div class="liveChip"><b>LATENCY</b><span id="liveLatency">${Math.round(state.networkLatency)} MS</span></div>
+  <div class="liveChip"><b>THERMAL</b><span id="liveThermal">${Math.round(state.thermalLoad)}%</span></div>
+ </div>
+ <div class="liveDataGrid">
+  <div class="liveCell"><b id="liveDemand">${Math.round(state.powerDemand)}%</b><span>POWER DEMAND</span></div>
+  <div class="liveCell"><b id="liveOxygenFlow">${Math.round(state.oxygenFlow)}%</b><span>O2 FLOW</span></div>
+  <div class="liveCell"><b id="liveSignalDrift">${Math.round(state.signalDrift)}%</b><span>SIGNAL DRIFT</span></div>
+  <div class="liveCell"><b id="liveFoodCycles">${state.foodCycles}</b><span>RATION CYCLES</span></div>
+ </div>
+ <div class="miniWave"><i></i></div>
+ <div class="liveFeed" id="globalLiveFeed">${state.liveEvents.slice(0,8).map(x=>`<div class="liveLine ${x[1]==='WARN'?'warn':''}"><em>${x[0]}</em><span>${x[2]}</span></div>`).join('')}</div>`;
+}
+
+
+function enterArk9(){
+ let s=document.getElementById('introScreen');
+ if(s)s.classList.add('hide');
+ state.cinemaSeen=true;
+ setTimeout(()=>openExpandedShipHub(),650);
+}
+function openExpandedShipHub(){
+ const areas=[
+  ['flight','FLIGHT DECK','Primary instruments, burn control, target tracking',"closeSheet();openDeck()"],
+  ['navigation','NAVIGATION PIT','Course plotting, Ring solutions, contact geometry',"closeSheet();openDeck();nav()"],
+  ['engineering2','ENGINEERING','Reactor, coolant, drive, bus power and repairs',"openRoom('engineering')"],
+  ['medical2','MEDICAL','Treatment, quarantine, trauma prep and crew health',"openRoom('medbay')"],
+  ['crew2','LIVING QUARTERS','Cabins, bunks, galley, hydroponics, gym and more',"openCrewDeckDeep()"],
+  ['crew2','ARCADE DECK','Basketball, crew league and prize counter',"openArcadeDeck()"],
+  ['research2','RESEARCH','Signals, xenotech, anomalies and deep scans',"openRoom('research')"],
+  ['storage2','CARGO / STORES','Inventory, mission loadouts and exotic containment',"openRoom('storage')"],
+  ['hangar2','HANGAR / EVA','Shuttle, salvage, EVA suits and boarding ops',"openRoom('hangar')"],
+  ['security2','SECURITY','PDC, drones, hull defense and lockdowns',"openRoom('security')"],
+  ['gate2','RING CONTROL','Transit calibration, keys and gate windows',"openSpecialArea('gateControl')"],
+  ['archive2','ALIEN ARCHIVE','Builder data, evidence and recovered memory layers',"openSpecialArea('archive')"],
+  ['quarantine2','QUARANTINE VAULT','Containment, xenobiology and decon systems',"openSpecialArea('quarantine')"],
+  ['forge2','ARTIFACT FORGE','Build experimental xenotech ship upgrades',"openSpecialArea('forge')"],
+  ['sensor2','DEEP SENSOR ARRAY','Long-range observation and anomaly tracking',"openSpecialArea('observatory')"],
+  ['eva2','EVA SALVAGE DOCK','Recovery drones, wreckage and exterior operations',"openSpecialArea('evaDock')"],
+  ['black2','BLACK TRANSIT LAB','Drive-linked darkness and impossible telemetry',"openSpecialArea('blackLab')"],
+  ['colony2','COLONY RELAY','Frontier traffic, supplies and dead-colony signals',"openSpecialArea('colonyRelay')"],
+  ['grave2','FLEET GRAVEYARD','Blockade analysis and tactical archaeology',"openSpecialArea('fleetCommand')"],
+  ['simulation2','SIMULATION CORE','Synthetic missions and false-contact layer',"openSimulationLayer()"],
+  ['simulation2','MATRIX RAIN LAB','Program letters, words and signals into code rain',"openRainLab()"]
+ ];
+ let body=`<div class="shipHubHero" style="background-image:url('${visualAtlas.hero}')"><div class="cap"><b>ARK-9 SHIP NETWORK</b><span>${areas.length} ACTIVE AREAS / LIVE TELEMETRY LINKED</span></div></div>
+ ${globalLiveBlock('SHIP NETWORK LIVE DATA')}
+ <div class="shipAreaGrid">${areas.map(a=>`<div class="shipAreaCard"><div class="art" style="background-image:url('${visualAtlas[a[0]]||embeddedArt[a[0]]||ringArt.ring}')"></div><div class="body"><b>${a[1]}</b><p>${a[2]}</p><button onclick="${a[3]}">ENTER</button></div></div>`).join('')}</div>`;
+ openSheet('ARK-9 SHIP NETWORK',body);
+}
+
+function openExpandedShipHub(){
+ const areas=[
+ ['flight','FLIGHT DECK','Navigation, burn control, instruments and tactical flight',"closeSheet();openDeck()"],
+ ['engineering2','ENGINEERING DECK','Reactor, drive, coolant and power distribution',"openRoom('engineering')"],
+ ['medical2','MEDICAL DECK','Treatment, quarantine and high-G preparation',"openRoom('medbay')"],
+ ['crew2','LIVING QUARTERS','Ten explorable habitation zones',"openCrewDeckDeep()"],
+ ['crew2','ARCADE DECK','Gravity basketball, crew league and prize counter',"openArcadeDeck()"],
+ ['hangar2','HANGAR / EVA','Shuttle, suits, salvage and boarding',"openRoom('hangar')"],
+ ['research2','RESEARCH DECK','Signals, xenotech and anomaly analysis',"openRoom('research')"],
+ ['storage2','CARGO DECK','Stores, loadouts and exotic containment',"openRoom('storage')"],
+ ['security2','SECURITY DECK','PDC, drones, lockdown and hull defense',"openRoom('security')"],
+ ['gate2','RING OPERATIONS','Gate control and transit mechanics',"openRingAccess()"],
+ ['simulation2','SIMULATION CORE','Synthetic reality and false-contact layer',"openSimulationLayer()"],
+ ['simulation2','MATRIX RAIN LAB','Program the falling code with custom letters and signal packets',"openRainLab()"]
+ ];
+ openSheet('EXPLORE ARK-9',`<div class="shipExploreGrid">${areas.map(a=>`<div class="shipExploreCard"><div class="art" style="background-image:url('${visualAtlas[a[0]]||embeddedArt[a[0]]||ringArt.ring}')"></div><div class="body"><b>${a[1]}</b><p>${a[2]}</p><button onclick="${a[3]}">ENTER AREA</button></div></div>`).join('')}</div>`);
+}
+
+function openRoom(id){if(id==='quarters'){openCrewDeckDeep();return}
  let r=roomDefs.find(x=>x.id===id);if(!r)return;
  state.location=r.name.toUpperCase();render();
  const metric=(v,l)=>`<div><strong>${v}</strong><span>${l}</span></div>`;
@@ -2305,6 +2895,8 @@ function matrixGlyph(){
   glyph:'アイウエオカキクケコサシスセソ∆Ωλ'
  };
  let s=sets[state.matrixGlyphSet]||sets.mixed;
+ let custom=(state.matrixWords&&state.matrixWords.length?state.matrixWords.join(''):state.matrixCustomText||'ARK9').replace(/\s+/g,'');
+ if(custom && Math.random()<(state.matrixCustomWeight||.18))return custom[Math.floor(Math.random()*custom.length)];
  return s[Math.floor(Math.random()*s.length)];
 }
 function matrixLoop(t){
@@ -2337,6 +2929,83 @@ function toggleSound(){state.soundEnabled=!state.soundEnabled;save();toast('Soun
 function toggleHaptics(){state.hapticsEnabled=!state.hapticsEnabled;save();if(state.hapticsEnabled&&navigator.vibrate)navigator.vibrate(25);toast('Haptics '+(state.hapticsEnabled?'on':'off'))}
 function setUIDensity(v){state.uiDensity=v;document.body.dataset.density=v;save();toast('UI density: '+v)}
 
+
+function openRainLab(){
+ let words=(state.matrixWords||[]).map((w,i)=>`<div class="packet"><b>${w}</b><small>Injected token ${i+1} · appears inside the live rain stream</small></div>`).join('');
+ let body=`<div class="rainLab">
+  <div class="rainHero"><div class="cap"><b>MATRIX RAIN LAB</b><span>PROGRAMMABLE GLYPH STREAM / SIGNAL PACKETS</span></div></div>
+  <div class="simStats">
+   <div><b>${state.matrixEnabled?'ONLINE':'OFFLINE'}</b><span>RAIN</span></div>
+   <div><b>${Math.round((state.matrixCustomWeight||.18)*100)}%</b><span>CUSTOM RATE</span></div>
+   <div><b>${state.matrixPackets}</b><span>PACKETS</span></div>
+   <div><b>${state.matrixSignalHits}</b><span>SIGNAL HITS</span></div>
+  </div>
+  <div class="rainInput"><input id="rainTextInput" maxlength="24" value="${String(state.matrixCustomText||'ARK9').replace(/"/g,'&quot;')}" placeholder="TYPE LETTERS OR WORD"><button onclick="injectRainText()">INJECT</button></div>
+  <div class="rainInput">
+   <select id="rainWeightSel" onchange="setRainWeight(this.value)">
+    <option value=".08" ${(state.matrixCustomWeight==.08)?'selected':''}>LOW FREQUENCY</option>
+    <option value=".18" ${(state.matrixCustomWeight==.18)?'selected':''}>MEDIUM FREQUENCY</option>
+    <option value=".35" ${(state.matrixCustomWeight==.35)?'selected':''}>HIGH FREQUENCY</option>
+    <option value=".60" ${(state.matrixCustomWeight==.60)?'selected':''}>OVERRIDE STREAM</option>
+   </select>
+   <select id="rainModeSel" onchange="setRainPacketMode(this.value)">
+    <option value="letters" ${state.matrixPacketMode==='letters'?'selected':''}>LETTERS</option>
+    <option value="signal" ${state.matrixPacketMode==='signal'?'selected':''}>SIGNAL PACKET</option>
+    <option value="anomaly" ${state.matrixPacketMode==='anomaly'?'selected':''}>ANOMALY TOKEN</option>
+   </select>
+  </div>
+  <div class="simGrid">
+   <button onclick="toggleMatrixRain()">RAIN ON / OFF<small>Toggle the background stream</small></button>
+   <button onclick="encodeSignalPacket()">ENCODE SIGNAL<small>Convert a custom word into a simulation packet</small></button>
+   <button onclick="scanRainForHits()">SCAN STREAM<small>Search the rain for meaningful symbol matches</small></button>
+   <button onclick="purgeRainWords()">PURGE TOKENS<small>Remove injected words and restore baseline glyphs</small></button>
+  </div>
+  <div class="packetList">${words||'<div class="packet"><b>NO CUSTOM TOKENS</b><small>Inject a word above.</small></div>'}</div>
+  ${globalLiveBlock('RAIN LAB TELEMETRY')}
+  <div class="sectionJump"><button onclick="openSimulationLayer()">SIMULATION LAYER</button><button onclick="openSystem()">SETTINGS</button></div>
+ </div>`;
+ openSheet('MATRIX RAIN LAB',body);
+}
+function injectRainText(){
+ let i=document.getElementById('rainTextInput');if(!i)return;
+ let txt=i.value.trim().toUpperCase().replace(/[^A-Z0-9∆Ωλ\-_/ ]/g,'').slice(0,24);
+ if(!txt)return toast('Enter letters or a word');
+ state.matrixCustomText=txt;
+ if(!Array.isArray(state.matrixWords))state.matrixWords=[];
+ if(!state.matrixWords.includes(txt))state.matrixWords.unshift(txt);
+ state.matrixWords=state.matrixWords.slice(0,8);
+ state.matrixPackets++;
+ if(!state.matrixEnabled){state.matrixEnabled=true;applyMatrixSettings()}
+ save();toast('Injected into rain: '+txt);openRainLab();
+}
+function setRainWeight(v){state.matrixCustomWeight=parseFloat(v)||.18;save();if(state.matrixEnabled){stopMatrixRain();startMatrixRain()}toast('Custom token frequency updated')}
+function setRainPacketMode(v){state.matrixPacketMode=v;save();toast('Packet mode: '+v)}
+function encodeSignalPacket(){
+ if(!state.matrixCustomText)return toast('Inject text first');
+ state.matrixPackets++;state.simFragments+=1;
+ if(state.matrixPacketMode==='signal'){state.signalKeys++;state.research+=3}
+ if(state.matrixPacketMode==='anomaly'){state.simThreat=clamp(state.simThreat+5);state.research+=6}
+ arcadeLog&&arcadeLog('Matrix packet encoded: '+state.matrixCustomText);
+ log('Matrix Rain Lab encoded "'+state.matrixCustomText+'" as a '+state.matrixPacketMode+' packet.');
+ render();openRainLab();
+}
+function scanRainForHits(){
+ if(state.power<3)return toast('Need 3 power');
+ state.power-=3;
+ let chance=.25+(state.matrixCustomWeight||.18)*.8;
+ if(Math.random()<chance){
+   state.matrixSignalHits++;state.research+=5;state.simFragments++;
+   if(Math.random()<.3)state.xenoCredits+=3;
+   toast('Signal match found in rain');
+ }else toast('No meaningful match');
+ render();openRainLab();
+}
+function purgeRainWords(){
+ state.matrixWords=[];state.matrixCustomText='';state.matrixCustomWeight=.08;
+ save();if(state.matrixEnabled){stopMatrixRain();startMatrixRain()}
+ toast('Custom rain tokens purged');openRainLab();
+}
+
 function openSimulationLayer(){
  let body=`<div class="simHub">
  <div class="simHero"><div class="cap"><b>ARK-9 SIMULATION LAYER</b><span>PERCEPTION ENGINE / CODE RAIN / ANOMALY MODEL</span></div></div>
@@ -2355,9 +3024,11 @@ function openSimulationLayer(){
   <button onclick="simSpawnMission()">GENERATE TRAINING MISSION<small>Create a procedural ship challenge</small></button>
   <button onclick="simExtract()">EXTRACT XENO PATTERN<small>Convert fragments into exotic credit</small></button>
   <button onclick="simReset()">PURGE SIMULATION<small>Reduce threat and restore integrity</small></button>
+  <button onclick="openRainLab()">MATRIX RAIN LAB<small>Inject letters, words and signal packets into the stream</small></button>
  </div>
  <div class="sectionJump"><button onclick="openSystem()">SETTINGS</button><button onclick="openAreaHub()">SPECIAL OPERATIONS</button></div>
  </div>`;
+ body+=globalLiveBlock('SIMULATION TELEMETRY');
  openSheet('SIMULATION LAYER',body);
 }
 function simDive(){
@@ -2400,7 +3071,7 @@ function openSystem(){openSheet('⚙ SYSTEM / SETTINGS',`
  <div class="settingRow"><div><b>UI DENSITY</b><small>Rich keeps all dashboard data visible; compact can be used later for smaller screens.</small></div><select onchange="setUIDensity(this.value)"><option value="rich" ${state.uiDensity==='rich'?'selected':''}>RICH</option><option value="compact" ${state.uiDensity==='compact'?'selected':''}>COMPACT</option></select></div>
 
  <div class="actiongrid">
-  ${action('SIMULATION LAYER','Enter the synthetic-reality gameplay system','openSimulationLayer()')}${action('VISUAL DIRECTORY','Image-driven access to every major area','openVisualGallery()')}
+  ${action('SIMULATION LAYER','Enter the synthetic-reality gameplay system','openSimulationLayer()')}${action('MATRIX RAIN LAB','Program letters and words into the falling code','openRainLab()')}${action('VISUAL DIRECTORY','Image-driven access to every major area','openVisualGallery()')}${action('EXPLORE ARK-9','Open the deeper deck exploration layer','openShipExploration()')}${action('ARCADE DECK','Play gravity basketball and crew league','openArcadeDeck()')}
   ${action('SAVE GAME','Write current progress immediately','manualSave()')}
   ${action('RETURN TO FLIGHT DECK','Close menus and move to flight position','closeSheet();openDeck()')}
   ${action('NEW GAME','Erase current save and restart','resetGame()')}
@@ -2411,6 +3082,13 @@ function goBase(){closeSheet();closeDeck();window.scrollTo({top:0,behavior:'smoo
 render();renderTransit();
 
 setTimeout(()=>{applyMatrixSettings();setUIDensity(state.uiDensity||'rich')},0);
+
+setTimeout(()=>{startGlobalData();updateVisibleLiveData()},0);
+
+setTimeout(()=>{
+ const intro=document.getElementById('introScreen');
+ if(intro)intro.style.display='flex';
+},0);
 </script>
 </body>
 </html>
