@@ -1074,6 +1074,40 @@ repeating-linear-gradient(90deg,rgba(50,255,120,.09) 0 1px,transparent 1px 22px)
 .playLog{border:1px solid #33464f;background:#081014;padding:6px;margin-top:7px;max-height:130px;overflow:auto}.playLog div{font:7px/1.45 ui-monospace,monospace;color:#84969f;border-bottom:1px solid #1e2c32;padding:3px 0}
 @media(max-width:560px){.stationStats{grid-template-columns:repeat(2,1fr)}.stationActions{grid-template-columns:1fr}}
 
+
+/* ===== AREA DEPTH / NESTED LOCATION GAMEPLAY ===== */
+.areaScene{border:1px solid #40535c;background:#091115;margin:7px 0;border-radius:4px;overflow:hidden}
+.areaSceneHero{height:155px;background-size:cover;background-position:center;position:relative}
+.areaSceneHero:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(2,7,10,.86))}
+.areaSceneHero .cap{position:absolute;z-index:2;left:8px;right:8px;bottom:8px}
+.areaSceneHero b{display:block;font:900 12px ui-monospace,monospace}.areaSceneHero span{font:800 7px ui-monospace,monospace;color:#9fb0b7}
+.areaData{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:7px}
+.areaData div{border:1px solid #2f4149;background:#0d171b;padding:6px}.areaData b{display:block;font:900 8px ui-monospace,monospace}.areaData span{font:700 6px ui-monospace,monospace;color:#81949d}
+.areaNav{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;padding:7px}
+.areaNav button{min-height:58px;border:1px solid #4b626d;background:#14242b;color:#eef8fb;padding:9px;text-align:left;font:900 8px/1.3 ui-monospace,monospace;border-radius:3px}
+.areaNav small{display:block;font:6px/1.35 ui-monospace,monospace;color:#81959e;margin-top:3px}
+.areaInfo{padding:7px;border-top:1px solid #26353c;font:7px/1.5 ui-monospace,monospace;color:#8fa2ab}
+.areaPeople{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;padding:7px}
+.areaPeople div{border:1px solid #33464f;background:#0b1519;padding:6px;font:7px/1.4 ui-monospace,monospace;color:#98aab2}
+.areaPeople b{display:block;color:#edf7fa}
+.breadcrumb{font:800 6px ui-monospace,monospace;color:#6ec6e2;margin:0 0 5px}
+@media(max-width:560px){.areaData{grid-template-columns:1fr 1fr}.areaNav,.areaPeople{grid-template-columns:1fr}}
+
+
+/* ===== LIVING GALAXY SANDBOX ===== */
+.galaxyGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:8px 0}
+.galaxyCard{border:1px solid #3b5059;background:#091217;border-radius:4px;overflow:hidden}
+.galaxyCard .art{height:100px;background-size:cover;background-position:center}
+.galaxyCard .body{padding:7px}.galaxyCard b{font:900 9px ui-monospace,monospace}.galaxyCard p{font:7px/1.4 ui-monospace,monospace;color:#879aa2}
+.galaxyCard button{width:100%;border:1px solid #4b626c;background:#15262d;color:#eef8fb;padding:8px;font:900 7px ui-monospace,monospace}
+.profGrid,.terminalGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:7px 0}
+.profCard,.terminalCard{border:1px solid #34474f;background:#0a1317;padding:7px}
+.profCard b,.terminalCard b{font:900 8px ui-monospace,monospace}.profCard p,.terminalCard p{font:7px/1.4 ui-monospace,monospace;color:#879aa2}
+.profBar{height:6px;border:1px solid #33434b;background:#071013;margin:5px 0}.profBar i{display:block;height:100%;background:linear-gradient(90deg,#5f8ea0,#8ed3e7)}
+.cityGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:7px 0}.cityGrid div{border:1px solid #32454d;background:#0b1519;padding:6px;text-align:center}.cityGrid b{display:block;font:900 9px ui-monospace,monospace}.cityGrid span{font:700 6px ui-monospace,monospace;color:#83969e}
+.resourceScan{height:80px;border:1px solid #38505a;background:repeating-linear-gradient(90deg,#0c171b 0 8px,#102229 8px 10px);position:relative;overflow:hidden;margin:7px 0}.resourceScan:after{content:"";position:absolute;top:0;bottom:0;width:2px;background:#78d6ef;animation:scanmove 2.2s linear infinite}@keyframes scanmove{from{left:0}to{left:100%}}
+@media(max-width:560px){.galaxyGrid,.profGrid,.terminalGrid{grid-template-columns:1fr}.cityGrid{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body>
@@ -1594,6 +1628,28 @@ if(state.colonyInfluence===undefined)state.colonyInfluence=12;
 if(state.diplomacyScore===undefined)state.diplomacyScore=18;
 if(state.salvageSkill===undefined)state.salvageSkill=24;
 if(state.commandXP===undefined)state.commandXP=0;
+if(!state.profXP)state.profXP={pilot:0,engineer:0,medic:0,merchant:0,explorer:0,security:0,performer:0,diplomat:0};
+if(!state.profLevel)state.profLevel={pilot:1,engineer:1,medic:1,merchant:1,explorer:1,security:1,performer:1,diplomat:1};
+if(state.activeProfession===undefined)state.activeProfession='pilot';
+if(!state.galaxyResources)state.galaxyResources={ore:18,gas:12,fiber:10,crystal:4,organics:9};
+if(state.craftingXP===undefined)state.craftingXP=0;
+if(!Array.isArray(state.craftedGoods))state.craftedGoods=[];
+if(state.cityRank===undefined)state.cityRank=1;
+if(state.cityCitizens===undefined)state.cityCitizens=8;
+if(state.cityTreasury===undefined)state.cityTreasury=500;
+if(state.citySpecialization===undefined)state.citySpecialization='NONE';
+if(state.cityMaintenance===undefined)state.cityMaintenance=40;
+if(state.socialBuff===undefined)state.socialBuff=0;
+if(!Array.isArray(state.activeContracts))state.activeContracts=[];
+if(state.terminalRefresh===undefined)state.terminalRefresh=0;
+if(!state.galaxyRep)state.galaxyRep={concord:10,freebelt:8,outer:4,ascendants:0};
+if(!Array.isArray(state.discoveredWorlds))state.discoveredWorlds=['TAU DRIFT'];
+if(state.settlementName===undefined)state.settlementName='HAVEN-9';
+
+if(!Array.isArray(state.areaTrail))state.areaTrail=[];
+if(!state.areaFlags)state.areaFlags={flightBrief:false,navSolution:false,dockClearance:false,triageDone:false,diagnosticDone:false,marketPermit:false,elevatorAligned:true};
+if(state.currentArea===undefined)state.currentArea='ARK-9 HUB';
+
 if(state.flightFuel===undefined)state.flightFuel=72;
 if(state.flightHull===undefined)state.flightHull=93;
 if(state.flightNav===undefined)state.flightNav=68;
@@ -1861,7 +1917,7 @@ function gateWindow(){if(state.power<8)return toast('Need 8 power');state.power-
 function gateCut(){state.ringStability=clamp(state.ringStability+12);bumpArea('gateControl',-8);render();openSpecialArea('gateControl')}
 
 function archiveDecode(){if(state.research<4)return toast('Need 4 research');state.research-=4;state.archiveDepth++;bumpArea('archive',9);state.xenoCredits+=2;render();openSpecialArea('archive')}
-function archiveCrosslink(){if(!state.evidence.length)return toast('Need evidence');state.research+=6;bumpArea('archive',8);render();openSpecialArea('archive')}
+function archiveCrosslink(){if(!state.evidence.length)return toast('Need evidence');state.research+=6+(state.citySpecialization==='RESEARCH'?2:0);bumpArea('archive',8);render();openSpecialArea('archive')}
 function archiveIndex(){let locked=expanseLore.filter(x=>!state.codexUnlocked.includes(x.id));if(locked.length){let x=locked[Math.floor(Math.random()*locked.length)];state.codexUnlocked.push(x.id);toast('Unlocked '+x.name)}bumpArea('archive',7);render();openSpecialArea('archive')}
 function archiveKey(){if(state.research<12)return toast('Need 12 research');state.research-=12;state.signalKeys++;bumpArea('archive',10);render();openSpecialArea('archive')}
 
@@ -2254,7 +2310,12 @@ function render(){
  if(document.getElementById('etaRead'))document.getElementById('etaRead').textContent=state.target==='SILENT VESSEL'?'ETA 00:04:18':'ETA --';
  document.getElementById('viewTarget').textContent='TARGET: '+state.target;document.getElementById('rangeText').textContent='RANGE '+state.range;renderDashboard();save();
 }
-function openSheet(title,body){document.getElementById('sheetTitle').textContent=title;document.getElementById('sheetBody').innerHTML=(title==='MISSION DIRECTOR'?body:missionDirectorHTML()+body);document.getElementById('overlay').classList.add('show')}
+function openSheet(title,body){
+ document.getElementById('sheetTitle').textContent=title;
+ let tail=(title==='ARK-9 SHIP NETWORK'||title==='MAIN MENU')?'':`<div class="sectionJump"><button onclick="openExploreArk9()">EXPLORE ARK-9</button><button onclick="openElevator()">TRANSIT LIFT</button><button onclick="openMainMenu()">MENU</button></div>`;
+ document.getElementById('sheetBody').innerHTML=(title==='MISSION DIRECTOR'?body:missionDirectorHTML()+body)+tail;
+ document.getElementById('overlay').classList.add('show');
+}
 function closeSheet(){document.getElementById('overlay').classList.remove('show')}
 function action(n,d,f){return `<button class="action" onclick="${f}"><strong>${n}</strong><span>${d}</span></button>`}
 
@@ -2652,6 +2713,7 @@ function openMegaExpansion(){
  openSheet('DEEP SHIP DIRECTORY',body);
 }
 function openMegaArea(id){
+ const _mx=megaAreas.find(x=>x.id===id||x.name===id); if(_mx)id=_mx.id;
  let a=megaAreas[id];if(!a)return;
  let staff=reserveCrew.filter((_,i)=>i%megaAreas.length===id%megaAreas.length || i%12===id%12).slice(0,4);
  if(staff.length<2)staff=reserveCrew.slice(id%40,id%40+3);
@@ -2978,6 +3040,7 @@ function openMainMenu(){
   <div class="opsCard"><b>TRANSIT ELEVATOR</b><p>Operate the ship lift between working decks.</p><button onclick="openElevator()">OPERATE LIFT</button></div>
   <div class="opsCard"><b>MEDICAL BAY</b><p>Treat patients and run the medical device.</p><button onclick="openMedicalBayGame()">OPERATE MEDICAL</button></div>
   <div class="opsCard"><b>BAZAAR</b><p>Trade only after flying to the Free Belt Bazaar.</p><button onclick="openBazaar()">OPEN MARKET</button></div>
+  <div class="opsCard"><b>LIVING GALAXY</b><p>Worlds, professions, missions, crafting, resources, settlement and economy.</p><button onclick="openLivingGalaxy()">ENTER SANDBOX</button></div>
   <div class="opsCard"><b>GALACTIC ARCHIVE</b><p>Backstory, factions, Resonance and evidence.</p><button onclick="openGalacticArchive()">OPEN</button></div>
  </div>`;
  openSheet('MAIN MENU',body);
@@ -3055,6 +3118,353 @@ function areaArtFor(key,fallback){
   return (ref&&areaVisualBank[ref])||fallback||visualAtlas.hero;
 }
 
+
+
+const areaCrew={
+ flight:[['Mika Ren','Helm Officer'],['Ivo Rell','Senior Navigator'],['Rae Montero','Sensor Analyst']],
+ medical:[['Dr. Sato','Chief Medical'],['Vesa Linn','Trauma Surgeon'],['Jonas Pike','Medic']],
+ bazaar:[['Cass Arden','Cargo Master'],['Ria Ten','Quartermaster'],['Dockmaster Vey','Market Liaison']],
+ elevator:[['Kei Mora','Systems Tech'],['Omar Flint','Watch Officer']]
+};
+function setArea(name){
+ state.currentArea=name;state.location=name;
+ state.areaTrail.unshift(name);state.areaTrail=state.areaTrail.slice(0,8);save();
+}
+function areaPeopleHTML(group){
+ return `<div class="areaPeople">${(areaCrew[group]||[]).map(x=>`<div><b>${x[0]}</b>${x[1]}<br>STATUS: ${Math.random()<.5?'ON DUTY':'AVAILABLE'}</div>`).join('')}</div>`;
+}
+function areaFrame(title,sub,imageKey,data,nav,info,people){
+ return `<div class="breadcrumb">ARK-9 / ${state.shipDockedAt||'SHIP'} / ${title}</div>
+ <div class="areaScene">
+  <div class="areaSceneHero" style="background-image:url('${areaArtFor(imageKey)}')"><div class="cap"><b>${title}</b><span>${sub}</span></div></div>
+  <div class="areaData">${data.map(x=>`<div><b>${x[1]}</b><span>${x[0]}</span></div>`).join('')}</div>
+  ${people||''}
+  <div class="areaInfo">${info}</div>
+  <div class="areaNav">${nav.map(n=>`<button onclick="${n[2]}">${n[0]}<small>${n[1]}</small></button>`).join('')}</div>
+ </div>`;
+}
+
+/* ----- FLIGHT AREA TREE ----- */
+function openFlightGame(){
+ setArea('FLIGHT CONTROL');
+ let data=[['LOCATION',state.shipDockedAt],['FUEL',state.flightFuel+'%'],['HULL',state.flightHull+'%'],['NAV',state.flightNav+'%'],['TARGET',state.target],['RANGE',state.range]];
+ let nav=[
+  ['HELM STATION','Manual thrust, burn prep and ship handling.','openHelmStation()'],
+  ['NAVIGATION PLOT','Select a route and build a valid course.','openNavigationPlot()'],
+  ['SENSOR PIT','Identify contacts and improve route confidence.','openSensorPit()'],
+  ['DOCKING CONTROL','Approach, clearance and final docking operations.','openDockingControl()'],
+  ['FULL FLIGHT DECK','Open the large instrument console.','closeSheet();openDeck()'],
+  ['EXPLORE ARK-9','Return to whole-ship area map.','openExploreArk9()']
+ ];
+ openSheet('FLIGHT CONTROL',areaFrame('FLIGHT CONTROL','Primary command area for moving ARK-9 between locations.','FLIGHT DECK',data,nav,
+ 'Flight Control is now a real hub. Build a navigation solution, inspect contacts, prepare thrust, then use Docking Control after arrival. Flying changes where the ship is and unlocks location-specific areas.',areaPeopleHTML('flight'))+stationLogHTML());
+}
+function openHelmStation(){
+ setArea('HELM STATION');
+ let data=[['DRIVE',state.drive],['ACCEL',(state.accel||0).toFixed(1)+'G'],['PROP',Math.round(state.propellant)+'%'],['REACTOR',Math.round(state.reactorTemp)+'%'],['RCS',Math.round(state.rcsFuel)+'%'],['AUTOPILOT',state.autopilot?'ON':'OFF']];
+ let nav=[
+  ['LOW BURN','Set economical 0.3G acceleration.','setAccel(.3);stationLog("Helm set low burn.");openHelmStation()'],
+  ['CRUISE BURN','Set 1.0G acceleration.','setAccel(1);stationLog("Helm set cruise burn.");openHelmStation()'],
+  ['HIGH BURN','Set aggressive 2.5G acceleration.','setAccel(2.5);stationLog("Helm set high burn.");openHelmStation()'],
+  ['EXECUTE THRUST','Begin powered flight.','thrust();stationLog("Main drive engaged from Helm.");openHelmStation()'],
+  ['CUT THRUST','Return to coast.','brake();stationLog("Drive cut to coast.");openHelmStation()'],
+  ['BACK TO FLIGHT CONTROL','Return to flight-area hub.','openFlightGame()']
+ ];
+ openSheet('HELM STATION',areaFrame('HELM STATION','Manual ship handling and burn execution.','NAVIGATION PIT',data,nav,
+ 'Helm directly changes acceleration, reactor heat, propellant and closure rate. High burns reach destinations faster but stress the reactor and crew.',areaPeopleHTML('flight')));
+}
+function openNavigationPlot(){
+ setArea('NAVIGATION PLOT');
+ let routes=flightRoutes.map((r,i)=>[`PLOT ${r.name}`,`${r.dist} AU-eq · fuel ${r.fuel}% · base risk ${r.risk}%`,`plotFlightRoute(${i})`]);
+ routes.push(['BACK TO FLIGHT CONTROL','Return without changing the active course.','openFlightGame()']);
+ openSheet('NAVIGATION PLOT',areaFrame('NAVIGATION PLOT','Course computation and destination selection.','RING CARTOGRAPHY',
+  [['NAV QUALITY',state.flightNav+'%'],['ACTIVE TARGET',state.target],['FUEL',state.flightFuel+'%'],['SENSORS',state.sensorConfidence+'%'],['SIGNAL',state.signalDrift+' DRIFT'],['COURSE',state.areaFlags.navSolution?'VALID':'NONE']],
+  routes,'Plotting a route does not move the ship yet. It creates a valid navigation solution that can then be flown from this area or confirmed at Helm.',areaPeopleHTML('flight')));
+}
+function plotFlightRoute(i){
+ let r=flightRoutes[i];if(!r)return;
+ state.target=r.name;state.areaFlags.navSolution=true;state.flightNav=clamp(state.flightNav+3,0,100);
+ stationLog('Navigation solution plotted for '+r.name+'.');save();
+ openRouteReady(i);
+}
+function openRouteReady(i){
+ let r=flightRoutes[i];if(!r)return openNavigationPlot();
+ let nav=[
+  ['EXECUTE TRANSIT',`Consume ${r.fuel}% flight fuel and fly to ${r.name}.`,`flyRoute(${i})`],
+  ['SENSOR VERIFY','Improve navigation before departure.','flightPrep("scan");openRouteReady('+i+')'],
+  ['HELM PREP','Open Helm before committing to transit.','openHelmStation()'],
+  ['CANCEL COURSE','Return to course plotting.','openNavigationPlot()']
+ ];
+ openSheet('ROUTE READY',areaFrame('ROUTE READY',r.name+' TRANSIT SOLUTION','DEEP SENSOR ARRAY',
+  [['DISTANCE',r.dist+' AU-EQ'],['RISK',r.risk+'%'],['FUEL COST',r.fuel+'%'],['NAV',state.flightNav+'%'],['HULL',state.flightHull+'%'],['CLEARANCE',state.areaFlags.navSolution?'GREEN':'NO']],
+  nav,'The route is now actionable. Transit resolves risk, consumes fuel, changes ship location and unlocks destination-specific activities.'));
+}
+function openSensorPit(){
+ setArea('SENSOR PIT');
+ let nav=[
+  ['ACTIVE SWEEP','Improve sensor confidence and navigation.','flightPrep("scan");openSensorPit()'],
+  ['TRACK SILENT VESSEL','Set the impossible contact as primary target.','state.target="SILENT VESSEL";state.range="2.1 KM";stationLog("Silent vessel designated primary.");openSensorPit()'],
+  ['DEEP ANOMALY SCAN','Spend power for research and signal data.','state.power=clamp(state.power-4,0,100);state.research+=3;state.signalDrift=clamp(state.signalDrift-1,0,100);stationLog("Deep anomaly scan complete.");render();openSensorPit()'],
+  ['BACK TO FLIGHT CONTROL','Return to flight-area hub.','openFlightGame()']
+ ];
+ openSheet('SENSOR PIT',areaFrame('SENSOR PIT','Contacts, range gates and anomaly tracking.','DEEP SENSOR ARRAY',
+  [['CONFIDENCE',state.sensorConfidence+'%'],['CONTACTS',state.contacts],['NOISE',state.dataNoise+'%'],['TARGET',state.target],['RANGE',state.range],['DRIFT',state.signalDrift]],
+  nav,'Sensor Pit gives context before a flight decision. Better sensor confidence reduces route uncertainty and supports science progression.',areaPeopleHTML('flight')));
+}
+function openDockingControl(){
+ setArea('DOCKING CONTROL');
+ let docked=state.shipDockedAt!=='ARK-9';
+ let nav=[
+  ['REQUEST CLEARANCE','Prepare local docking authorization.','state.areaFlags.dockClearance=true;stationLog("Docking clearance granted at "+state.shipDockedAt+".");openDockingControl()'],
+  ['OPEN LOCAL AREA','Enter the destination-specific location.','enterDockedLocation()'],
+  ['UNDOCK / FLIGHT','Return to flight planning.','state.areaFlags.dockClearance=false;openFlightGame()'],
+  ['EXPLORE ARK-9','Return to ship hub.','openExploreArk9()']
+ ];
+ openSheet('DOCKING CONTROL',areaFrame('DOCKING CONTROL','Approach and local-area access.','SHUTTLE OPS',
+  [['DOCKED AT',state.shipDockedAt],['CLEARANCE',state.areaFlags.dockClearance?'GRANTED':'PENDING'],['HULL',state.flightHull+'%'],['RCS',state.rcsFuel+'%'],['CONTACT',docked?'LOCAL PORT':'NONE'],['STATUS',docked?'DOCKED':'INTERNAL']],
+  nav,docked?'Request clearance, then enter the destination. This is how flight now leads into another playable area.':'Fly to an external destination first.',areaPeopleHTML('flight')));
+}
+function enterDockedLocation(){
+ if(state.shipDockedAt==='FREE BELT BAZAAR')return openBazaar();
+ if(state.shipDockedAt==='SILENT VESSEL')return openSilentVesselArea();
+ if(state.shipDockedAt==='DEAD COLONY')return openDeadColonyArea();
+ if(state.shipDockedAt==='RING RELAY')return openRingRelayArea();
+ if(state.shipDockedAt==='FLEET GRAVEYARD')return openFleetGraveyardArea();
+ toast('No external area at current location.');
+}
+function openExternalArea(title,key,desc,actions){
+ setArea(title);
+ let data=[['LOCATION',state.shipDockedAt],['CREW TRUST',state.crewTrust+'%'],['RESEARCH',state.research],['SCRAP',state.scrap],['SECURITY',state.securityLevel+'%'],['MORALE',state.morale+'%']];
+ let nav=actions.concat([['RETURN TO DOCK','Back to docking control.','openDockingControl()']]);
+ openSheet(title,areaFrame(title,desc,key,data,nav,desc));
+}
+function openSilentVesselArea(){openExternalArea('SILENT VESSEL','BLACK TRANSIT LAB','A powerless duplicate of ARK-9 carrying impossible future records.',[
+ ['BOARD AIRLOCK','Search the entry lock for evidence.','addEvidence?.("E014");state.research+=3;stationLog("Silent Vessel airlock searched.");openSilentVesselArea()'],
+ ['MEDICAL DECK','Compare crew records and DNA.','state.medReadiness=clamp(state.medReadiness+2,0,100);addEvidence?.("E021");openSilentVesselArea()'],
+ ['FLIGHT RECORDER','Recover navigation history.','state.research+=5;state.personalClues++;openSilentVesselArea()']
+]);}
+function openDeadColonyArea(){openExternalArea('DEAD COLONY','COLONY RELAY','An abandoned settlement that records ARK-9 arriving before it was launched.',[
+ ['RELAY TOWER','Recover colony traffic.','state.research+=4;addEvidence?.("E048");openDeadColonyArea()'],
+ ['SUPPLY DEPOT','Recover food and scrap.','state.food=clamp(state.food+8,0,100);state.scrap+=6;openDeadColonyArea()'],
+ ['HABITAT BLOCK','Search for survivor records.','state.personalClues++;state.morale=clamp(state.morale-1,0,100);openDeadColonyArea()']
+]);}
+function openRingRelayArea(){openExternalArea('RING RELAY','RING CONTROL','A remote transit station with unstable geometry and Builder instrumentation.',[
+ ['CALIBRATION NODE','Stabilize the relay.','state.ringStability=clamp(state.ringStability+8,0,100);coreProgress("ring",1);openRingRelayArea()'],
+ ['SIGNAL CHAMBER','Decode transit echoes.','state.research+=4;state.resonanceEchoes++;openRingRelayArea()'],
+ ['GATE WINDOW','Attempt a controlled Ring window.','openRingAccess()']
+]);}
+function openFleetGraveyardArea(){openExternalArea('FLEET GRAVEYARD','FLEET GRAVEYARD','An abandoned blockade of ships pointed inward at something they feared.',[
+ ['SALVAGE CORRIDOR','Recover usable material.','state.scrap+=10;state.salvageSkill+=2;openFleetGraveyardArea()'],
+ ['TACTICAL CORE','Study blockade geometry.','state.securityLevel=clamp(state.securityLevel+4,0,100);addEvidence?.("E055");openFleetGraveyardArea()'],
+ ['COMMAND HULK','Search command records.','state.research+=5;state.personalClues++;openFleetGraveyardArea()']
+]);}
+
+/* ----- ELEVATOR AREA TREE ----- */
+function openElevator(){
+ setArea('TRANSIT ELEVATOR');
+ let nav=elevatorDecks.map(d=>[`DECK ${d[0]} // ${d[1]}`,d[2],`rideElevator('${d[0]}')`]);
+ nav.push(['SERVICE PANEL','Inspect lift systems, recharge and repair.','openElevatorService()']);
+ nav.push(['EXPLORE ARK-9','Return to whole ship.','openExploreArk9()']);
+ openSheet('TRANSIT ELEVATOR',areaFrame('TRANSIT ELEVATOR','Physical deck-to-deck movement inside ARK-9.','ELEVATOR',
+  [['CURRENT DECK',state.elevatorDeck],['POWER',state.elevatorPower+'%'],['FAULT',state.elevatorFault+'%'],['SHIP POWER',state.power+'%'],['LOCATION',state.location],['ALIGN',state.areaFlags.elevatorAligned?'GREEN':'FAULT']],
+  nav,'Choosing a deck now moves you there and then opens a deck-specific area menu instead of leaving you in the elevator.',areaPeopleHTML('elevator'))+stationLogHTML());
+}
+function openElevatorService(){
+ setArea('ELEVATOR SERVICE PANEL');
+ let nav=[
+  ['SERVICE GUIDE RAILS','Use scrap to reduce fault.','elevatorService()'],
+  ['RECHARGE LIFT','Transfer ship power into lift battery.','elevatorRecharge()'],
+  ['RESET CONTROL BUS','Reduce fault slightly, costs engineering readiness.','state.elevatorFault=clamp(state.elevatorFault-7,0,100);state.engIntegrity=clamp(state.engIntegrity-1,0,100);stationLog("Elevator control bus reset.");openElevatorService()'],
+  ['BACK TO ELEVATOR','Return to deck selection.','openElevator()']
+ ];
+ openSheet('ELEVATOR SERVICE',areaFrame('ELEVATOR SERVICE PANEL','Lift diagnostics and maintenance.','POWER BUS A',
+  [['FAULT',state.elevatorFault+'%'],['POWER',state.elevatorPower+'%'],['SCRAP',state.scrap],['ENG',state.engIntegrity+'%'],['BUS',state.busVoltage+'%'],['DECK',state.elevatorDeck]],
+  nav,'The elevator is another ship system. Neglect raises fault risk; maintenance consumes resources but keeps decks accessible.',areaPeopleHTML('elevator')));
+}
+function enterDeckArea(deck){
+ if(deck==='A')return openDeckCommandArea();
+ if(deck==='B')return openMedicalBayGame();
+ if(deck==='C')return openDeckEngineeringArea();
+ if(deck==='D')return openDeckResearchArea();
+ if(deck==='E')return openDeckCargoArea();
+ if(deck==='F')return openCrewDeckDeep();
+ if(deck==='G')return openResonanceDeck();
+}
+function openDeckCommandArea(){openExternalArea('DECK A // COMMAND','COMMAND OPERATIONS','Command deck junction. Choose where to work next.',[
+ ['FLIGHT CONTROL','Operate ship movement.','openFlightGame()'],
+ ['NAVIGATION PIT','Open course plotting.','openNavigationPlot()'],
+ ['MISSION DIRECTOR','Review main story requirements.','openMissionDirector()'],
+ ['TRANSIT LIFT','Move to another deck.','openElevator()']
+]);}
+function openDeckEngineeringArea(){openExternalArea('DECK C // ENGINEERING','ENGINEERING','Engineering deck junction for reactor, machine shop and power distribution.',[
+ ['REACTOR CONTROL','Operate core engineering room.','openRoom("engineering")'],
+ ['MACHINE SHOP','Open staffed machine section.','openStaffedArea("machineShop")'],
+ ['POWER BUS','Open deep power subsection.','openMegaArea("POWER BUS A")'],
+ ['TRANSIT LIFT','Move to another deck.','openElevator()']
+]);}
+function openDeckResearchArea(){openExternalArea('DECK D // RESEARCH','RESEARCH','Science junction for labs, archive, Matrix and anomaly research.',[
+ ['SCIENCE LAB','Operate primary research room.','openRoom("research")'],
+ ['ARCHIVE VAULT','Open archive records.','openGalacticArchive()'],
+ ['MATRIX RAIN LAB','Program signal rain.','openRainLab()'],
+ ['TRANSIT LIFT','Move to another deck.','openElevator()']
+]);}
+function openDeckCargoArea(){openExternalArea('DECK E // CARGO','CARGO / STORES','Cargo and hangar junction for logistics, EVA and market access.',[
+ ['CARGO STORES','Manage inventory and loadouts.','openRoom("storage")'],
+ ['HANGAR','Operate shuttle and EVA systems.','openRoom("hangar")'],
+ ['BAZAAR ACCESS','Open market if currently docked there.','openBazaar()'],
+ ['TRANSIT LIFT','Move to another deck.','openElevator()']
+]);}
+
+/* ----- MEDICAL AREA TREE ----- */
+function openMedicalBayGame(){
+ setArea('MEDICAL BAY');
+ let nav=[
+  ['TRIAGE DESK','Review patient queue and severity.','openMedTriage()'],
+  ['DIAGNOSTICS','Scan patients and identify correct treatment.','openMedDiagnostics()'],
+  ['TREATMENT BAY','Perform procedures on active patients.','openMedTreatment()'],
+  ['VITAL SYNTH ARRAY','Operate the medical device.','openMedicalDevice()'],
+  ['PHARMACY','Prepare supplies and sterile packs.','openMedPharmacy()'],
+  ['RECOVERY WARD','Rest treated crew and reduce fatigue.','openMedRecovery()'],
+  ['TRANSIT LIFT','Return to deck travel.','openElevator()']
+ ];
+ openSheet('MEDICAL BAY',areaFrame('MEDICAL BAY','Complete medical department with linked subareas.','MEDICAL',
+  [['PATIENTS',state.medPatients],['READINESS',state.medReadiness+'%'],['MED LOAD',state.medicalLoad+'%'],['DEVICE',state.medDeviceCharge+'%'],['STERILITY',state.medDeviceSterility+'%'],['CREW INJURED',state.crewInjured]],
+  nav,'Medical is now a place with a workflow: triage → diagnostics → treatment → recovery. The device, pharmacy and ward support that workflow.',areaPeopleHTML('medical'))+stationLogHTML());
+}
+function openMedTriage(){
+ setArea('MEDICAL // TRIAGE');
+ let sev=state.medPatients>=3?'RED':state.medPatients===2?'AMBER':'GREEN';
+ let nav=[
+  ['ASSESS QUEUE','Mark patients triaged and improve readiness.','state.areaFlags.triageDone=true;state.medReadiness=clamp(state.medReadiness+2,0,100);stationLog("Patient queue triaged.");openMedTriage()'],
+  ['SEND TO DIAGNOSTICS','Continue medical workflow.','openMedDiagnostics()'],
+  ['BACK TO MEDICAL','Return to department hub.','openMedicalBayGame()']
+ ];
+ openSheet('TRIAGE',areaFrame('TRIAGE DESK','Patient intake and severity sorting.','TRAUMA BAY',
+  [['QUEUE',state.medPatients],['SEVERITY',sev],['MED LOAD',state.medicalLoad+'%'],['READINESS',state.medReadiness+'%'],['SHIFT',['ALPHA','BETA','GAMMA'][state.opsShift%3]],['TRIAGED',state.areaFlags.triageDone?'YES':'NO']],
+  nav,'Triage makes the treatment process safer. Patients can still be treated directly, but diagnostic accuracy improves after assessment.',areaPeopleHTML('medical')));
+}
+function openMedDiagnostics(){
+ setArea('MEDICAL // DIAGNOSTICS');
+ let nav=[
+  ['RUN BODY SCAN','Consume device charge, identify treatment path.','if(state.medDeviceCharge<6){toast("Device charge too low")}else{state.medDeviceCharge-=6;state.areaFlags.diagnosticDone=true;state.research+=1;stationLog("Diagnostics identified active patient needs.")}openMedDiagnostics()'],
+  ['OPEN MEDICAL DEVICE','Calibrate or recharge the array.','openMedicalDevice()'],
+  ['SEND TO TREATMENT','Continue to procedure selection.','openMedTreatment()'],
+  ['BACK TO MEDICAL','Return to department hub.','openMedicalBayGame()']
+ ];
+ openSheet('DIAGNOSTICS',areaFrame('DIAGNOSTICS','Imaging, bioscan and treatment planning.','DIAGNOSTICS',
+  [['SCAN STATUS',state.areaFlags.diagnosticDone?'COMPLETE':'PENDING'],['CHARGE',state.medDeviceCharge+'%'],['CALIBRATION',state.medDeviceCalibration+'%'],['STERILITY',state.medDeviceSterility+'%'],['PATIENTS',state.medPatients],['RESEARCH',state.research]],
+  nav,'Diagnostics is where the correct procedure is confirmed before treatment.',areaPeopleHTML('medical')));
+}
+function openMedTreatment(){
+ setArea('MEDICAL // TREATMENT');
+ let pts=[
+  ['BURN CREWMAN','STABILIZE','treatPatient(0,"stabilize")'],
+  ['HIGH-G INJURY','SCAN / SUPPORT','treatPatient(1,"scan")'],
+  ['UNKNOWN EXPOSURE','ISOLATE','treatPatient(2,"isolate")']
+ ];
+ let nav=pts.slice(0,state.medPatients).map(x=>[x[0],`Recommended: ${x[1]}`,x[2]]);
+ nav.push(['VITAL SYNTH ARRAY','Run supporting treatment cycle.','openMedicalDevice()']);
+ nav.push(['RECOVERY WARD','Move treated crew to recovery.','openMedRecovery()']);
+ nav.push(['BACK TO MEDICAL','Return to department hub.','openMedicalBayGame()']);
+ openSheet('TREATMENT BAY',areaFrame('TREATMENT BAY','Active procedures and stabilization.','RECOVERY WARD',
+  [['PATIENTS',state.medPatients],['DIAGNOSTIC',state.areaFlags.diagnosticDone?'DONE':'NONE'],['READINESS',state.medReadiness+'%'],['MED LOAD',state.medicalLoad+'%'],['CHARGE',state.medDeviceCharge+'%'],['STERILE',state.medDeviceSterility+'%']],
+  nav,'Correct procedures reduce medical load and improve crew readiness. Incorrect procedures make conditions worse.',areaPeopleHTML('medical')));
+}
+function openMedPharmacy(){
+ setArea('MEDICAL // PHARMACY');
+ let nav=[
+  ['PREP STERILE PACK','Use 1 food/supply unit to improve sterility.','if(state.food>0){state.food--;state.medDeviceSterility=clamp(state.medDeviceSterility+10,0,100);stationLog("Sterile pack prepared.")}openMedPharmacy()'],
+  ['SYNTH NUTRIENTS','Convert research into recovery support.','if(state.research>=2){state.research-=2;state.medReadiness=clamp(state.medReadiness+4,0,100);stationLog("Recovery nutrients synthesized.")}openMedPharmacy()'],
+  ['BACK TO MEDICAL','Return to department hub.','openMedicalBayGame()']
+ ];
+ openSheet('PHARMACY',areaFrame('PHARMACY','Medical supplies and synthesis.','PHARMACY',
+  [['STERILITY',state.medDeviceSterility+'%'],['FOOD',state.food+'%'],['RESEARCH',state.research],['KITS',state.kits],['READINESS',state.medReadiness+'%'],['PATIENTS',state.medPatients]],
+  nav,'The pharmacy supports treatment and device operation by turning ship resources into medical readiness.',areaPeopleHTML('medical')));
+}
+function openMedRecovery(){
+ setArea('MEDICAL // RECOVERY');
+ let nav=[
+  ['REST PATIENTS','Lower fatigue and medical load.','state.crewFatigue=clamp(state.crewFatigue-5,0,100);state.medicalLoad=clamp(state.medicalLoad-3,0,100);state.morale=clamp(state.morale+1,0,100);stationLog("Recovery ward completed rest cycle.");openMedRecovery()'],
+  ['DISCHARGE READY CREW','Reduce injured count if readiness is high.','if(state.medReadiness>=70)state.crewInjured=Math.max(0,state.crewInjured-1);stationLog("Recovery discharge reviewed.");openMedRecovery()'],
+  ['BACK TO MEDICAL','Return to department hub.','openMedicalBayGame()']
+ ];
+ openSheet('RECOVERY WARD',areaFrame('RECOVERY WARD','Crew recovery and discharge.','RECOVERY WARD',
+  [['FATIGUE',state.crewFatigue+'%'],['MED LOAD',state.medicalLoad+'%'],['INJURED',state.crewInjured],['MORALE',state.morale+'%'],['REST',state.crewRest+'%'],['READINESS',state.medReadiness+'%']],
+  nav,'Recovery turns successful treatment into shipwide benefits by returning crew to duty with less fatigue.',areaPeopleHTML('medical')));
+}
+
+/* ----- BAZAAR AREA TREE ----- */
+function openBazaar(){
+ setArea('FREE BELT BAZAAR');
+ let docked=state.shipDockedAt==='FREE BELT BAZAAR';
+ let nav=[
+  ['DOCKMASTER','Get market permit and local contracts.','openBazaarDockmaster()'],
+  ['TRADE ROW','Buy ship supplies and upgrades.','openBazaarTradeRow()'],
+  ['SALVAGE EXCHANGE','Sell recovered scrap and exotic cargo.','openBazaarSalvage()'],
+  ['CREW MARKET','Morale goods, food and personal supplies.','openBazaarCrewMarket()'],
+  ['CONTRACT BOARD','Take local jobs that feed back into flight and crew systems.','openBazaarContracts()'],
+  ['RETURN TO DOCKING','Back to ship docking control.','openDockingControl()']
+ ];
+ openSheet('FREE BELT BAZAAR',areaFrame('FREE BELT BAZAAR',docked?'External station market connected to ARK-9.':'Market data available; physical trade requires docking.','CREW MARKET',
+  [['DOCKED',docked?'YES':'NO'],['CREDITS',state.bazaarCredits],['REPUTATION',state.bazaarRep],['SCRAP',state.scrap],['FOOD',state.food+'%'],['PERMIT',state.areaFlags.marketPermit?'ACTIVE':'NONE']],
+  nav,docked?'The Bazaar is a multi-area destination. Start with the Dockmaster, then move through stalls, exchange and contracts.':'Fly here first for physical transactions.',areaPeopleHTML('bazaar'))+stationLogHTML());
+}
+function openBazaarDockmaster(){
+ setArea('BAZAAR // DOCKMASTER');
+ let nav=[
+  ['REGISTER ARK-9','Activate local trade permit.','state.areaFlags.marketPermit=true;state.bazaarRep=clamp(state.bazaarRep+2,0,100);stationLog("Bazaar permit registered.");openBazaarDockmaster()'],
+  ['READ PORT BULLETIN','Gain local faction intel.','state.diplomacyScore=(state.diplomacyScore||0)+1;state.research+=1;openBazaarDockmaster()'],
+  ['TRADE ROW','Proceed into market stalls.','openBazaarTradeRow()'],
+  ['BACK TO BAZAAR','Return to market hub.','openBazaar()']
+ ];
+ openSheet('DOCKMASTER',areaFrame('DOCKMASTER','Port authority, permits and local traffic.','CARGO / STORES',
+  [['PERMIT',state.areaFlags.marketPermit?'ACTIVE':'NONE'],['REP',state.bazaarRep],['CREDITS',state.bazaarCredits],['DOCK',state.shipDockedAt],['DIPLOMACY',state.diplomacyScore],['CREW TRUST',state.crewTrust+'%']],
+  nav,'The Dockmaster turns arrival into access. Registering ARK-9 unlocks legitimate market operations.',areaPeopleHTML('bazaar')));
+}
+function openBazaarTradeRow(){
+ setArea('BAZAAR // TRADE ROW');
+ let nav=bazaarStock.map((x,i)=>{let price=Math.max(8,Math.round(x.cost*(1-state.bazaarRep/250)));return [x.name,'Price '+price+' credits',`buyBazaar(${i},${price});openBazaarTradeRow()`]});
+ nav.push(['SALVAGE EXCHANGE','Earn more credits from scrap.','openBazaarSalvage()']);
+ nav.push(['BACK TO BAZAAR','Return to market hub.','openBazaar()']);
+ openSheet('TRADE ROW',areaFrame('TRADE ROW','Ship parts, data, food and specialist supplies.','CREW MARKET',
+  [['CREDITS',state.bazaarCredits],['REP',state.bazaarRep],['PERMIT',state.areaFlags.marketPermit?'YES':'NO'],['SCRAP',state.scrap],['FOOD',state.food+'%'],['NAV',state.flightNav+'%']],
+  nav,'Every purchase changes another ship system: coolant helps Engineering, medical packs help Treatment, nav data improves Flight, food supports crew morale.',areaPeopleHTML('bazaar')));
+}
+function openBazaarSalvage(){
+ setArea('BAZAAR // SALVAGE EXCHANGE');
+ let nav=[
+  ['SELL 5 SCRAP','Trade salvage for credits and reputation.','sellSalvage();openBazaarSalvage()'],
+  ['APPRAISE EXOTIC CARGO','Gain research from alien inventory.','if((state.xenoInventory||[]).length){state.research+=2;state.bazaarRep=clamp(state.bazaarRep+1,0,100);stationLog("Exotic cargo appraised.")}openBazaarSalvage()'],
+  ['TRADE ROW','Spend earned credits.','openBazaarTradeRow()'],
+  ['BACK TO BAZAAR','Return to market hub.','openBazaar()']
+ ];
+ openSheet('SALVAGE EXCHANGE',areaFrame('SALVAGE EXCHANGE','Recovered wreckage, alien artifacts and ship scrap.','SALVAGE SORT',
+  [['SCRAP',state.scrap],['CREDITS',state.bazaarCredits],['REP',state.bazaarRep],['EXOTIC',(state.xenoInventory||[]).length],['SALVAGE SKILL',state.salvageSkill],['RESEARCH',state.research]],
+  nav,'Salvage collected from Flight destinations becomes market currency here.',areaPeopleHTML('bazaar')));
+}
+function openBazaarCrewMarket(){
+ setArea('BAZAAR // CREW MARKET');
+ let nav=[
+  ['BUY CREW MEAL','Spend 12 credits for morale and rest.','if(state.bazaarCredits>=12){state.bazaarCredits-=12;state.morale=clamp(state.morale+5,0,100);state.crewRest=clamp(state.crewRest+4,0,100)}openBazaarCrewMarket()'],
+  ['BUY PERSONAL SUPPLIES','Spend 10 credits for cohesion.','if(state.bazaarCredits>=10){state.bazaarCredits-=10;state.crewCohesion=clamp(state.crewCohesion+4,0,100)}openBazaarCrewMarket()'],
+  ['BACK TO BAZAAR','Return to market hub.','openBazaar()']
+ ];
+ openSheet('CREW MARKET',areaFrame('CREW MARKET','Food, personal goods and off-watch crew activity.','CREW MARKET',
+  [['CREDITS',state.bazaarCredits],['MORALE',state.morale+'%'],['REST',state.crewRest+'%'],['COHESION',state.crewCohesion+'%'],['FATIGUE',state.crewFatigue+'%'],['REP',state.bazaarRep]],
+  nav,'This area converts trade into crew-level benefits, making the Bazaar relevant to Daily Operations.',areaPeopleHTML('bazaar')));
+}
+function openBazaarContracts(){
+ setArea('BAZAAR // CONTRACT BOARD');
+ let nav=[
+  ['HAUL MEDICAL CARGO','Gain 24 credits, but increase supply pressure.','state.bazaarCredits+=24;state.supplyPressure=clamp(state.supplyPressure+5,0,100);state.medDeviceSterility=clamp(state.medDeviceSterility+8,0,100);stationLog("Medical cargo contract completed.");openBazaarContracts()'],
+  ['SCAN DERELICT','Gain credits and research, risk maintenance.','state.bazaarCredits+=18;state.research+=3;state.maintenanceBacklog=clamp(state.maintenanceBacklog+3,0,100);stationLog("Derelict scan contract completed.");openBazaarContracts()'],
+  ['ESCORT SHUTTLE','Gain credits and security progress, increase fatigue.','state.bazaarCredits+=20;state.crewFatigue=clamp(state.crewFatigue+3,0,100);coreProgress("security",1);stationLog("Escort contract completed.");openBazaarContracts()'],
+  ['BACK TO BAZAAR','Return to market hub.','openBazaar()']
+ ];
+ openSheet('CONTRACT BOARD',areaFrame('CONTRACT BOARD','Jobs that connect Bazaar activity to ship systems and campaign progress.','CREW MARKET',
+  [['CREDITS',state.bazaarCredits],['SECURITY',coreValue("security")],['RESEARCH',state.research],['SUPPLY PRESSURE',state.supplyPressure+'%'],['FATIGUE',state.crewFatigue+'%'],['REP',state.bazaarRep]],
+  nav,'Contracts are small gameplay loops: accept a job, gain something useful, and take a corresponding shipwide cost.',areaPeopleHTML('bazaar')));
+}
 
 function stationLog(msg){
  if(!Array.isArray(state.stationLog))state.stationLog=[];
@@ -3155,7 +3565,7 @@ function rideElevator(deck){
  state.elevatorDeck=deck;state.location='DECK '+deck;
  state.elevatorFault=clamp(state.elevatorFault+1,0,100);
  stationLog('Lift arrived at deck '+deck+'.');
- render();openElevator();
+ render();enterDeckArea(deck);
 }
 function elevatorService(){
  if(state.scrap<3){toast('Need 3 scrap');return;}
@@ -3222,7 +3632,7 @@ function medDeviceAction(type){
  if(type==='run'){
   if(Math.min(state.medDeviceCharge,state.medDeviceCalibration,state.medDeviceSterility)<60){toast('Device not ready');return;}
   state.medDeviceCharge=clamp(state.medDeviceCharge-18,0,100);state.medDeviceCalibration=clamp(state.medDeviceCalibration-6,0,100);state.medDeviceSterility=clamp(state.medDeviceSterility-10,0,100);
-  state.medReadiness=clamp(state.medReadiness+8,0,100);state.crewFatigue=clamp(state.crewFatigue-5,0,100);state.medicalLoad=clamp(state.medicalLoad-5,0,100);stationLog('Treatment cycle completed. Crew readiness improved.');coreProgress('medical',1);
+  state.medReadiness=clamp(state.medReadiness+8+(state.citySpecialization==='MEDICAL'?3:0),0,100);state.crewFatigue=clamp(state.crewFatigue-5,0,100);state.medicalLoad=clamp(state.medicalLoad-5,0,100);stationLog('Treatment cycle completed. Crew readiness improved.');coreProgress('medical',1);
  }
  render();openMedicalDevice();
 }
@@ -3259,6 +3669,253 @@ function sellSalvage(){
  state.scrap-=5;state.bazaarCredits+=14;state.bazaarRep=clamp(state.bazaarRep+2,0,100);stationLog('Sold salvage at the Bazaar.');render();openBazaar();
 }
 
+
+/* ===== LIVING GALAXY SANDBOX ===== */
+const sandboxWorlds=[
+ {name:'TAU DRIFT',type:'Industrial frontier',art:'PLANETARY EXPLORATION',desc:'Shipyards, miners, survey fields and independent settlements.',risk:8},
+ {name:'VERDANT REACH',type:'Agricultural moon',art:'HYDROPONICS',desc:'Organics, food contracts, med plants and small habitat towns.',risk:12},
+ {name:'KHEPRI DUST',type:'Desert trade world',art:'CREW MARKET',desc:'Bazaar cities, salvage guilds, heat storms and caravan routes.',risk:16},
+ {name:'NIGHTGLASS',type:'Crystal world',art:'THE BETWEEN',desc:'Rare crystals, Resonance ruins and dangerous signal anomalies.',risk:28},
+ {name:'ORBITAL NINE',type:'Station metropolis',art:'COMMAND OPERATIONS',desc:'Faction offices, cantinas, mission terminals and ship services.',risk:6},
+ {name:'ASHEN BELT',type:'Asteroid colony chain',art:'FLEET GRAVEYARD',desc:'Ore fields, prospectors, defense contracts and black-market trade.',risk:22}
+];
+const professions=[
+ ['pilot','PILOT','Flight, docking and space contracts'],
+ ['engineer','ENGINEER','Crafting, repair and machinery'],
+ ['medic','MEDIC','Treatment, diagnostics and recovery'],
+ ['merchant','MERCHANT','Trade, vendors and settlement economy'],
+ ['explorer','EXPLORER','Surveying, discovery and resource finding'],
+ ['security','SECURITY','Escort, defense and dangerous missions'],
+ ['performer','PERFORMER','Cantina morale and crew inspiration'],
+ ['diplomat','DIPLOMAT','Faction standing and negotiation']
+];
+function xpNeed(k){return 20+(state.profLevel[k]-1)*15}
+function gainProf(k,n){
+ state.profXP[k]=(state.profXP[k]||0)+n;
+ while(state.profXP[k]>=xpNeed(k)){
+   state.profXP[k]-=xpNeed(k);state.profLevel[k]=(state.profLevel[k]||1)+1;
+   stationLog(k.toUpperCase()+' profession advanced to level '+state.profLevel[k]+'.');
+ }
+ save();
+}
+function openLivingGalaxy(){
+ setArea('LIVING GALAXY');
+ let body=`<div class="stationHero" style="background-image:url('${areaArtFor('PLANETARY EXPLORATION')}')"><div class="cap"><b>LIVING GALAXY</b><span>Travel. Work. Trade. Build. Choose what ARK-9 becomes.</span></div></div>
+ <div class="commandBoard"><h3>SANDBOX LOOP</h3><p>Pick a profession → take missions → travel to worlds → survey/fight/trade/craft → earn credits and skill → grow HAVEN-9 → improve faction standing → unlock harder worlds and contracts.</p></div>
+ <div class="galaxyGrid">${sandboxWorlds.map((w,i)=>`<div class="galaxyCard"><div class="art" style="background-image:url('${areaArtFor(w.art)}')"></div><div class="body"><b>${w.name}</b><p>${w.type}<br>${w.desc}</p><button onclick="openWorld(${i})">OPEN WORLD</button></div></div>`).join('')}</div>
+ <div class="sectionJump"><button onclick="openProfessions()">PROFESSIONS</button><button onclick="openMissionTerminal()">MISSION TERMINALS</button><button onclick="openSettlement()">HAVEN-9</button><button onclick="openCrafting()">CRAFTING</button></div>`;
+ openSheet('LIVING GALAXY',body);
+}
+function openWorld(i){
+ let w=sandboxWorlds[i];if(!w)return;setArea(w.name);
+ if(!state.discoveredWorlds.includes(w.name))state.discoveredWorlds.push(w.name);
+ let nav=[
+  ['TRAVEL TERMINAL','Fly ARK-9 here or choose another world.','openTravelTerminal('+i+')'],
+  ['MISSION TERMINAL','Take local work based on profession.','openMissionTerminal('+i+')'],
+  ['RESOURCE FIELD','Survey and sample local materials.','openResourceSurvey('+i+')'],
+  ['LOCAL MARKET','Buy and sell goods.','openWorldMarket('+i+')'],
+  ['CANTINA / SOCIAL HUB','Rest crew, hear rumors, gain inspiration.','openCantina('+i+')'],
+  ['SETTLEMENT DISTRICT','Manage HAVEN-9 and civic systems.','openSettlement()'],
+  ['BACK TO GALAXY','Return to galaxy map.','openLivingGalaxy()']
+ ];
+ openSheet(w.name,areaFrame(w.name,w.type,w.art,
+  [['RISK',w.risk+'%'],['PROFESSION',state.activeProfession.toUpperCase()],['CREDITS',state.bazaarCredits],['DISCOVERED',state.discoveredWorlds.length],['SOCIAL BUFF',state.socialBuff],['CITY RANK',state.cityRank]],
+  nav,w.desc+' Each world is a sandbox hub with travel, missions, resources, markets, social activity and settlement links.'));
+}
+function openTravelTerminal(i){
+ let current=sandboxWorlds[i]||sandboxWorlds[0];setArea(current.name+' // TRAVEL TERMINAL');
+ let nav=sandboxWorlds.map((w,j)=>[`TRAVEL TO ${w.name}`,`${w.type} · risk ${w.risk}%`,`travelWorld(${j})`]);
+ nav.push(['BACK TO WORLD','Return to local world hub.','openWorld('+i+')']);
+ openSheet('TRAVEL TERMINAL',areaFrame('TRAVEL TERMINAL','Interworld passenger and ship-routing terminal.',current.art,
+  [['CURRENT',state.shipDockedAt],['FUEL',state.flightFuel+'%'],['NAV',state.flightNav+'%'],['HULL',state.flightHull+'%'],['PILOT LV',state.profLevel.pilot],['CREDITS',state.bazaarCredits]],
+  nav,'Travel uses your existing flight systems. Higher Pilot level reduces travel fuel and risk.'));
+}
+function travelWorld(j){
+ let w=sandboxWorlds[j];if(!w)return;
+ let discount=Math.min(5,state.profLevel.pilot-1);
+ let fuel=Math.max(4,8+Math.floor(w.risk/5)-discount);
+ if(state.flightFuel<fuel){toast('Need '+fuel+' flight fuel');return;}
+ state.flightFuel-=fuel;
+ let risk=Math.max(2,w.risk-state.profLevel.pilot*2-Math.floor(state.flightNav/20));
+ if(Math.random()*100<risk){state.flightHull=clamp(state.flightHull-(4+Math.floor(Math.random()*7)),0,100);state.maintenanceBacklog=clamp(state.maintenanceBacklog+3,0,100);stationLog('Rough transit to '+w.name+'.');}
+ else stationLog('Clean transit to '+w.name+'.');
+ state.shipDockedAt=w.name;state.location=w.name;
+ if(!state.discoveredWorlds.includes(w.name))state.discoveredWorlds.push(w.name);
+ gainProf('pilot',4);render();openWorld(j);
+}
+function openProfessions(){
+ let body=`<div class="stationHero" style="background-image:url('${areaArtFor('CREW MANAGEMENT')}')"><div class="cap"><b>PROFESSIONS</b><span>Use skills to level them. Change focus whenever you want.</span></div></div>
+ <div class="profGrid">${professions.map(p=>{let xp=state.profXP[p[0]],need=xpNeed(p[0]),lv=state.profLevel[p[0]];return `<div class="profCard"><b>${p[1]} // LV ${lv}</b><p>${p[2]}</p><div class="profBar"><i style="width:${Math.min(100,xp/need*100)}%"></i></div><p>${xp}/${need} XP</p><button onclick="state.activeProfession='${p[0]}';save();openProfessions()">${state.activeProfession===p[0]?'ACTIVE':'SET ACTIVE'}</button></div>`}).join('')}</div>
+ <div class="sectionJump"><button onclick="openMissionTerminal()">MISSION TERMINALS</button><button onclick="openLivingGalaxy()">GALAXY</button></div>`;
+ openSheet('PROFESSIONS',body);
+}
+function terminalMissions(worldIndex=0){
+ let w=sandboxWorlds[worldIndex]||sandboxWorlds[0],p=state.activeProfession;
+ let base=[
+  {type:'DELIVERY',text:'Carry sealed cargo to a local outpost.',prof:'pilot',pay:18},
+  {type:'SURVEY',text:'Find a viable resource concentration.',prof:'explorer',pay:20},
+  {type:'FABRICATION',text:'Craft a requested field component.',prof:'engineer',pay:24},
+  {type:'MEDICAL',text:'Treat an injured settlement worker.',prof:'medic',pay:22},
+  {type:'TRADE',text:'Source goods and complete a vendor order.',prof:'merchant',pay:21},
+  {type:'SECURITY',text:'Escort a convoy through a dangerous zone.',prof:'security',pay:28},
+  {type:'PERFORMANCE',text:'Raise morale at the local social hub.',prof:'performer',pay:17},
+  {type:'DIPLOMACY',text:'Resolve a faction dispute without violence.',prof:'diplomat',pay:26}
+ ];
+ let preferred=base.filter(x=>x.prof===p),others=base.filter(x=>x.prof!==p);
+ return preferred.concat(others.slice((state.terminalRefresh||0)%4,(state.terminalRefresh||0)%4+3)).map(x=>({...x,world:w.name,pay:x.pay+Math.floor(w.risk/4)}));
+}
+function openMissionTerminal(worldIndex=0){
+ setArea('MISSION TERMINAL');
+ let ms=terminalMissions(worldIndex);
+ let body=`<div class="stationHero" style="background-image:url('${areaArtFor('STORY CAMPAIGN')}')"><div class="cap"><b>MISSION TERMINAL</b><span>${sandboxWorlds[worldIndex]?.name||'TAU DRIFT'} / ${state.activeProfession.toUpperCase()} listings</span></div></div>
+ <div class="terminalGrid">${ms.map((m,i)=>`<div class="terminalCard"><b>${m.type} // ${m.pay} CR</b><p>${m.text}</p><button onclick="acceptSandboxMission(${worldIndex},${i})">ACCEPT</button></div>`).join('')}</div>
+ <div class="sectionJump"><button onclick="state.terminalRefresh++;openMissionTerminal(${worldIndex})">REFRESH LISTINGS</button><button onclick="openContractsLog()">ACTIVE CONTRACTS</button><button onclick="openWorld(${worldIndex})">BACK TO WORLD</button></div>`;
+ openSheet('MISSION TERMINAL',body);
+}
+function acceptSandboxMission(wi,mi){
+ let m=terminalMissions(wi)[mi];if(!m)return;
+ if(state.activeContracts.length>=3){toast('Contract limit reached');return;}
+ state.activeContracts.push({...m,world:sandboxWorlds[wi].name,progress:0});
+ stationLog('Accepted '+m.type+' mission at '+sandboxWorlds[wi].name+'.');save();openContractsLog();
+}
+function openContractsLog(){
+ setArea('CONTRACT DATAPAD');
+ let body=`<div class="stationHero" style="background-image:url('${areaArtFor('STORY CAMPAIGN')}')"><div class="cap"><b>CONTRACT DATAPAD</b><span>Complete work through the matching sandbox system.</span></div></div>
+ <div class="terminalGrid">${state.activeContracts.map((m,i)=>`<div class="terminalCard"><b>${m.type} // ${m.world}</b><p>${m.text}<br>Reward ${m.pay} credits</p><button onclick="runSandboxContract(${i})">WORK CONTRACT</button></div>`).join('')||'<div class="terminalCard"><b>NO ACTIVE CONTRACTS</b><p>Use a mission terminal to accept work.</p></div>'}</div>
+ <div class="sectionJump"><button onclick="openMissionTerminal()">MISSION TERMINAL</button><button onclick="openLivingGalaxy()">GALAXY</button></div>`;
+ openSheet('CONTRACT DATAPAD',body);
+}
+function runSandboxContract(i){
+ let m=state.activeContracts[i];if(!m)return;
+ let prof=m.prof,lv=state.profLevel[prof]||1;
+ let success=55+lv*6+Math.floor(state.socialBuff/5);
+ if(Math.random()*100<success){
+   state.bazaarCredits+=m.pay;gainProf(prof,8);state.commandXP+=2;
+   if(prof==='explorer')sampleResource();
+   if(prof==='engineer')state.craftingXP+=4;
+   if(prof==='medic')state.medReadiness=clamp(state.medReadiness+3,0,100);
+   if(prof==='merchant')state.bazaarRep=clamp(state.bazaarRep+2,0,100);
+   if(prof==='performer')state.morale=clamp(state.morale+3,0,100);
+   if(prof==='diplomat')state.diplomacyScore+=2;
+   state.activeContracts.splice(i,1);stationLog('Contract completed successfully.');
+ }else{
+   state.crewFatigue=clamp(state.crewFatigue+3,0,100);state.maintenanceBacklog=clamp(state.maintenanceBacklog+2,0,100);stationLog('Contract attempt failed; ship took operational strain.');
+ }
+ render();openContractsLog();
+}
+function openResourceSurvey(worldIndex=0){
+ let w=sandboxWorlds[worldIndex]||sandboxWorlds[0];setArea(w.name+' // RESOURCE FIELD');
+ let nav=[
+  ['SURVEY MINERALS','Search for ore concentration.','surveyResource("ore",'+worldIndex+')'],
+  ['SURVEY GAS','Search atmospheric pockets.','surveyResource("gas",'+worldIndex+')'],
+  ['SURVEY ORGANICS','Search biological resource zones.','surveyResource("organics",'+worldIndex+')'],
+  ['SURVEY CRYSTALS','Rare but valuable Resonance material.','surveyResource("crystal",'+worldIndex+')'],
+  ['SAMPLE BEST FIND','Collect material from current field.','sampleResource();openResourceSurvey('+worldIndex+')'],
+  ['BACK TO WORLD','Return to world hub.','openWorld('+worldIndex+')']
+ ];
+ openSheet('RESOURCE SURVEY',areaFrame('RESOURCE FIELD','Survey, locate and sample changing resource concentrations.',w.art,
+  [['ORE',state.galaxyResources.ore],['GAS',state.galaxyResources.gas],['ORGANICS',state.galaxyResources.organics],['CRYSTAL',state.galaxyResources.crystal],['EXPLORER LV',state.profLevel.explorer],['CRAFT XP',state.craftingXP]],
+  nav,'Resource quality changes by survey. Better Explorer level yields denser finds.')+'<div class="resourceScan"></div>');
+}
+function surveyResource(type,wi){
+ let w=sandboxWorlds[wi]||sandboxWorlds[0],roll=8+Math.floor(Math.random()*18)+state.profLevel.explorer*2-Math.floor(w.risk/4);
+ state.galaxyResources[type]=Math.max(0,roll);gainProf('explorer',3);stationLog(type.toUpperCase()+' survey density '+roll+'%.');openResourceSurvey(wi);
+}
+function sampleResource(){
+ let types=Object.keys(state.galaxyResources),t=types.reduce((a,b)=>state.galaxyResources[a]>state.galaxyResources[b]?a:b);
+ let amt=Math.max(1,Math.floor(state.galaxyResources[t]/5)+state.profLevel.explorer);
+ state.galaxyResources[t]+=amt;gainProf('explorer',2);stationLog('Sampled '+amt+' units of '+t+'.');
+}
+function openCrafting(){
+ setArea('FABRICATION WORKSHOP');
+ let recipes=[
+  ['NAV MODULE',{ore:4,crystal:1},'nav'],
+  ['MED KIT',{organics:4,fiber:2},'med'],
+  ['COOLANT LOOP',{ore:3,gas:4},'coolant'],
+  ['TRADE GOODS',{fiber:4,organics:2},'trade']
+ ];
+ let nav=recipes.map((r,i)=>[r[0],Object.entries(r[1]).map(x=>x[0]+' '+x[1]).join(' · '),`craftItem(${i})`]);
+ nav.push(['RESOURCE SURVEY','Gather more materials.','openResourceSurvey()']);
+ nav.push(['LIVING GALAXY','Return to sandbox hub.','openLivingGalaxy()']);
+ openSheet('FABRICATION WORKSHOP',areaFrame('FABRICATION WORKSHOP','Craft useful goods from surveyed resources.','FABRICATOR BAY',
+  [['ORE',state.galaxyResources.ore],['GAS',state.galaxyResources.gas],['FIBER',state.galaxyResources.fiber],['ORGANICS',state.galaxyResources.organics],['CRYSTAL',state.galaxyResources.crystal],['ENGINEER LV',state.profLevel.engineer]],
+  nav,'Crafted items can improve ship systems or be sold at markets. Engineering skill increases through use.'));
+}
+function craftItem(i){
+ let recipes=[
+  ['NAV MODULE',{ore:4,crystal:1},'nav'],['MED KIT',{organics:4,fiber:2},'med'],['COOLANT LOOP',{ore:3,gas:4},'coolant'],['TRADE GOODS',{fiber:4,organics:2},'trade']
+ ],r=recipes[i];if(!r)return;
+ for(let [k,v] of Object.entries(r[1]))if((state.galaxyResources[k]||0)<v){toast('Missing '+k);return;}
+ for(let [k,v] of Object.entries(r[1]))state.galaxyResources[k]-=v;
+ state.craftedGoods.push(r[0]);state.craftingXP+=5;gainProf('engineer',5);
+ if(r[2]==='nav')state.flightNav=clamp(state.flightNav+5,0,100);
+ if(r[2]==='med')state.kits++;
+ if(r[2]==='coolant')state.reactorTemp=clamp(state.reactorTemp-6,0,100);
+ if(r[2]==='trade')state.bazaarCredits+=12;
+ stationLog('Crafted '+r[0]+'.');render();openCrafting();
+}
+function openWorldMarket(i=0){
+ let w=sandboxWorlds[i]||sandboxWorlds[0];setArea(w.name+' // LOCAL MARKET');
+ let nav=[
+  ['SELL CRAFTED GOOD','Sell one crafted item for credits.','sellCrafted();openWorldMarket('+i+')'],
+  ['BUY 5 ORE','Cost 12 credits.','buyResource("ore",5,12);openWorldMarket('+i+')'],
+  ['BUY 5 ORGANICS','Cost 14 credits.','buyResource("organics",5,14);openWorldMarket('+i+')'],
+  ['BUY 2 CRYSTAL','Cost 20 credits.','buyResource("crystal",2,20);openWorldMarket('+i+')'],
+  ['BACK TO WORLD','Return to local hub.','openWorld('+i+')']
+ ];
+ openSheet('LOCAL MARKET',areaFrame('LOCAL MARKET','NPC vendors, crew traders and settlement commerce.',w.art,
+  [['CREDITS',state.bazaarCredits],['GOODS',state.craftedGoods.length],['MERCHANT LV',state.profLevel.merchant],['REP',state.bazaarRep],['CITY TREASURY',state.cityTreasury],['WORLD',w.name]],
+  nav,'Markets let crafting, exploration and merchant progression feed the economy.'));
+}
+function sellCrafted(){
+ if(!state.craftedGoods.length){toast('No crafted goods');return;}
+ let g=state.craftedGoods.shift(),pay=14+state.profLevel.merchant*3+(state.citySpecialization==='TRADE'?5:0);state.bazaarCredits+=pay;gainProf('merchant',4);stationLog('Sold '+g+' for '+pay+' credits.');
+}
+function buyResource(k,n,c){
+ if(state.bazaarCredits<c){toast('Not enough credits');return;}
+ state.bazaarCredits-=c;state.galaxyResources[k]=(state.galaxyResources[k]||0)+n;gainProf('merchant',2);
+}
+function openCantina(i=0){
+ let w=sandboxWorlds[i]||sandboxWorlds[0];setArea(w.name+' // SOCIAL HUB');
+ let nav=[
+  ['LISTEN TO LOCAL MUSIC','Raise morale and gain social inspiration.','state.socialBuff=clamp(state.socialBuff+8,0,100);state.morale=clamp(state.morale+4,0,100);gainProf("performer",2);openCantina('+i+')'],
+  ['PERFORM FOR THE ROOM','Earn credits based on Performer level.','state.bazaarCredits+=8+state.profLevel.performer*3;state.socialBuff=clamp(state.socialBuff+6,0,100);gainProf("performer",5);openCantina('+i+')'],
+  ['TALK TO PATRONS','Gain rumor, diplomacy and faction insight.','state.research+=1;state.diplomacyScore+=1;gainProf("diplomat",3);openCantina('+i+')'],
+  ['BACK TO WORLD','Return to local hub.','openWorld('+i+')']
+ ];
+ openSheet('SOCIAL HUB',areaFrame('SOCIAL HUB','Music, rumors, crew rest and community interaction.',w.art,
+  [['MORALE',state.morale+'%'],['SOCIAL BUFF',state.socialBuff],['PERFORMER LV',state.profLevel.performer],['DIPLOMAT LV',state.profLevel.diplomat],['CREDITS',state.bazaarCredits],['CREW REST',state.crewRest+'%']],
+  nav,'Social play has mechanical value: inspiration improves contract success and reduces the grind on crew operations.'));
+}
+function openSettlement(){
+ setArea(state.settlementName);
+ let nextNeed=[0,5,10,18,28,40][Math.min(5,state.cityRank)]||40;
+ let nav=[
+  ['RECRUIT CITIZENS','Spend 40 credits to attract 2 settlers.','if(state.bazaarCredits>=40){state.bazaarCredits-=40;state.cityCitizens+=2;gainProf("diplomat",2)}openSettlement()'],
+  ['PAY MAINTENANCE','Transfer 50 credits into treasury.','if(state.bazaarCredits>=50){state.bazaarCredits-=50;state.cityTreasury+=50}openSettlement()'],
+  ['CITY UPDATE','Check population and treasury; promote if eligible.','cityUpdate()'],
+  ['SPECIALIZE: TRADE','Market specialization improves merchant income.','setCitySpec("TRADE")'],
+  ['SPECIALIZE: MEDICAL','Medical specialization improves treatment.','setCitySpec("MEDICAL")'],
+  ['SPECIALIZE: RESEARCH','Research specialization improves science gains.','setCitySpec("RESEARCH")'],
+  ['LOCAL VENDOR','Use settlement market.','openWorldMarket(0)'],
+  ['LIVING GALAXY','Return to galaxy hub.','openLivingGalaxy()']
+ ];
+ openSheet(state.settlementName,areaFrame(state.settlementName,'Growing independent settlement tied to ARK-9.','CREW COMMONS',
+  [['RANK',state.cityRank],['CITIZENS',state.cityCitizens],['NEXT RANK',nextNeed],['TREASURY',state.cityTreasury],['MAINTENANCE',state.cityMaintenance],['SPECIALIZATION',state.citySpecialization]],
+  nav,'Settlement rank grows from citizenship and maintenance. Higher rank represents a deeper sandbox home base with better economy and services.'));
+}
+function cityUpdate(){
+ let needs=[0,5,10,18,28,40],need=needs[Math.min(state.cityRank,5)]||40;
+ if(state.cityTreasury<state.cityMaintenance){state.cityRank=Math.max(1,state.cityRank-1);stationLog('Settlement lost rank due to unpaid maintenance.');}
+ else{
+  state.cityTreasury-=state.cityMaintenance;
+  if(state.cityCitizens>=need && state.cityRank<5){state.cityRank++;state.cityMaintenance+=20;stationLog(state.settlementName+' promoted to rank '+state.cityRank+'.');}
+  else stationLog('City update complete; rank maintained.');
+ }
+ openSettlement();
+}
+function setCitySpec(s){state.citySpecialization=s;gainProf('merchant',2);stationLog('Settlement specialization set to '+s+'.');openSettlement();}
+
 function openExploreArk9(){
   try{ closeAllOverlays(); }catch(e){}
   try{ openExpandedShipHub(); }catch(e){
@@ -3290,7 +3947,8 @@ function openExpandedShipHub(){
   ['simulation2','SIMULATION CORE','Synthetic missions and false-contact layer',"openSimulationLayer()"],
   ['simulation2','MATRIX RAIN LAB','Program letters, words and signals into code rain',"openRainLab()"],
   ['crew2','TRANSIT ELEVATOR','Operate the lift and physically move between ship decks',"openElevator()"],
-  ['storage2','FREE BELT BAZAAR','Fly there, trade salvage, buy ship upgrades and supplies',"openBazaar()"]
+  ['storage2','FREE BELT BAZAAR','Fly there, trade salvage, buy ship upgrades and supplies',"openBazaar()"],
+  ['grave2','LIVING GALAXY','Professions, worlds, missions, crafting, resources and settlement sandbox',"openLivingGalaxy()"]
  ];
  let body=`<div class="shipHubHero" style="background-image:url('${visualAtlas.hero}')"><div class="cap"><b>ARK-9 SHIP NETWORK</b><span>${areas.length} ACTIVE AREAS / LIVE TELEMETRY LINKED</span></div></div>
  <div class="commandBoard"><h3>YOUR SHIP / CURRENT PURPOSE</h3><p>Follow the MAIN STORY panel first. Gold priority means that section advances the current phase. Everything else remains available for maintenance, crew development, lore, resources and optional exploration.</p><button class="commandBtn" onclick="openMissionDirector()">SHOW CAMPAIGN CHAIN</button></div>
@@ -3317,6 +3975,7 @@ function openExpandedShipHub(){
  body+=`<div class="sectionJump"><button onclick="openGalacticArchive()">GALACTIC ARCHIVE</button><button onclick="openResonanceDeck()">RESONANCE DECK</button><button onclick="openEpisodeBoard()">MISSION EPISODES</button></div>`;
  body+=`<div class="sectionJump"><button onclick="openMegaExpansion()">48 DEEP SHIP AREAS</button><button onclick="openReserveCrew()">80-PERSON CREW</button></div>`;
  body+=`<div class="sectionJump"><button onclick="openDailyOperations()">DAILY OPERATIONS</button><button onclick="openExploreArk9()">REFRESH EXPLORE ARK-9</button></div>`;
+ body+=`<div class="sectionJump"><button onclick="openLivingGalaxy()">LIVING GALAXY</button><button onclick="openProfessions()">PROFESSIONS</button><button onclick="openMissionTerminal()">MISSION TERMINALS</button></div>`;
  body+=`<div class="sectionJump"><button onclick="openMissionDirector()">MAIN STORY / NEXT ACTION</button><button onclick="openMainMenu()">COMMAND MENU</button></div>`;
  body+=`<div class="sectionJump"><button onclick="openExploreArk9()">EXPLORE ARK-9 HOME</button><button onclick="openMainMenu()">MAIN MENU</button></div>`;
  openSheet('ARK-9 SHIP NETWORK',body);
