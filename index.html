@@ -1012,7 +1012,7 @@ repeating-linear-gradient(90deg,rgba(50,255,120,.09) 0 1px,transparent 1px 22px)
 
 /* ===== PERSISTENT EXPLORE HUB + DAILY OPERATIONS CASCADE ===== */
 .exploreReturn{
- position:fixed;right:10px;bottom:70px;z-index:9000;border:1px solid #5d7f8c;background:linear-gradient(#183340,#0d181d);
+ pointer-events:auto;position:fixed;right:10px;bottom:70px;z-index:9000;border:1px solid #5d7f8c;background:linear-gradient(#183340,#0d181d);
  color:#eff8fa;padding:9px 12px;border-radius:4px;font:900 8px ui-monospace,monospace;letter-spacing:.06em;
  box-shadow:0 0 18px rgba(92,190,220,.14)
 }
@@ -3583,6 +3583,12 @@ setTimeout(()=>{
  const intro=document.getElementById('introScreen');
  if(intro)intro.style.display='flex';
 },0);
+
+function globalMenuKeys(e){
+ if(e.key==='Escape'){ closeAllOverlays(); }
+ if((e.key==='m'||e.key==='M') && !/INPUT|TEXTAREA/.test(document.activeElement?.tagName||'')){ openMainMenu(); }
+}
+document.addEventListener('keydown',globalMenuKeys);
 </script>
 
 <button class="exploreReturn" onclick="openExpandedShipHub()">EXPLORE ARK-9</button>
