@@ -1133,7 +1133,6 @@ repeating-linear-gradient(90deg,rgba(50,255,120,.09) 0 1px,transparent 1px 22px)
 .cinema{z-index:5400!important}
 #introScreen{z-index:11000!important}
 .mainMenuReturn,.exploreReturn{z-index:5600!important}
-.hubBackBtn{position:fixed;right:10px;bottom:66px;z-index:5700;border:1px solid #63c9ed;background:rgba(5,21,28,.92);color:#f2fbff;padding:10px 12px;border-radius:4px;font:900 7px ui-monospace,monospace;box-shadow:0 0 14px rgba(77,194,235,.25)}
 .homeVisualStrip{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-top:12px;max-width:860px}
 .homeVisualStrip div{height:90px;background-size:cover;background-position:center;border:1px solid #376070;position:relative}
 .homeVisualStrip span{position:absolute;left:4px;right:4px;bottom:4px;background:rgba(2,8,11,.78);padding:3px;font:800 6px ui-monospace,monospace}
@@ -2432,7 +2431,7 @@ function render(){
 function openSheet(title,body){
  leaveLoreHomeForArea();refreshHomeSituation();
  document.getElementById('sheetTitle').textContent=title;
- let tail=`<div class="sectionJump"><button onclick="returnToLoreHome()">ARK-9 HOME</button><button onclick="openPhysicalDeck()">PHYSICAL SHIP</button><button onclick="openAllAreas()">ALL AREAS</button><button onclick="openShipOpsCore()">OPS CORE</button><button onclick="openElevator()">TRANSIT LIFT</button></div>`;
+ let tail='';
  document.getElementById('sheetBody').innerHTML=(title==='MISSION DIRECTOR'?body:missionDirectorHTML()+opsCoreHTML()+body)+tail;
  document.getElementById('overlay').classList.add('show');
 }
@@ -5302,7 +5301,6 @@ document.addEventListener('keydown',globalMenuKeys);
   <div style="background-image:url('${areaArtFor('RESONANCE DECK')}')"><span>RESONANCE</span></div>
  </div>
 </div></section>
-<button class="hubBackBtn" onclick="returnToLoreHome()">ARK-9 HOME</button>
 </body>
 </html>
 
