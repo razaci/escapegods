@@ -1204,6 +1204,18 @@ repeating-linear-gradient(90deg,rgba(50,255,120,.09) 0 1px,transparent 1px 22px)
 .drillReadout{border-left:3px solid #68c9e8;background:#081820;padding:7px;font:7px/1.5 ui-monospace,monospace;color:#b5d4df;margin:6px 0}
 @media(max-width:620px){.strategySteps{grid-template-columns:1fr}}
 
+
+/* ===== LOCAL BAZAAR SHIP MARKET ===== */
+.shipMarketHero{height:190px;border:1px solid #45616d;background-size:cover;background-position:center;position:relative;margin:7px 0;border-radius:5px;overflow:hidden}
+.shipMarketHero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,9,12,.93),rgba(2,9,12,.18))}
+.shipMarketHero .copy{position:absolute;z-index:2;left:12px;right:12px;bottom:12px}.shipMarketHero b{font:900 15px ui-monospace,monospace}.shipMarketHero p{font:7px/1.5 ui-monospace,monospace;color:#b4c8d0;max-width:540px}
+.shipOffer{border:1px solid #3e5661;background:#0a1519;padding:8px;margin:7px 0}.shipOffer.owned{border-color:#5f8e72;background:#0a1915}
+.shipOffer h3{margin:0 0 4px;font:900 10px ui-monospace,monospace}.shipOffer p{font:7px/1.45 ui-monospace,monospace;color:#91a5ad}
+.shipStats{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:7px 0}.shipStats div{border:1px solid #334851;background:#0c171c;padding:6px;text-align:center}.shipStats b{display:block;font:900 8px ui-monospace,monospace}.shipStats span{font:6px ui-monospace,monospace;color:#8499a1}
+.ownedShipBay{border:1px solid #42616d;background:#071217;padding:8px;margin:7px 0}.ownedShipBay canvas{width:100%;height:320px;display:block;border:1px solid #354b55;background:#020608}
+.shipControlGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:7px}.shipControlGrid button{padding:10px;border:1px solid #4a6570;background:#14252d;color:#effaff;font:900 7px ui-monospace,monospace}
+@media(max-width:620px){.shipStats{grid-template-columns:repeat(2,1fr)}.shipControlGrid{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body>
@@ -1812,6 +1824,10 @@ if(state.elevatorDeck===undefined)state.elevatorDeck='A';
 if(state.elevatorPower===undefined)state.elevatorPower=88;
 if(state.elevatorFault===undefined)state.elevatorFault=0;
 if(state.bazaarCredits===undefined)state.bazaarCredits=120;
+if(!Array.isArray(state.ownedShips))state.ownedShips=[];
+if(state.activeOwnedShip===undefined)state.activeOwnedShip='';
+if(!state.shipMarketSeen)state.shipMarketSeen=false;
+
 if(state.bazaarRep===undefined)state.bazaarRep=15;
 if(state.medPatients===undefined)state.medPatients=2;
 if(state.medDeviceCharge===undefined)state.medDeviceCharge=78;
@@ -3650,6 +3666,103 @@ function openMedRecovery(){
 }
 
 /* ----- BAZAAR AREA TREE ----- */
+
+const bazaarShipArt='data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMjAwIDYwMCc+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9J2JnJyB4MT0nMCcgeDI9JzEnPjxzdG9wIHN0b3AtY29sb3I9JyMwMzA3MGEnLz48c3RvcCBvZmZzZXQ9JzEnIHN0b3AtY29sb3I9JyMwYjFhMjInLz48L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9J2h1bGwnIHgxPScwJyB4Mj0nMSc+PHN0b3Agc3RvcC1jb2xvcj0nI2I5YzZjYycvPjxzdG9wIG9mZnNldD0nLjUnIHN0b3AtY29sb3I9JyM0ZTVmNjknLz48c3RvcCBvZmZzZXQ9JzEnIHN0b3AtY29sb3I9JyMxZDJiMzInLz48L2xpbmVhckdyYWRpZW50Pgo8ZmlsdGVyIGlkPSdnJz48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSc3Jy8+PC9maWx0ZXI+CjwvZGVmcz4KPHJlY3Qgd2lkdGg9JzEyMDAnIGhlaWdodD0nNjAwJyBmaWxsPSd1cmwoI2JnKScvPgo8Y2lyY2xlIGN4PSc5ODAnIGN5PScxMTAnIHI9JzU4JyBmaWxsPScjMmY2NDc5JyBvcGFjaXR5PScuNTUnLz48Y2lyY2xlIGN4PSc5ODAnIGN5PScxMTAnIHI9Jzg0JyBmaWxsPSdub25lJyBzdHJva2U9JyMyZjY0NzknIG9wYWNpdHk9Jy4yMicvPgo8ZyBvcGFjaXR5PScuNScgZmlsbD0nIzg2ZDdmZic+CjxjaXJjbGUgY3g9JzEwMCcgY3k9JzkwJyByPScyJy8+PGNpcmNsZSBjeD0nMjEwJyBjeT0nMTMwJyByPScxLjUnLz48Y2lyY2xlIGN4PSczNDAnIGN5PSc2MCcgcj0nMScvPjxjaXJjbGUgY3g9Jzc2MCcgY3k9Jzg1JyByPScxLjUnLz48Y2lyY2xlIGN4PScxMTEwJyBjeT0nMjIwJyByPScyJy8+CjwvZz4KPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoMTIwLDExNSknPgo8cGF0aCBkPSdNODAgMjIwIEwyNDAgMTI1IEw2NTAgMTE1IEw5MDAgMjEwIEw2NTAgMzA1IEwyNDAgMzAwIFonIGZpbGw9J3VybCgjaHVsbCknIHN0cm9rZT0nIzliYjZjMicgc3Ryb2tlLXdpZHRoPSc0Jy8+CjxwYXRoIGQ9J00zMjUgMTUwIEw1NjUgMTUwIEw2NjAgMjEwIEw1NTAgMjQ1IEwzMjAgMjM1IFonIGZpbGw9JyMxMjI4MzInIHN0cm9rZT0nIzViYzZlZCcgc3Ryb2tlLXdpZHRoPSczJy8+CjxwYXRoIGQ9J00xMTAgMjIwIEwxMCAxNzAgTDEwIDI2NSBaJyBmaWxsPScjMjQzNDNjJyBzdHJva2U9JyM3MTg1OGUnIHN0cm9rZS13aWR0aD0nMycvPgo8cGF0aCBkPSdNNzgwIDE3NSBMOTcwIDEzMCBMOTIwIDIxMCBMOTcwIDI4NSBMNzgwIDI0NSBaJyBmaWxsPScjMmMzYzQzJyBzdHJva2U9JyM3MTg1OGUnIHN0cm9rZS13aWR0aD0nMycvPgo8cmVjdCB4PScyMDgnIHk9JzE5NCcgd2lkdGg9Jzc4JyBoZWlnaHQ9JzI4JyByeD0nNCcgZmlsbD0nIzE0MjkzMCcgc3Ryb2tlPScjNjNkOGZmJy8+CjxjaXJjbGUgY3g9JzI0NCcgY3k9JzIwOCcgcj0nNycgZmlsbD0nIzYzZDhmZicvPgo8cmVjdCB4PSc1NjUnIHk9JzE4NScgd2lkdGg9JzExNScgaGVpZ2h0PSczNCcgcng9JzYnIGZpbGw9JyMwODEyMTcnIHN0cm9rZT0nIzYzZDhmZicvPgo8ZyBmaWxsPScjNzZkZmZmJyBmaWx0ZXI9J3VybCgjZyknPjxlbGxpcHNlIGN4PSczNScgY3k9JzE5MCcgcng9JzQyJyByeT0nMTgnLz48ZWxsaXBzZSBjeD0nMzUnIGN5PScyNDUnIHJ4PSc0Micgcnk9JzE4Jy8+PC9nPgo8ZyBmaWxsPScjN2RmMGZmJz48ZWxsaXBzZSBjeD0nMzUnIGN5PScxOTAnIHJ4PScxOCcgcnk9JzgnLz48ZWxsaXBzZSBjeD0nMzUnIGN5PScyNDUnIHJ4PScxOCcgcnk9JzgnLz48L2c+Cjx0ZXh0IHg9JzM1NScgeT0nMjkwJyBmaWxsPScjZDllZWY2JyBmb250LWZhbWlseT0nbW9ub3NwYWNlJyBmb250LXNpemU9JzI0JyBmb250LXdlaWdodD0nNzAwJz5LRVNUUkVMLTE8L3RleHQ+CjwvZz4KPHRleHQgeD0nNDInIHk9JzU1JyBmaWxsPScjZDhlZWY3JyBmb250LWZhbWlseT0nbW9ub3NwYWNlJyBmb250LXNpemU9JzMwJyBmb250LXdlaWdodD0nNzAwJz5CQVpBQVIgU0hJUCBMT1QgLy8gS0VTVFJFTC0xPC90ZXh0Pgo8dGV4dCB4PSc0MicgeT0nODgnIGZpbGw9JyM3MTkzYTEnIGZvbnQtZmFtaWx5PSdtb25vc3BhY2UnIGZvbnQtc2l6ZT0nMTYnPkxJR0hUIENPVVJJRVIgLyBMT0NBTCBSRUdJU1RSWSAvIFpFUk8tTElWRSBDT05TRVFVRU5DRSBTSE9XUk9PTTwvdGV4dD4KPC9zdmc+';
+const bazaarShips=[{
+ id:'kestrel1',name:'KESTREL-1',class:'LIGHT COURIER',price:95,
+ speed:78,cargo:42,range:70,hull:64,
+ blurb:'A compact two-seat courier sold through the ARK-9 local bazaar. Fast enough to feel personal, simple enough to work on yourself.'
+}];
+
+function openBazaarShipMarket(){
+ state.shipMarketSeen=true;
+ let cards=bazaarShips.map(s=>{
+  let owned=state.ownedShips.includes(s.id);
+  return `<div class="shipOffer ${owned?'owned':''}">
+   <h3>${s.name} // ${s.class}</h3>
+   <p>${s.blurb}</p>
+   <div class="shipStats">
+    <div><b>${s.speed}</b><span>SPEED</span></div>
+    <div><b>${s.cargo}</b><span>CARGO</span></div>
+    <div><b>${s.range}</b><span>RANGE</span></div>
+    <div><b>${s.hull}</b><span>HULL</span></div>
+   </div>
+   ${owned
+    ? `<button onclick="state.activeOwnedShip='${s.id}';save();openOwnedShip('${s.id}')">OPEN OWNED SHIP</button>`
+    : `<button onclick="buyBazaarShip('${s.id}')">PURCHASE // ${s.price} CREDITS</button>`}
+  </div>`;
+ }).join('');
+ let body=`<div class="shipMarketHero" style="background-image:url('${bazaarShipArt}')"><div class="copy"><b>LOCAL BAZAAR // SHIP LOT</b><p>Local private hull sales. Purchased ships become part of your personal fleet and can be opened in their own visual bay.</p></div></div>
+ <div class="orionPanel"><b>ACCOUNT</b><p>BAZAAR CREDITS // ${state.bazaarCredits}</p></div>
+ ${cards}
+ <div class="sectionJump"><button onclick="openBazaar()">BACK TO BAZAAR</button>${state.ownedShips.length?'<button onclick="openOwnedShip()">MY SHIP</button>':''}</div>`;
+ openSheet('BAZAAR // SHIP MARKET',body);
+}
+function buyBazaarShip(id){
+ let s=bazaarShips.find(x=>x.id===id);if(!s)return;
+ if(state.ownedShips.includes(id)){openOwnedShip(id);return;}
+ if((state.bazaarCredits||0)<s.price){toast('Not enough Bazaar credits.');return;}
+ state.bazaarCredits-=s.price;
+ state.ownedShips.push(id);
+ state.activeOwnedShip=id;
+ recordHistory('Purchased ship: '+s.name+' from the local Bazaar.');
+ save();toast(s.name+' PURCHASED');openOwnedShip(id);
+}
+function openOwnedShip(id){
+ id=id||state.activeOwnedShip||state.ownedShips[0];
+ let s=bazaarShips.find(x=>x.id===id);
+ if(!s||!state.ownedShips.includes(id)){openBazaarShipMarket();return;}
+ state.activeOwnedShip=id;save();
+ let body=`<div class="shipMarketHero" style="background-image:url('${bazaarShipArt}')"><div class="copy"><b>${s.name} // YOUR SHIP</b><p>A personal courier parked in the Bazaar service cradle. The picture below is an interactive local bay view.</p></div></div>
+ <div class="ownedShipBay">
+   <canvas id="ownedShipCanvas" width="900" height="480"></canvas>
+   <div class="drillReadout" id="ownedShipReadout">SHIP IDLE // Select a local bay action.</div>
+   <div class="shipControlGrid">
+    <button onclick="ownedShipAction('INSPECT')">INSPECT HULL</button>
+    <button onclick="ownedShipAction('POWER')">POWER SYSTEMS</button>
+    <button onclick="ownedShipAction('CARGO')">OPEN CARGO</button>
+    <button onclick="ownedShipAction('NAV')">CHECK NAV</button>
+    <button onclick="ownedShipAction('LIGHTS')">TOGGLE LIGHTS</button>
+    <button onclick="ownedShipAction('RESET')">RESET BAY</button>
+   </div>
+ </div>
+ <div class="shipStats">
+  <div><b>${s.speed}</b><span>SPEED</span></div><div><b>${s.cargo}</b><span>CARGO</span></div><div><b>${s.range}</b><span>RANGE</span></div><div><b>${s.hull}</b><span>HULL</span></div>
+ </div>
+ <div class="sectionJump"><button onclick="openBazaarShipMarket()">SHIP MARKET</button><button onclick="openBazaar()">LOCAL BAZAAR</button></div>`;
+ openSheet(s.name+' // PERSONAL BAY',body);
+ setTimeout(()=>drawOwnedShipBay('IDLE'),20);
+}
+function drawOwnedShipBay(mode='IDLE'){
+ let c=document.getElementById('ownedShipCanvas');if(!c)return;let x=c.getContext('2d'),w=c.width,h=c.height;
+ x.clearRect(0,0,w,h);x.fillStyle='#020608';x.fillRect(0,0,w,h);
+ for(let i=0;i<70;i++){x.fillStyle='rgba(145,220,255,'+(0.18+(i%5)*0.08)+')';x.fillRect((i*137)%w,(i*83)%h,1+(i%2),1+(i%2));}
+ x.strokeStyle='#233842';x.lineWidth=2;for(let gx=0;gx<w;gx+=60){x.beginPath();x.moveTo(gx,0);x.lineTo(gx,h);x.stroke();}for(let gy=0;gy<h;gy+=60){x.beginPath();x.moveTo(0,gy);x.lineTo(w,gy);x.stroke();}
+ let cx=450,cy=250;
+ x.save();x.translate(cx,cy);
+ x.fillStyle=mode==='POWER'?'#526975':'#3c4a51';x.strokeStyle=mode==='INSPECT'?'#9eeaff':'#728791';x.lineWidth=4;
+ x.beginPath();x.moveTo(-300,0);x.lineTo(-120,-95);x.lineTo(210,-85);x.lineTo(335,0);x.lineTo(210,85);x.lineTo(-120,95);x.closePath();x.fill();x.stroke();
+ x.fillStyle='#0b1a20';x.strokeStyle='#63d8ff';x.lineWidth=3;x.fillRect(-80,-55,190,70);x.strokeRect(-80,-55,190,70);
+ x.fillStyle=mode==='LIGHTS'?'#d5fbff':'#5fcdec';for(let j=0;j<5;j++){x.beginPath();x.arc(-30+j*32,-18,7,0,Math.PI*2);x.fill();}
+ x.fillStyle='#14232a';x.strokeStyle='#70838c';x.fillRect(160,-34,130,68);x.strokeRect(160,-34,130,68);
+ if(mode==='CARGO'){x.strokeStyle='#ffd98a';x.lineWidth=4;x.strokeRect(-165,-40,70,80);x.fillStyle='#ffd98a';x.fillText('CARGO',-160,-50);}
+ if(mode==='NAV'){x.strokeStyle='#7ce6ff';x.beginPath();x.arc(235,0,55,0,Math.PI*2);x.stroke();x.beginPath();x.moveTo(190,0);x.lineTo(280,0);x.stroke();}
+ x.restore();
+ x.fillStyle='#d7edf6';x.font='bold 20px monospace';x.fillText('KESTREL-1 // PERSONAL BAY',24,32);
+ x.font='14px monospace';x.fillStyle='#78929d';x.fillText('MODE '+mode,24,56);
+}
+function ownedShipAction(mode){
+ let msg={
+ INSPECT:'Hull inspection highlighted. No persistent wear or repair effect.',
+ POWER:'Local bay power simulation active. No fuel consumed.',
+ CARGO:'Cargo compartment displayed. No inventory changed.',
+ NAV:'Navigation sensor overlay displayed. No travel occurs.',
+ LIGHTS:'External bay lights toggled for the picture.',
+ RESET:'Bay view reset.'
+ }[mode]||'LOCAL BAY ACTION';
+ let r=document.getElementById('ownedShipReadout');if(r)r.textContent=msg;drawOwnedShipBay(mode==='RESET'?'IDLE':mode);
+}
+
 function openBazaar(){
  setArea('FREE BELT BAZAAR');
  let docked=state.shipDockedAt==='FREE BELT BAZAAR';
@@ -4357,7 +4470,9 @@ const majorAreas=[
  ['THE FIRST ARK','40-mission main campaign, evidence, crew arcs and endings.','STORY CAMPAIGN','openFirstArkCampaign()'],
  ['FIRST ARK EVIDENCE','Primary discoveries and impossible chronology.','EVIDENCE BOARD','openFirstArkEvidence()'],
  ['THE EIGHT ARKS','Civilizations descended from the Ark fleet.','PLANETARY EXPLORATION','openArkCivilizations()'],
- ['CREW STORY ARCS','Character mysteries and conversations.','CREW NETWORK','openCrewStoryArcs()']
+ ['CREW STORY ARCS','Character mysteries and conversations.','CREW NETWORK','openCrewStoryArcs()'],
+ ['BAZAAR SHIP MARKET','Buy a personal ship and open its interactive visual bay.','CREW MARKET','openBazaarShipMarket()'],
+ ['PERSONAL SHIP BAY','Inspect and operate your purchased ship visually.','HANGAR','openOwnedShip()']
 ];
 
 function shipClockText(){
