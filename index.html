@@ -1009,6 +1009,27 @@ repeating-linear-gradient(90deg,rgba(50,255,120,.09) 0 1px,transparent 1px 22px)
 .megaCrew{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.megaCrew div{border:1px solid #34454e;background:#0b1317;padding:6px}.megaCrew b{font:900 8px ui-monospace,monospace}.megaCrew span{display:block;font:7px/1.3 ui-monospace,monospace;color:#81949d}
 @media(max-width:620px){.megaGrid{grid-template-columns:repeat(2,1fr)}.megaCrew{grid-template-columns:repeat(2,1fr)}}@media(max-width:380px){.megaGrid{grid-template-columns:1fr}}
 
+
+/* ===== PERSISTENT EXPLORE HUB + DAILY OPERATIONS CASCADE ===== */
+.exploreReturn{
+ position:fixed;right:10px;bottom:70px;z-index:9000;border:1px solid #5d7f8c;background:linear-gradient(#183340,#0d181d);
+ color:#eff8fa;padding:9px 12px;border-radius:4px;font:900 8px ui-monospace,monospace;letter-spacing:.06em;
+ box-shadow:0 0 18px rgba(92,190,220,.14)
+}
+.opsGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:7px}
+.opsCard{border:1px solid #3e4f58;background:#0b1216;border-radius:4px;padding:8px}
+.opsCard b{display:block;font:900 9px ui-monospace,monospace}
+.opsCard p{font:8px/1.4 ui-monospace,monospace;color:#82959e}
+.opsCard button{width:100%;border:1px solid #46565f;background:#162126;color:#eef5f7;padding:8px;font:900 7px ui-monospace,monospace}
+.opsTimeline{border:1px solid #35444c;background:#0b1317;padding:7px;margin-top:7px}
+.opsTimeline div{font:7px/1.45 ui-monospace,monospace;color:#83969f;border-bottom:1px solid #1c292f;padding:4px 0}
+.opsTimeline div:last-child{border-bottom:0}
+.cascadeGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:7px 0}
+.cascadeGrid div{border:1px solid #34434b;background:#0b1317;padding:6px;text-align:center}
+.cascadeGrid b{display:block;font:900 9px ui-monospace,monospace}
+.cascadeGrid span{font:800 7px ui-monospace,monospace;color:#81939c}
+@media(max-width:560px){.opsGrid{grid-template-columns:1fr}.cascadeGrid{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 </head>
 <body>
@@ -1144,7 +1165,7 @@ UNKNOWN SIGNAL // DARK GATE // BLACK TRANSIT
    <div><b id="dashXenoCredit">--</b><span>XENO CREDIT</span></div>
    <div><b id="dashXenoItems">--</b><span>ITEMS</span></div>
   </div>
-  <div class="quickGrid"><button onclick="openRingAccess()"><span>◎</span>ENTER RING</button><button onclick="openAreaHub()"><span>▦</span>SPECIAL AREAS</button><button onclick="openSimulationLayer()"><span>⌘</span>SIMULATION</button><button onclick="openRainLab()"><span>01</span>RAIN LAB</button><button onclick="openVisualGallery()"><span>▦</span>VISUAL MAP</button><button onclick="openExpandedShipHub()"><span>◇</span>EXPLORE SHIP</button><button onclick="openArcadeDeck()"><span>🏀</span>ARCADE</button><button onclick="openCrewNetwork()"><span>👥</span>CREW NET</button><button onclick="openStaffedAreas()"><span>▦</span>STAFFED DECKS</button><button onclick="openGalacticArchive()"><span>⌘</span>ARCHIVE</button><button onclick="openResonanceDeck()"><span>◈</span>RESONANCE</button><button onclick="openEpisodeBoard()"><span>★</span>EPISODES</button><button onclick="openMegaExpansion()"><span>▦</span>DEEP SHIP</button><button onclick="openReserveCrew()"><span>80</span>80 CREW</button><button onclick="openXenoCodex()"><span>◌</span>XENO CODEX</button><button onclick="openExoticCargo()"><span>◇</span>EXOTIC CARGO</button><button onclick="ringScan()"><span>◉</span>ALIEN SCAN</button></div>
+  <div class="quickGrid"><button onclick="openRingAccess()"><span>◎</span>ENTER RING</button><button onclick="openAreaHub()"><span>▦</span>SPECIAL AREAS</button><button onclick="openSimulationLayer()"><span>⌘</span>SIMULATION</button><button onclick="openRainLab()"><span>01</span>RAIN LAB</button><button onclick="openVisualGallery()"><span>▦</span>VISUAL MAP</button><button onclick="openExpandedShipHub()"><span>◇</span>EXPLORE SHIP</button><button onclick="openArcadeDeck()"><span>🏀</span>ARCADE</button><button onclick="openCrewNetwork()"><span>👥</span>CREW NET</button><button onclick="openStaffedAreas()"><span>▦</span>STAFFED DECKS</button><button onclick="openGalacticArchive()"><span>⌘</span>ARCHIVE</button><button onclick="openResonanceDeck()"><span>◈</span>RESONANCE</button><button onclick="openEpisodeBoard()"><span>★</span>EPISODES</button><button onclick="openMegaExpansion()"><span>▦</span>DEEP SHIP</button><button onclick="openReserveCrew()"><span>80</span>80 CREW</button><button onclick="openDailyOperations()"><span>↻</span>DAILY OPS</button><button onclick="openXenoCodex()"><span>◌</span>XENO CODEX</button><button onclick="openExoticCargo()"><span>◇</span>EXOTIC CARGO</button><button onclick="ringScan()"><span>◉</span>ALIEN SCAN</button></div>
  </div>
  <div class="dashPanel screenPulse">
   <div class="dashHead"><b>LIVE SHIP DATA</b><span id="liveShipClock">00:00:00</span></div>
@@ -1529,6 +1550,16 @@ if(state.colonyInfluence===undefined)state.colonyInfluence=12;
 if(state.diplomacyScore===undefined)state.diplomacyScore=18;
 if(state.salvageSkill===undefined)state.salvageSkill=24;
 if(state.commandXP===undefined)state.commandXP=0;
+if(state.opsDay===undefined)state.opsDay=1;
+if(state.opsShift===undefined)state.opsShift=0;
+if(state.maintenanceBacklog===undefined)state.maintenanceBacklog=18;
+if(state.medicalLoad===undefined)state.medicalLoad=12;
+if(state.crewFatigue===undefined)state.crewFatigue=24;
+if(state.supplyPressure===undefined)state.supplyPressure=18;
+if(state.incidentRisk===undefined)state.incidentRisk=14;
+if(state.departmentEfficiency===undefined)state.departmentEfficiency=72;
+if(!Array.isArray(state.opsFeed))state.opsFeed=[];
+
 
 if(state.activeEpisode===undefined)state.activeEpisode=null;
 if(state.episodeStage===undefined)state.episodeStage=0;
@@ -2409,6 +2440,128 @@ function repLabel(v){return v>=50?'ALLY':v>=20?'FRIENDLY':v>=-19?'UNCERTAIN':v>=
 const megaAreas=[{"id": 0, "name": "BRIDGE AUXILIARY", "desc": "Secondary command and emergency helm", "visual": "mega1"}, {"id": 1, "name": "STAR TRACKER", "desc": "Optical navigation reference room", "visual": "mega2"}, {"id": 2, "name": "COMBAT INFORMATION", "desc": "Contact fusion and defense coordination", "visual": "mega3"}, {"id": 3, "name": "CAPTAIN READY ROOM", "desc": "Private command decisions and mission review", "visual": "mega4"}, {"id": 4, "name": "DRIVE CONE", "desc": "Main thrust machinery and vibration monitoring", "visual": "mega5"}, {"id": 5, "name": "COOLANT GALLERY", "desc": "Reactor heat transport and emergency bypass", "visual": "mega6"}, {"id": 6, "name": "POWER BUS A", "desc": "Primary distribution breakers", "visual": "mega7"}, {"id": 7, "name": "POWER BUS B", "desc": "Redundant distribution network", "visual": "mega8"}, {"id": 8, "name": "RADIATOR CONTROL", "desc": "Exterior heat rejection systems", "visual": "mega9"}, {"id": 9, "name": "RCS SERVICE", "desc": "Maneuvering thruster maintenance", "visual": "mega10"}, {"id": 10, "name": "TRAUMA BAY", "desc": "Emergency stabilization and surgery", "visual": "mega11"}, {"id": 11, "name": "DIAGNOSTICS", "desc": "Crew scanning and medical analytics", "visual": "mega12"}, {"id": 12, "name": "PHARMACY", "desc": "Medical stores and synthesis", "visual": "mega13"}, {"id": 13, "name": "BIO LAB", "desc": "Pathogen and alien sample work", "visual": "mega14"}, {"id": 14, "name": "RECOVERY WARD", "desc": "Crew healing and rehabilitation", "visual": "mega15"}, {"id": 15, "name": "HIGH-G PREP", "desc": "Burn medication and restraint readiness", "visual": "mega16"}, {"id": 16, "name": "SIGNAL CRYPTO", "desc": "Encrypted transmission analysis", "visual": "mega17"}, {"id": 17, "name": "XENOTECH LAB", "desc": "Recovered artifact research", "visual": "mega18"}, {"id": 18, "name": "MATERIALS LAB", "desc": "Hull and alien composite testing", "visual": "mega19"}, {"id": 19, "name": "RING CARTOGRAPHY", "desc": "Transit network mapping", "visual": "mega20"}, {"id": 20, "name": "AI INTERFACE", "desc": "ORION diagnostic and cognition room", "visual": "mega21"}, {"id": 21, "name": "SAMPLE VAULT", "desc": "Hazardous research storage", "visual": "mega22"}, {"id": 22, "name": "GENERAL STORES", "desc": "Everyday ship inventory", "visual": "mega23"}, {"id": 23, "name": "FOOD RESERVE", "desc": "Emergency ration storage", "visual": "mega24"}, {"id": 24, "name": "COLD STORAGE", "desc": "Temperature-controlled cargo", "visual": "mega25"}, {"id": 25, "name": "FABRICATOR BAY", "desc": "Parts and tool production", "visual": "mega1"}, {"id": 26, "name": "SALVAGE SORT", "desc": "Recovered wreckage processing", "visual": "mega2"}, {"id": 27, "name": "EXOTIC CONTAINMENT", "desc": "Alien cargo isolation", "visual": "mega3"}, {"id": 28, "name": "EVA AIRLOCK", "desc": "Exterior mission staging", "visual": "mega4"}, {"id": 29, "name": "SUIT PREP", "desc": "Suit inspection and oxygen load", "visual": "mega5"}, {"id": 30, "name": "REPAIR GANTRY", "desc": "Shuttle and drone maintenance", "visual": "mega6"}, {"id": 31, "name": "FUEL MANIFOLD", "desc": "Shuttle propellant routing", "visual": "mega7"}, {"id": 32, "name": "BOARDING LOCK", "desc": "Foreign-vessel access", "visual": "mega8"}, {"id": 33, "name": "EXTERIOR HULL", "desc": "Magnetic-walk maintenance zone", "visual": "mega9"}, {"id": 34, "name": "PDC CONTROL", "desc": "Point-defense coordination", "visual": "mega10"}, {"id": 35, "name": "DRONE SECURITY", "desc": "Automated patrol management", "visual": "mega11"}, {"id": 36, "name": "EMERGENCY LOCKDOWN", "desc": "Bulkhead and access control", "visual": "mega12"}, {"id": 37, "name": "HULL DEFENSE", "desc": "Boarding-threat response", "visual": "mega13"}, {"id": 38, "name": "SENSOR SECURITY", "desc": "Electronic intrusion monitoring", "visual": "mega14"}, {"id": 39, "name": "ARMORY CONTROL", "desc": "Controlled equipment inventory", "visual": "mega15"}, {"id": 40, "name": "WATER RECYCLING", "desc": "Closed-loop water processing", "visual": "mega16"}, {"id": 41, "name": "AIR PROCESSING", "desc": "Atmosphere scrubbing and oxygen flow", "visual": "mega17"}, {"id": 42, "name": "CREW MARKET", "desc": "Barter and personal supplies", "visual": "mega18"}, {"id": 43, "name": "CHAPEL OF STARS", "desc": "Quiet interbelief reflection room", "visual": "mega19"}, {"id": 44, "name": "EDUCATION BAY", "desc": "Crew training and technical learning", "visual": "mega20"}, {"id": 45, "name": "CHILDCARE MODULE", "desc": "Family-support habitat section", "visual": "mega21"}, {"id": 46, "name": "RING PHASE ROOM", "desc": "Transit-field instrumentation", "visual": "mega22"}, {"id": 47, "name": "BETWEEN LISTENING POST", "desc": "Impossible-signal observation", "visual": "mega23"}];
 const reserveCrew=[{"name": "Ari Voss", "role": "Systems Tech", "shift": "ALPHA", "skill": 60}, {"name": "Bea Renn", "role": "Deckhand", "shift": "BETA", "skill": 67}, {"name": "Ciro Kade", "role": "Sensor Tech", "shift": "GAMMA", "skill": 74}, {"name": "Dena Mora", "role": "Medic", "shift": "ALPHA", "skill": 81}, {"name": "Eli Lin", "role": "Engineer", "shift": "BETA", "skill": 88}, {"name": "Fara Vale", "role": "Research Tech", "shift": "GAMMA", "skill": 95}, {"name": "Galen Sato", "role": "Security Officer", "shift": "ALPHA", "skill": 66}, {"name": "Hana Rell", "role": "Pilot", "shift": "BETA", "skill": 73}, {"name": "Iris Quill", "role": "Cargo Tech", "shift": "GAMMA", "skill": 80}, {"name": "Jace Holt", "role": "Hydroponics Tech", "shift": "ALPHA", "skill": 87}, {"name": "Kira Pike", "role": "Comms Tech", "shift": "BETA", "skill": 94}, {"name": "Lio Sol", "role": "EVA Specialist", "shift": "GAMMA", "skill": 65}, {"name": "Maren Noor", "role": "Systems Tech", "shift": "ALPHA", "skill": 72}, {"name": "Noa Arden", "role": "Deckhand", "shift": "BETA", "skill": 79}, {"name": "Oren Dane", "role": "Sensor Tech", "shift": "GAMMA", "skill": 86}, {"name": "Pia Mercer", "role": "Medic", "shift": "ALPHA", "skill": 93}, {"name": "Quin Voss", "role": "Engineer", "shift": "BETA", "skill": 64}, {"name": "Ravi Renn", "role": "Research Tech", "shift": "GAMMA", "skill": 71}, {"name": "Sena Kade", "role": "Security Officer", "shift": "ALPHA", "skill": 78}, {"name": "Tobin Mora", "role": "Pilot", "shift": "BETA", "skill": 85}, {"name": "Uma Lin", "role": "Cargo Tech", "shift": "GAMMA", "skill": 92}, {"name": "Vik Vale", "role": "Hydroponics Tech", "shift": "ALPHA", "skill": 63}, {"name": "Wren Sato", "role": "Comms Tech", "shift": "BETA", "skill": 70}, {"name": "Xia Rell", "role": "EVA Specialist", "shift": "GAMMA", "skill": 77}, {"name": "Yara Quill", "role": "Systems Tech", "shift": "ALPHA", "skill": 84}, {"name": "Zed Holt", "role": "Deckhand", "shift": "BETA", "skill": 91}, {"name": "Amon Pike", "role": "Sensor Tech", "shift": "GAMMA", "skill": 62}, {"name": "Bela Sol", "role": "Medic", "shift": "ALPHA", "skill": 69}, {"name": "Cade Noor", "role": "Engineer", "shift": "BETA", "skill": 76}, {"name": "Dori Arden", "role": "Research Tech", "shift": "GAMMA", "skill": 83}, {"name": "Esme Dane", "role": "Security Officer", "shift": "ALPHA", "skill": 90}, {"name": "Fenn Mercer", "role": "Pilot", "shift": "BETA", "skill": 61}, {"name": "Gia Voss", "role": "Cargo Tech", "shift": "GAMMA", "skill": 68}, {"name": "Hiro Renn", "role": "Hydroponics Tech", "shift": "ALPHA", "skill": 75}, {"name": "Ines Kade", "role": "Comms Tech", "shift": "BETA", "skill": 82}, {"name": "Jori Mora", "role": "EVA Specialist", "shift": "GAMMA", "skill": 89}, {"name": "Kato Lin", "role": "Systems Tech", "shift": "ALPHA", "skill": 60}, {"name": "Lumi Vale", "role": "Deckhand", "shift": "BETA", "skill": 67}, {"name": "Miro Sato", "role": "Sensor Tech", "shift": "GAMMA", "skill": 74}, {"name": "Nell Rell", "role": "Medic", "shift": "ALPHA", "skill": 81}, {"name": "Orin Quill", "role": "Engineer", "shift": "BETA", "skill": 88}, {"name": "Pax Holt", "role": "Research Tech", "shift": "GAMMA", "skill": 95}, {"name": "Rumi Pike", "role": "Security Officer", "shift": "ALPHA", "skill": 66}, {"name": "Seth Sol", "role": "Pilot", "shift": "BETA", "skill": 73}, {"name": "Tavi Noor", "role": "Cargo Tech", "shift": "GAMMA", "skill": 80}, {"name": "Uri Arden", "role": "Hydroponics Tech", "shift": "ALPHA", "skill": 87}, {"name": "Vera Dane", "role": "Comms Tech", "shift": "BETA", "skill": 94}, {"name": "Wynn Mercer", "role": "EVA Specialist", "shift": "GAMMA", "skill": 65}];
 
+
+function opsLog(msg){
+ if(!Array.isArray(state.opsFeed))state.opsFeed=[];
+ state.opsFeed.unshift('D'+state.opsDay+' / '+msg);
+ state.opsFeed=state.opsFeed.slice(0,10);
+}
+function openDailyOperations(){
+ let shift=['ALPHA','BETA','GAMMA'][state.opsShift%3];
+ let body=`<div class="loreHero" style="background-image:url('${megaVisuals.megaHero}')"><div class="cap"><b>DAILY SHIP OPERATIONS</b><span>DAY ${state.opsDay} / ${shift} WATCH / CASCADING SYSTEM MODEL</span></div></div>
+ <div class="cascadeGrid">
+  <div><b>${state.departmentEfficiency}%</b><span>EFFICIENCY</span></div>
+  <div><b>${state.crewFatigue}%</b><span>FATIGUE</span></div>
+  <div><b>${state.maintenanceBacklog}%</b><span>BACKLOG</span></div>
+  <div><b>${state.incidentRisk}%</b><span>INCIDENT RISK</span></div>
+  <div><b>${state.medicalLoad}%</b><span>MEDICAL LOAD</span></div>
+  <div><b>${state.supplyPressure}%</b><span>SUPPLY PRESSURE</span></div>
+  <div><b>${state.staffCoverage}%</b><span>STAFF COVERAGE</span></div>
+  <div><b>${state.crewCohesion}%</b><span>COHESION</span></div>
+ </div>
+ <div class="opsGrid">
+  <div class="opsCard"><b>RUN ENGINEERING WATCH</b><p>Reduces backlog and reactor risk, but raises fatigue and supply use.</p><button onclick="runOps('engineering')">RUN WATCH</button></div>
+  <div class="opsCard"><b>RUN MEDICAL WATCH</b><p>Lowers medical load and fatigue penalties, costs supplies.</p><button onclick="runOps('medical')">RUN WATCH</button></div>
+  <div class="opsCard"><b>RUN SCIENCE WATCH</b><p>Raises research and signal knowledge, but increases power demand.</p><button onclick="runOps('science')">RUN WATCH</button></div>
+  <div class="opsCard"><b>RUN SECURITY WATCH</b><p>Lowers incident risk, increases morale stability, uses crew rest.</p><button onclick="runOps('security')">RUN WATCH</button></div>
+  <div class="opsCard"><b>RUN LOGISTICS WATCH</b><p>Lowers supply pressure, improves food and cargo readiness.</p><button onclick="runOps('logistics')">RUN WATCH</button></div>
+  <div class="opsCard"><b>RUN CREW RECOVERY</b><p>Restores fatigue and cohesion but leaves fewer people on duty.</p><button onclick="runOps('recovery')">RUN WATCH</button></div>
+ </div>
+ <div class="sectionJump"><button onclick="advanceShift()">ADVANCE SHIFT</button><button onclick="advanceDay()">ADVANCE DAY</button><button onclick="openCrewNetwork()">CREW NETWORK</button></div>
+ <div class="opsTimeline">${(state.opsFeed.length?state.opsFeed:['No daily operations logged yet.']).map(x=>`<div>${x}</div>`).join('')}</div>
+ ${globalLiveBlock('DAILY OPERATIONS TELEMETRY')}`;
+ openSheet('DAILY OPERATIONS',body);
+}
+function runOps(type){
+ let eff=state.departmentEfficiency/100;
+ if(type==='engineering'){
+   state.maintenanceBacklog=clamp(state.maintenanceBacklog-(6+Math.round(4*eff)),0,100);
+   state.reactorTemp=clamp(state.reactorTemp-3,0,100);
+   state.power=clamp(state.power+2,0,100);
+   state.crewFatigue=clamp(state.crewFatigue+4,0,100);
+   state.supplyPressure=clamp(state.supplyPressure+2,0,100);
+   opsLog('Engineering watch cut backlog; fatigue rose.');
+ }
+ if(type==='medical'){
+   state.medicalLoad=clamp(state.medicalLoad-7,0,100);
+   state.crewFatigue=clamp(state.crewFatigue-3,0,100);
+   state.food=clamp(state.food-1,0,100);
+   state.supplyPressure=clamp(state.supplyPressure+3,0,100);
+   opsLog('Medical watch stabilized crew health.');
+ }
+ if(type==='science'){
+   state.research+=6;
+   state.power=clamp(state.power-3,0,100);
+   state.sensorConfidence=clamp(state.sensorConfidence+4,0,100);
+   state.dataNoise=clamp(state.dataNoise-2,0,100);
+   state.crewFatigue=clamp(state.crewFatigue+2,0,100);
+   opsLog('Science watch improved sensor confidence and research.');
+ }
+ if(type==='security'){
+   state.incidentRisk=clamp(state.incidentRisk-6,0,100);
+   state.securityLevel=clamp(state.securityLevel+3,0,100);
+   state.morale=clamp(state.morale+1,0,100);
+   state.crewFatigue=clamp(state.crewFatigue+3,0,100);
+   opsLog('Security watch reduced incident risk.');
+ }
+ if(type==='logistics'){
+   state.supplyPressure=clamp(state.supplyPressure-7,0,100);
+   state.food=clamp(state.food+2,0,100);
+   state.storageOrder=clamp(state.storageOrder+4,0,100);
+   state.crewFatigue=clamp(state.crewFatigue+2,0,100);
+   opsLog('Logistics watch eased supply pressure.');
+ }
+ if(type==='recovery'){
+   state.crewFatigue=clamp(state.crewFatigue-10,0,100);
+   state.crewCohesion=clamp(state.crewCohesion+3,0,100);
+   state.crewRest=clamp(state.crewRest+6,0,100);
+   state.staffCoverage=clamp(state.staffCoverage-3,0,100);
+   opsLog('Crew recovery improved rest but reduced coverage.');
+ }
+ recalcCascade();
+ render();openDailyOperations();
+}
+function recalcCascade(){
+ let penalty=(state.crewFatigue*.28)+(state.maintenanceBacklog*.22)+(state.medicalLoad*.16)+(state.supplyPressure*.14)+(state.incidentRisk*.20);
+ state.departmentEfficiency=clamp(Math.round(100-penalty/2),20,100);
+ state.staffCoverage=clamp(Math.round((state.crewRest+state.crewCohesion+state.departmentEfficiency)/3),20,100);
+ if(state.crewFatigue>70)state.morale=clamp(state.morale-2,0,100);
+ if(state.maintenanceBacklog>65)state.engIntegrity=clamp(state.engIntegrity-2,0,100);
+ if(state.medicalLoad>55)state.medReadiness=clamp(state.medReadiness-3,0,100);
+ if(state.supplyPressure>60){state.food=clamp(state.food-2,0,100);state.waterReserve=clamp(state.waterReserve-2,0,100);}
+ if(state.incidentRisk>55 && Math.random()<.35){
+   let events=['power bus trip','crew injury','sensor blackout','pressure alarm','cargo restraint failure','RCS fault'];
+   let e=events[Math.floor(Math.random()*events.length)];
+   pushLiveEvent('WARN','Daily operations incident: '+e+'.');
+   state.medicalLoad=clamp(state.medicalLoad+4,0,100);
+   state.maintenanceBacklog=clamp(state.maintenanceBacklog+5,0,100);
+   opsLog('Incident: '+e+'.');
+ }
+}
+function advanceShift(){
+ state.opsShift=(state.opsShift+1)%3;
+ state.crewFatigue=clamp(state.crewFatigue+2,0,100);
+ state.incidentRisk=clamp(state.incidentRisk+1,0,100);
+ state.staffCoverage=clamp(state.staffCoverage+(Math.random()<.5?-1:1),0,100);
+ recalcCascade();
+ opsLog('Shift advanced to '+['ALPHA','BETA','GAMMA'][state.opsShift]+'.');
+ render();openDailyOperations();
+}
+function advanceDay(){
+ state.opsDay++;
+ state.day=(state.day||1)+1;
+ state.maintenanceBacklog=clamp(state.maintenanceBacklog+4,0,100);
+ state.medicalLoad=clamp(state.medicalLoad+2,0,100);
+ state.supplyPressure=clamp(state.supplyPressure+3,0,100);
+ state.incidentRisk=clamp(state.incidentRisk+2,0,100);
+ state.food=clamp(state.food-2,0,100);
+ state.waterReserve=clamp(state.waterReserve-2,0,100);
+ state.crewRest=clamp(state.crewRest-2,0,100);
+ recalcCascade();
+ opsLog('New day began. Baseline wear and consumption applied.');
+ render();openDailyOperations();
+}
+
 function openMegaExpansion(){
  let body=`<div class="loreHero" style="background-image:url('${megaVisuals.megaHero}')"><div class="cap"><b>ARK-9 DEEP SHIP DIRECTORY</b><span>${megaAreas.length} ADDITIONAL SUBSECTIONS / POPULATION NETWORK EXPANDED</span></div></div>
  <div class="crewNetStats"><div><b>${expandedCrew.length+reserveCrew.length}</b><span>NAMED CREW</span></div><div><b>${megaAreas.length}</b><span>NEW SUBAREAS</span></div><div><b>${state.commandXP}</b><span>COMMAND XP</span></div><div><b>${state.diplomacyScore}</b><span>DIPLOMACY</span></div><div><b>${state.salvageSkill}</b><span>SALVAGE</span></div></div>
@@ -2427,7 +2580,7 @@ function openMegaArea(id){
   <button onclick="megaOperate(${id},'event')">CHECK LOCAL EVENT<small>Generate a section-specific situation</small></button>
   <button onclick="megaOperate(${id},'story')">SEARCH FOR STORY CLUE<small>Connect this room to the campaign</small></button>
  </div>${globalLiveBlock(a.name+' TELEMETRY')}
- <div class="sectionJump"><button onclick="openMegaExpansion()">DEEP DIRECTORY</button><button onclick="openCrewNetwork()">CREW NETWORK</button></div>`;
+ <div class="sectionJump"><button onclick="openMegaExpansion()">DEEP DIRECTORY</button><button onclick="openCrewNetwork()">CREW NETWORK</button><button onclick="openExpandedShipHub()">EXPLORE ARK-9</button><button onclick="openDailyOperations()">DAILY OPS</button></div>`;
  openSheet(a.name,body);
 }
 function megaOperate(id,type){
@@ -2441,7 +2594,7 @@ function megaOperate(id,type){
 function openReserveCrew(){
  let body=`<div class="loreHero" style="background-image:url('${megaVisuals.mega5}')"><div class="cap"><b>EXPANDED CREW MANIFEST</b><span>${expandedCrew.length+reserveCrew.length} NAMED PERSONNEL</span></div></div>
  <div class="megaCrew">${reserveCrew.map(c=>`<div><b>${c.name}</b><span>${c.role}</span><span>${c.shift} WATCH · ${c.skill}% SKILL</span></div>`).join('')}</div>
- <div class="sectionJump"><button onclick="openCrewNetwork()">CORE CREW</button><button onclick="openMegaExpansion()">DEEP SHIP</button></div>`;
+ <div class="sectionJump"><button onclick="openCrewNetwork()">CORE CREW</button><button onclick="openMegaExpansion()">DEEP SHIP</button><button onclick="openExpandedShipHub()">EXPLORE ARK-9</button><button onclick="openDailyOperations()">DAILY OPS</button></div>`;
  openSheet('EXPANDED CREW MANIFEST',body);
 }
 
@@ -2740,6 +2893,7 @@ function openExpandedShipHub(){
  body+=`<div class="sectionJump"><button onclick="openCrewNetwork()">CREW NETWORK</button><button onclick="openStaffedAreas()">18 STAFFED SECTIONS</button></div>`;
  body+=`<div class="sectionJump"><button onclick="openGalacticArchive()">GALACTIC ARCHIVE</button><button onclick="openResonanceDeck()">RESONANCE DECK</button><button onclick="openEpisodeBoard()">MISSION EPISODES</button></div>`;
  body+=`<div class="sectionJump"><button onclick="openMegaExpansion()">48 DEEP SHIP AREAS</button><button onclick="openReserveCrew()">80-PERSON CREW</button></div>`;
+ body+=`<div class="sectionJump"><button onclick="openDailyOperations()">DAILY OPERATIONS</button><button onclick="openExpandedShipHub()">REFRESH EXPLORE ARK-9</button></div>`;
  openSheet('ARK-9 SHIP NETWORK',body);
 }
 
@@ -3411,7 +3565,7 @@ function openSystem(){openSheet('⚙ SYSTEM / SETTINGS',`
  <div class="settingRow"><div><b>UI DENSITY</b><small>Rich keeps all dashboard data visible; compact can be used later for smaller screens.</small></div><select onchange="setUIDensity(this.value)"><option value="rich" ${state.uiDensity==='rich'?'selected':''}>RICH</option><option value="compact" ${state.uiDensity==='compact'?'selected':''}>COMPACT</option></select></div>
 
  <div class="actiongrid">
-  ${action('SIMULATION LAYER','Enter the synthetic-reality gameplay system','openSimulationLayer()')}${action('MATRIX RAIN LAB','Program letters and words into the falling code','openRainLab()')}${action('VISUAL DIRECTORY','Image-driven access to every major area','openVisualGallery()')}${action('EXPLORE ARK-9','Open the deeper deck exploration layer','openShipExploration()')}${action('ARCADE DECK','Play gravity basketball and crew league','openArcadeDeck()')}${action('CREW NETWORK','32 crew, watches, skills and roles','openCrewNetwork()')}${action('STAFFED SECTIONS','18 populated working ship areas','openStaffedAreas()')}${action('GALACTIC ARCHIVE','History, factions and the truth behind ARK-9','openGalacticArchive()')}${action('RESONANCE DECK','Train probability, memory and consciousness-field systems','openResonanceDeck()')}${action('MISSION EPISODES','Generate story missions using every ship department','openEpisodeBoard()')}${action('DEEP SHIP DIRECTORY','48 additional operational subsections','openMegaExpansion()')}${action('EXPANDED CREW','Browse the larger 80-person named manifest','openReserveCrew()')}
+  ${action('SIMULATION LAYER','Enter the synthetic-reality gameplay system','openSimulationLayer()')}${action('MATRIX RAIN LAB','Program letters and words into the falling code','openRainLab()')}${action('VISUAL DIRECTORY','Image-driven access to every major area','openVisualGallery()')}${action('EXPLORE ARK-9','Open the deeper deck exploration layer','openShipExploration()')}${action('ARCADE DECK','Play gravity basketball and crew league','openArcadeDeck()')}${action('CREW NETWORK','32 crew, watches, skills and roles','openCrewNetwork()')}${action('STAFFED SECTIONS','18 populated working ship areas','openStaffedAreas()')}${action('GALACTIC ARCHIVE','History, factions and the truth behind ARK-9','openGalacticArchive()')}${action('RESONANCE DECK','Train probability, memory and consciousness-field systems','openResonanceDeck()')}${action('MISSION EPISODES','Generate story missions using every ship department','openEpisodeBoard()')}${action('DEEP SHIP DIRECTORY','48 additional operational subsections','openMegaExpansion()')}${action('EXPANDED CREW','Browse the larger 80-person named manifest','openReserveCrew()')}${action('DAILY OPERATIONS','Run watches and cascading ship operations','openDailyOperations()')}
   ${action('SAVE GAME','Write current progress immediately','manualSave()')}
   ${action('RETURN TO FLIGHT DECK','Close menus and move to flight position','closeSheet();openDeck()')}
   ${action('NEW GAME','Erase current save and restart','resetGame()')}
@@ -3430,6 +3584,8 @@ setTimeout(()=>{
  if(intro)intro.style.display='flex';
 },0);
 </script>
+
+<button class="exploreReturn" onclick="openExpandedShipHub()">EXPLORE ARK-9</button>
 </body>
 </html>
 
