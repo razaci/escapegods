@@ -1123,6 +1123,60 @@ repeating-linear-gradient(90deg,rgba(50,255,120,.09) 0 1px,transparent 1px 22px)
 .qualityRow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.qualityRow div{border:1px solid #31434b;padding:5px;text-align:center}.qualityRow b{display:block;font:900 8px ui-monospace,monospace}.qualityRow span{font:6px ui-monospace,monospace;color:#82969f}
 @media(max-width:560px){.homePrimary,.skillTree,.componentGrid,.scheduleGrid,.cityMap{grid-template-columns:1fr}}
 
+
+/* ===== PERSISTENT LORE HUB ===== */
+#loreHome{display:block!important;z-index:1200!important}
+#loreHome.hide{display:block!important}
+#loreHome.dimmed .loreHomeShade{filter:saturate(.82) brightness(.72)}
+#overlay{z-index:5000!important}
+#flightDeck{z-index:5200!important}
+.cinema{z-index:5400!important}
+#introScreen{z-index:11000!important}
+.mainMenuReturn,.exploreReturn{z-index:5600!important}
+.hubBackBtn{position:fixed;right:10px;bottom:66px;z-index:5700;border:1px solid #63c9ed;background:rgba(5,21,28,.92);color:#f2fbff;padding:10px 12px;border-radius:4px;font:900 7px ui-monospace,monospace;box-shadow:0 0 14px rgba(77,194,235,.25)}
+.homeVisualStrip{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-top:12px;max-width:860px}
+.homeVisualStrip div{height:90px;background-size:cover;background-position:center;border:1px solid #376070;position:relative}
+.homeVisualStrip span{position:absolute;left:4px;right:4px;bottom:4px;background:rgba(2,8,11,.78);padding:3px;font:800 6px ui-monospace,monospace}
+@media(max-width:700px){.homeVisualStrip{grid-template-columns:repeat(3,1fr)}}
+
+
+/* ===== SHIP OPERATIONS CORE / MASTER AREA DIRECTORY ===== */
+.opsCore{border:1px solid #4a6672;background:#071115;margin:8px 0;padding:8px;border-radius:4px}
+.opsCore h3{margin:0 0 5px;font:900 10px ui-monospace,monospace;color:#eaf8fc}
+.opsCore p{font:7px/1.45 ui-monospace,monospace;color:#8ea2ab;margin:3px 0}
+.coreGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:7px}
+.coreCell{border:1px solid #30434b;background:#0b161a;padding:6px}
+.coreCell b{display:block;font:900 8px ui-monospace,monospace}.coreCell span{font:6px ui-monospace,monospace;color:#82959e}
+.depGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin:7px 0}
+.depCard{border:1px solid #344953;background:#0b1519;padding:7px}
+.depCard b{font:900 8px ui-monospace,monospace}.depCard p{font:7px/1.4 ui-monospace,monospace;color:#8699a1}
+.areaDirectory{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:8px 0}
+.areaDirectory .entry{border:1px solid #344b55;background:#0a1418;overflow:hidden}
+.areaDirectory .thumb{height:88px;background-size:cover;background-position:center}
+.areaDirectory .txt{padding:6px}.areaDirectory b{font:900 8px ui-monospace,monospace}.areaDirectory p{font:7px/1.4 ui-monospace,monospace;color:#869aa3}
+.areaDirectory button{width:100%;border:1px solid #4b626c;background:#14242b;color:#eef8fb;padding:8px;font:900 7px ui-monospace,monospace}
+.incident{border:1px solid #704e3b;background:#19110d;padding:7px;margin:6px 0}.incident b{font:900 8px ui-monospace,monospace}.incident p{font:7px/1.4 ui-monospace,monospace;color:#c6ab98}
+.flowArrow{font:900 7px ui-monospace,monospace;color:#8ed8ee;margin:3px 0}
+@media(max-width:620px){.coreGrid{grid-template-columns:repeat(2,1fr)}.depGrid,.areaDirectory{grid-template-columns:1fr}}
+
+
+/* ===== LIVING SHIP / PHYSICAL GAMEPLAY PASS ===== */
+.deckMap{position:relative;height:300px;border:1px solid #45616d;background:#061014;overflow:hidden;border-radius:5px;margin:8px 0}
+.deckMap:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 49%,rgba(80,180,220,.08) 50%,transparent 51%),linear-gradient(0deg,transparent 49%,rgba(80,180,220,.08) 50%,transparent 51%);background-size:42px 42px}
+.deckRoom{position:absolute;border:1px solid #4b6570;background:rgba(13,27,33,.94);padding:7px;color:#eef8fb;font:900 7px ui-monospace,monospace;border-radius:4px;min-width:82px;text-align:center}
+.deckRoom small{display:block;color:#7f959f;font:6px ui-monospace,monospace;margin-top:2px}.deckRoom.active{box-shadow:0 0 16px #63d8ff;border-color:#73dfff}
+.playerDot{position:absolute;width:18px;height:18px;border-radius:50%;border:2px solid #c9f7ff;background:#2aa7cf;box-shadow:0 0 12px #5ddcff;transition:left .35s,top .35s;z-index:5}
+.flightCanvasWrap{border:1px solid #47616b;background:#020608;margin:8px 0;border-radius:5px;overflow:hidden}
+#flightGameCanvas{width:100%;height:320px;display:block;background:#020608}
+.flightHud{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:6px}.flightHud div{border:1px solid #33464f;background:#0a1418;padding:5px;text-align:center}.flightHud b{display:block;font:900 8px ui-monospace,monospace}.flightHud span{font:6px ui-monospace,monospace;color:#84979f}
+.flightBtns{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:6px}.flightBtns button{padding:10px;border:1px solid #4a6470;background:#14252c;color:#eef8fb;font:900 7px ui-monospace,monospace}
+.invGrid,.lootGrid,.crewLiveGrid,.economyGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:7px 0}
+.invCard,.lootCard,.crewLiveCard,.economyCard{border:1px solid #344952;background:#0a1418;padding:7px}.invCard b,.lootCard b,.crewLiveCard b,.economyCard b{font:900 8px ui-monospace,monospace}.invCard p,.lootCard p,.crewLiveCard p,.economyCard p{font:7px/1.4 ui-monospace,monospace;color:#8499a2}
+.orionPanel{border:1px solid #447e94;background:linear-gradient(90deg,#06131a,#0a1c24);padding:8px;margin:8px 0}.orionPanel b{font:900 9px ui-monospace,monospace;color:#a5e7ff}.orionPanel p{font:7px/1.5 ui-monospace,monospace;color:#9db3bd}
+.situationBtn{display:block;width:100%;max-width:500px;border:1px solid #6fe2ff;background:rgba(10,40,50,.92);color:#f4fbff;padding:15px;margin:10px 0;font:900 10px ui-monospace,monospace;box-shadow:0 0 18px rgba(86,209,245,.25)}
+.emergencyFlash{animation:eflash 1s infinite}@keyframes eflash{0%,100%{box-shadow:0 0 0 rgba(255,95,70,0)}50%{box-shadow:0 0 20px rgba(255,95,70,.7)}}
+@media(max-width:620px){.flightHud{grid-template-columns:repeat(2,1fr)}.flightBtns{grid-template-columns:repeat(2,1fr)}.invGrid,.lootGrid,.crewLiveGrid,.economyGrid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -1643,6 +1697,42 @@ if(state.colonyInfluence===undefined)state.colonyInfluence=12;
 if(state.diplomacyScore===undefined)state.diplomacyScore=18;
 if(state.salvageSkill===undefined)state.salvageSkill=24;
 if(state.commandXP===undefined)state.commandXP=0;
+if(state.playerDeck===undefined)state.playerDeck='A';
+if(state.playerRoom===undefined)state.playerRoom='COMMAND HUB';
+if(!state.personalInventory)state.personalInventory=[{name:'CAPTAIN DATAPAD',type:'tool',qty:1},{name:'ACCESS CARD A7',type:'key',qty:1},{name:'FIELD SCANNER',type:'tool',qty:1},{name:'MED INJECTOR',type:'med',qty:1}];
+if(!Array.isArray(state.lootItems))state.lootItems=[];
+if(!state.worldPrices)state.worldPrices={};
+if(state.flightX===undefined)state.flightX=50;
+if(state.flightY===undefined)state.flightY=50;
+if(state.flightVX===undefined)state.flightVX=0;
+if(state.flightVY===undefined)state.flightVY=0;
+if(state.flightHeading===undefined)state.flightHeading=0;
+if(!state.flightEncounter)state.flightEncounter={type:'NONE',distance:0,active:false};
+if(state.homeSituation===undefined)state.homeSituation='STABLE';
+if(!Array.isArray(state.captainHistory))state.captainHistory=[];
+if(state.lastLogDay===undefined)state.lastLogDay=state.day||1;
+if(!state.orionTip)state.orionTip='ARK-9 systems nominal. Choose a duty, mission, profession, or destination.';
+if(!state.crewLive)state.crewLive={};
+if(state.deckEmergency===undefined)state.deckEmergency=null;
+
+if(state.shipMinutes===undefined)state.shipMinutes=480;
+if(state.shiftIndex===undefined)state.shiftIndex=0;
+if(state.engineeringOutput===undefined)state.engineeringOutput=72;
+if(state.medicalCapacity===undefined)state.medicalCapacity=74;
+if(state.logisticsCapacity===undefined)state.logisticsCapacity=68;
+if(state.flightReadiness===undefined)state.flightReadiness=70;
+if(state.researchCapacity===undefined)state.researchCapacity=64;
+if(state.securityCapacity===undefined)state.securityCapacity=66;
+if(state.economyHealth===undefined)state.economyHealth=60;
+if(state.havenSupport===undefined)state.havenSupport=42;
+if(state.shipStress===undefined)state.shipStress=18;
+if(state.crewAvailability===undefined)state.crewAvailability=76;
+if(!Array.isArray(state.shipIncidents))state.shipIncidents=[];
+if(!state.departmentAssignments)state.departmentAssignments={engineering:'Mara Venn',medical:'Dr. Sato',flight:'Ivo Rell',security:'Bram Holt',research:'Nyx Calder',logistics:'Kei Mora'};
+if(!state.areaVisits)state.areaVisits={};
+if(state.lastCoreTick===undefined)state.lastCoreTick=0;
+if(state.autoCore===undefined)state.autoCore=true;
+
 if(!state.skillPoints)state.skillPoints={pilot:0,engineer:0,medic:0,merchant:0,explorer:0,security:0,performer:0,diplomat:0};
 if(!state.skillUnlocks)state.skillUnlocks={};
 if(!state.shipComponents)state.shipComponents={reactor:{name:'ARK CORE I',q:62,dur:88},engine:{name:'HELIOS DRIVE',q:66,dur:81},shield:{name:'AEGIS GRID',q:58,dur:76},sensor:{name:'LONG EYE',q:71,dur:84},rcs:{name:'VECTOR RCS',q:64,dur:79},computer:{name:'ORION BUS',q:75,dur:92}};
@@ -2340,12 +2430,13 @@ function render(){
  document.getElementById('viewTarget').textContent='TARGET: '+state.target;document.getElementById('rangeText').textContent='RANGE '+state.range;renderDashboard();save();
 }
 function openSheet(title,body){
+ leaveLoreHomeForArea();refreshHomeSituation();
  document.getElementById('sheetTitle').textContent=title;
- let tail=(title==='ARK-9 SHIP NETWORK'||title==='MAIN MENU')?'':`<div class="sectionJump"><button onclick="openExploreArk9()">EXPLORE ARK-9</button><button onclick="openElevator()">TRANSIT LIFT</button><button onclick="openMainMenu()">MENU</button></div>`;
- document.getElementById('sheetBody').innerHTML=(title==='MISSION DIRECTOR'?body:missionDirectorHTML()+body)+tail;
+ let tail=`<div class="sectionJump"><button onclick="returnToLoreHome()">ARK-9 HOME</button><button onclick="openPhysicalDeck()">PHYSICAL SHIP</button><button onclick="openAllAreas()">ALL AREAS</button><button onclick="openShipOpsCore()">OPS CORE</button><button onclick="openElevator()">TRANSIT LIFT</button></div>`;
+ document.getElementById('sheetBody').innerHTML=(title==='MISSION DIRECTOR'?body:missionDirectorHTML()+opsCoreHTML()+body)+tail;
  document.getElementById('overlay').classList.add('show');
 }
-function closeSheet(){document.getElementById('overlay').classList.remove('show')}
+function closeSheet(){try{stopPlayableFlight()}catch(e){}document.getElementById('overlay').classList.remove('show');returnToLoreHome()}
 function action(n,d,f){return `<button class="action" onclick="${f}"><strong>${n}</strong><span>${d}</span></button>`}
 
 const crewZones=[
@@ -3057,27 +3148,8 @@ function closeAllOverlays(){
   try{stopFlightTelemetry();}catch(e){}
 }
 function goHome(){closeAllOverlays();render();window.scrollTo({top:0,behavior:'smooth'});}
-function openMainMenu(){
- let body=`<div class="sectionJump"><button onclick="showLoreHome()">LORE HOME</button><button onclick="openLivingGalaxy()">LIVING GALAXY</button></div><div class="commandBoard"><h3>ARK-9 COMMAND MENU</h3><p>The game now follows one chain: stabilize the ship → investigate the impossible signal → prepare a boarding team → cross the Ring → survive faction pressure → enter Black Transit → decide what ARK-9 becomes.</p></div>
- <div class="opsGrid">
-  <div class="opsCard"><b>CONTINUE MAIN STORY</b><p>Go directly to the current required operation.</p><button onclick="directorGo()">CONTINUE</button></div>
-  <div class="opsCard"><b>EXPLORE ARK-9</b><p>Whole ship, with priority areas marked by the current mission.</p><button onclick="openExploreArk9()">EXPLORE</button></div>
-  <div class="opsCard"><b>DAILY OPERATIONS</b><p>Run crew watches. Their effects feed ship readiness and story requirements.</p><button onclick="openDailyOperations()">OPEN</button></div>
-  <div class="opsCard"><b>MISSION DIRECTOR</b><p>See the campaign chain, requirements and why each system matters.</p><button onclick="openMissionDirector()">OPEN</button></div>
-  <div class="opsCard"><b>CREW NETWORK</b><p>People, shifts, readiness and departmental staffing.</p><button onclick="openCrewNetwork()">OPEN</button></div>
-  <div class="opsCard"><b>FLIGHT CONTROL</b><p>Fly ARK-9 to real destinations with fuel, navigation and hull risk.</p><button onclick="openFlightGame()">FLY SHIP</button></div>
-  <div class="opsCard"><b>TRANSIT ELEVATOR</b><p>Operate the ship lift between working decks.</p><button onclick="openElevator()">OPERATE LIFT</button></div>
-  <div class="opsCard"><b>MEDICAL BAY</b><p>Treat patients and run the medical device.</p><button onclick="openMedicalBayGame()">OPERATE MEDICAL</button></div>
-  <div class="opsCard"><b>BAZAAR</b><p>Trade only after flying to the Free Belt Bazaar.</p><button onclick="openBazaar()">OPEN MARKET</button></div>
-  <div class="opsCard"><b>LIVING GALAXY</b><p>Worlds, professions, missions, crafting, resources, settlement and economy.</p><button onclick="openLivingGalaxy()">ENTER SANDBOX</button></div>
-  <div class="opsCard"><b>SHIPWRIGHT</b><p>Installed components, repairs, experiments and resource quality.</p><button onclick="openShipwright()">OPEN BAY</button></div>
-  <div class="opsCard"><b>HAVEN-9 MAP</b><p>Build and enter physical settlement facilities.</p><button onclick="openHavenMap()">OPEN MAP</button></div>
-  <div class="opsCard"><b>CREW SCHEDULES</b><p>See where the crew are working and living.</p><button onclick="openCrewSchedules()">VIEW CREW</button></div>
-  <div class="opsCard"><b>SPACE DUTY</b><p>Continuous patrol, rescue and salvage encounters.</p><button onclick="openDutyBoard()">START DUTY</button></div>
-  <div class="opsCard"><b>GALACTIC ARCHIVE</b><p>Backstory, factions, Resonance and evidence.</p><button onclick="openGalacticArchive()">OPEN</button></div>
- </div>`;
- openSheet('MAIN MENU',body);
-}
+function openMainMenu(){returnToLoreHome()}
+
 const corePhases=[
  {title:'PHASE 1 // WAKE THE SHIP',desc:'ARK-9 survived the navigation blackout, but the crew cannot chase the signal until basic operations are stable.',req:[['engineering',1,'Engineering watch'],['medical',1,'Medical watch'],['logistics',1,'Logistics watch']],go:"openDailyOperations()"},
  {title:'PHASE 2 // TRACE THE IMPOSSIBLE SIGNAL',desc:'A vessel carrying ARK-9 identifiers is transmitting from ahead. Prove it is real before committing the ship.',req:[['science',2,'Two science watches'],['engineering',2,'Engineering readiness'],['medical',2,'Medical readiness']],go:"openDailyOperations()"},
@@ -3183,6 +3255,7 @@ function openFlightGame(){
  let data=[['LOCATION',state.shipDockedAt],['FUEL',state.flightFuel+'%'],['HULL',state.flightHull+'%'],['NAV',state.flightNav+'%'],['TARGET',state.target],['RANGE',state.range]];
  let nav=[
   ['HELM STATION','Manual thrust, burn prep and ship handling.','openHelmStation()'],
+  ['PLAYABLE FLIGHT','Steer ARK-9 through a live space scene, approach contacts and interact.','openPlayableFlight()'],
   ['NAVIGATION PLOT','Select a route and build a valid course.','openNavigationPlot()'],
   ['SENSOR PIT','Identify contacts and improve route confidence.','openSensorPit()'],
   ['DOCKING CONTROL','Approach, clearance and final docking operations.','openDockingControl()'],
@@ -3534,7 +3607,7 @@ function openFlightGame(){
  ${stationLogHTML()}`;
  openSheet('FLIGHT CONTROL',body);
 }
-function flightPrep(type){
+function flightPrep(type){ coreTick(15,'flight prep');
  if(type==='scan'){state.flightNav=clamp(state.flightNav+8,0,100);state.power=clamp(state.power-2,0,100);stationLog('Sensor sweep completed. Navigation confidence improved.');}
  if(type==='align'){state.flightNav=clamp(state.flightNav+5,0,100);state.crewFatigue=clamp(state.crewFatigue+1,0,100);stationLog('Thrust alignment completed.');}
  if(type==='repair'){
@@ -3547,7 +3620,7 @@ function flightPrep(type){
  }
  render();openFlightGame();
 }
-function flyRoute(i){
+function flyRoute(i){ coreTick(90,'space transit');
  let r=flightRoutes[i]; if(!r)return;
  if(state.flightFuel<r.fuel){toast('Insufficient flight fuel');return;}
  state.flightFuel=clamp(state.flightFuel-r.fuel,0,100);
@@ -3586,7 +3659,7 @@ function openElevator(){
  <div class="stationActions"><button onclick="elevatorService()">SERVICE LIFT<small>Uses 3 scrap, lowers fault.</small></button><button onclick="elevatorRecharge()">TRANSFER POWER<small>Uses ship power to recharge lift.</small></button></div>${stationLogHTML()}`;
  openSheet('TRANSIT LIFT',body);
 }
-function rideElevator(deck){
+function rideElevator(deck){ coreTick(5,'elevator transit');
  if(state.elevatorPower<8){toast('Lift power too low');return;}
  let faultRisk=state.elevatorFault;
  state.elevatorPower=clamp(state.elevatorPower-5,0,100);
@@ -3600,7 +3673,7 @@ function rideElevator(deck){
  state.elevatorDeck=deck;state.location='DECK '+deck;
  state.elevatorFault=clamp(state.elevatorFault+1,0,100);
  stationLog('Lift arrived at deck '+deck+'.');
- render();enterDeckArea(deck);
+ state.playerDeck=deck;state.playerRoom=(deckLayouts[deck]||deckLayouts.A).rooms[0][0];render();openPhysicalDeck(deck);
 }
 function elevatorService(){
  if(state.scrap<3){toast('Need 3 scrap');return;}
@@ -3625,7 +3698,7 @@ function openMedicalBayGame(){
  <div class="sectionJump"><button onclick="openMedicalDevice()">OPERATE MEDICAL DEVICE</button><button onclick="openDailyOperations()">DAILY OPS</button></div>${stationLogHTML()}`;
  openSheet('MEDICAL BAY',body);
 }
-function treatPatient(i,choice){
+function treatPatient(i,choice){ coreTick(25,'medical treatment');
  const patients=[
   {name:'Burn Crewman',need:'stabilize',risk:18,reward:3},
   {name:'High-G Injury',need:'scan',risk:24,reward:4},
@@ -3634,7 +3707,7 @@ function treatPatient(i,choice){
  let pt=patients[i];if(!pt||state.medPatients<=0)return;
  if(state.medDeviceCharge<8){toast('Medical device needs charge');return;}
  state.medDeviceCharge=clamp(state.medDeviceCharge-8,0,100);
- if(choice===pt.need){
+ if(choice===pt.need || (state.skillUnlocks.medic0 && Math.random()<.12)){
    state.medPatients=Math.max(0,state.medPatients-1);state.medicalLoad=clamp(state.medicalLoad-7,0,100);state.medReadiness=clamp(state.medReadiness+4,0,100);state.morale=clamp(state.morale+2,0,100);
    stationLog(pt.name+' treated successfully with '+choice+'.');coreProgress('medical',1);
  }else{
@@ -3656,7 +3729,7 @@ function openMedicalDevice(){
  </div>${stationLogHTML()}`;
  openSheet('VITAL SYNTH ARRAY',body);
 }
-function medDeviceAction(type){
+function medDeviceAction(type){ coreTick(15,'medical device');
  if(type==='charge'){
   if(state.power<5){toast('Need ship power');return;}state.power=clamp(state.power-5,0,100);state.medDeviceCharge=clamp(state.medDeviceCharge+18,0,100);stationLog('Medical array charged.');
  }
@@ -3687,7 +3760,7 @@ function openBazaar(){
  <div class="stationActions"><button onclick="sellSalvage()">SELL 5 SCRAP<small>Receive credits and improve Bazaar reputation.</small></button><button onclick="openFlightGame()">RETURN TO FLIGHT CONTROL<small>Fly somewhere else when finished trading.</small></button></div>${stationLogHTML()}`;
  openSheet('FREE BELT BAZAAR',body);
 }
-function buyBazaar(i,price){
+function buyBazaar(i,price){ coreTick(10,'bazaar trade');
  if(state.shipDockedAt!=='FREE BELT BAZAAR'){toast('Fly to the Bazaar first');return;}
  let x=bazaarStock[i];if(!x)return;if(state.bazaarCredits<price){toast('Not enough credits');return;}
  state.bazaarCredits-=price;state.bazaarRep=clamp(state.bazaarRep+1,0,100);
@@ -3698,7 +3771,7 @@ function buyBazaar(i,price){
  if(x.type==='scrap'){state.scrap+=10;state.salvageSkill=(state.salvageSkill||0)+1;}
  stationLog('Purchased '+x.name+'.');render();openBazaar();
 }
-function sellSalvage(){
+function sellSalvage(){ coreTick(10,'bazaar sale');
  if(state.shipDockedAt!=='FREE BELT BAZAAR'){toast('Fly to the Bazaar first');return;}
  if(state.scrap<5){toast('Need 5 scrap');return;}
  state.scrap-=5;state.bazaarCredits+=14;state.bazaarRep=clamp(state.bazaarRep+2,0,100);stationLog('Sold salvage at the Bazaar.');render();openBazaar();
@@ -3738,7 +3811,7 @@ function openLivingGalaxy(){
  let body=`<div class="stationHero" style="background-image:url('${areaArtFor('PLANETARY EXPLORATION')}')"><div class="cap"><b>LIVING GALAXY</b><span>Travel. Work. Trade. Build. Choose what ARK-9 becomes.</span></div></div>
  <div class="commandBoard"><h3>SANDBOX LOOP</h3><p>Pick a profession → take missions → travel to worlds → survey/fight/trade/craft → earn credits and skill → grow HAVEN-9 → improve faction standing → unlock harder worlds and contracts.</p></div>
  <div class="galaxyGrid">${sandboxWorlds.map((w,i)=>`<div class="galaxyCard"><div class="art" style="background-image:url('${areaArtFor(w.art)}')"></div><div class="body"><b>${w.name}</b><p>${w.type}<br>${w.desc}</p><button onclick="openWorld(${i})">OPEN WORLD</button></div></div>`).join('')}</div>
- <div class="sectionJump"><button onclick="openProfessionTrees()">PROFESSION TREES</button><button onclick="openMissionTerminal()">MISSION TERMINALS</button><button onclick="openHavenMap()">HAVEN-9 MAP</button><button onclick="openCrafting()">CRAFTING</button><button onclick="openResourceLots()">RESOURCE SURVEY</button><button onclick="openShipwright()">SHIPWRIGHT</button><button onclick="openDutyBoard()">SPACE DUTY</button><button onclick="openCrewSchedules()">CREW SCHEDULES</button></div>`;
+ <div class="sectionJump"><button onclick="openProfessionTrees()">PROFESSION TREES</button><button onclick="openMissionTerminal()">MISSION TERMINALS</button><button onclick="openHavenMap()">HAVEN-9 MAP</button><button onclick="openCrafting()">CRAFTING</button><button onclick="openResourceLots()">RESOURCE SURVEY</button><button onclick="openShipwright()">SHIPWRIGHT</button><button onclick="openDutyBoard()">SPACE DUTY</button><button onclick="openCrewSchedules()">CREW SCHEDULES</button><button onclick="openGalaxyEconomy()">GALACTIC ECONOMY</button></div>`;
  openSheet('LIVING GALAXY',body);
 }
 function openWorld(i){
@@ -3765,16 +3838,16 @@ function openTravelTerminal(i){
   [['CURRENT',state.shipDockedAt],['FUEL',state.flightFuel+'%'],['NAV',state.flightNav+'%'],['HULL',state.flightHull+'%'],['PILOT LV',state.profLevel.pilot],['CREDITS',state.bazaarCredits]],
   nav,'Travel uses your existing flight systems. Higher Pilot level reduces travel fuel and risk.'));
 }
-function travelWorld(j){
+function travelWorld(j){ coreTick(120,'interworld transit');
  let w=sandboxWorlds[j];if(!w)return;
  let discount=Math.min(5,state.profLevel.pilot-1);
- let fuel=Math.max(4,8+Math.floor(w.risk/5)-discount);
+ let fuel=Math.max(3,8+Math.floor(w.risk/5)-discount-(state.skillUnlocks.pilot2?1:0));
  if(state.flightFuel<fuel){toast('Need '+fuel+' flight fuel');return;}
  state.flightFuel-=fuel;
  let risk=Math.max(2,w.risk-state.profLevel.pilot*2-Math.floor(state.flightNav/20));
  if(Math.random()*100<risk){state.flightHull=clamp(state.flightHull-(4+Math.floor(Math.random()*7)),0,100);state.maintenanceBacklog=clamp(state.maintenanceBacklog+3,0,100);stationLog('Rough transit to '+w.name+'.');}
- else stationLog('Clean transit to '+w.name+'.');
- state.shipDockedAt=w.name;state.location=w.name;
+ else{stationLog('Clean transit to '+w.name+'.');if(Math.random()<.22)generateLoot('travel');}
+ state.shipDockedAt=w.name;state.location=w.name;recordHistory('Arrived at '+w.name);
  if(!state.discoveredWorlds.includes(w.name))state.discoveredWorlds.push(w.name);
  gainProf('pilot',4);render();openWorld(j);
 }
@@ -3820,7 +3893,7 @@ function openContractsLog(){
  <div class="sectionJump"><button onclick="openMissionTerminal()">MISSION TERMINAL</button><button onclick="openLivingGalaxy()">GALAXY</button></div>`;
  openSheet('CONTRACT DATAPAD',body);
 }
-function runSandboxContract(i){
+function runSandboxContract(i){ coreTick(60,'contract work');
  let m=state.activeContracts[i];if(!m)return;
  let prof=m.prof,lv=state.profLevel[prof]||1;
  let success=55+lv*6+Math.floor(state.socialBuff/5);
@@ -3876,7 +3949,7 @@ function openCrafting(){
   [['ORE',state.galaxyResources.ore],['GAS',state.galaxyResources.gas],['FIBER',state.galaxyResources.fiber],['ORGANICS',state.galaxyResources.organics],['CRYSTAL',state.galaxyResources.crystal],['ENGINEER LV',state.profLevel.engineer]],
   nav,'Crafted items can improve ship systems or be sold at markets. Engineering skill increases through use.'));
 }
-function craftItem(i){
+function craftItem(i){ coreTick(45,'fabrication');
  let recipes=[
   ['NAV MODULE',{ore:4,crystal:1},'nav'],['MED KIT',{organics:4,fiber:2},'med'],['COOLANT LOOP',{ore:3,gas:4},'coolant'],['TRADE GOODS',{fiber:4,organics:2},'trade']
  ],r=recipes[i];if(!r)return;
@@ -3904,7 +3977,7 @@ function openWorldMarket(i=0){
 }
 function sellCrafted(){
  if(!state.craftedGoods.length){toast('No crafted goods');return;}
- let g=state.craftedGoods.shift(),pay=14+state.profLevel.merchant*3+(state.citySpecialization==='TRADE'?5:0);state.bazaarCredits+=pay;gainProf('merchant',4);stationLog('Sold '+g+' for '+pay+' credits.');
+ let g=state.craftedGoods.shift(),pay=14+state.profLevel.merchant*3+(state.citySpecialization==='TRADE'?5:0)+(state.skillUnlocks.merchant0?5:0);state.bazaarCredits+=pay;gainProf('merchant',4);stationLog('Sold '+g+' for '+pay+' credits.');
 }
 function buyResource(k,n,c){
  if(state.bazaarCredits<c){toast('Not enough credits');return;}
@@ -3955,17 +4028,34 @@ function setCitySpec(s){state.citySpecialization=s;gainProf('merchant',2);statio
 /* ===== LORE HOME / LOADER ===== */
 function showLoreLoader(next){
  let l=document.getElementById('loreLoader');l.style.backgroundImage=`url('${loreLoadingArt}')`;l.classList.add('show');
- setTimeout(()=>{l.classList.remove('show');if(next)next();},1350);
+ setTimeout(()=>{l.classList.remove('show');leaveLoreHomeForArea();if(next)next();},1350);
 }
-function showLoreHome(){
- closeAllOverlays();let h=document.getElementById('loreHome');h.style.backgroundImage=`url('${loreHomeArt}')`;h.classList.remove('hide');
+
+
+function refreshHomeSituation(){
+ let m=document.getElementById('homeSituationMount');if(m)m.innerHTML=homeSituationHTML();
+ let r=document.getElementById('resonantHomeReveal');if(r)r.style.display=state.skillUnlocks&&state.skillUnlocks.resonant?'block':'none';
 }
-function enterLoreGame(){document.getElementById('loreHome').classList.add('hide');showLoreLoader(()=>openExploreArk9());}
-function homeToGalaxy(){document.getElementById('loreHome').classList.add('hide');showLoreLoader(()=>openLivingGalaxy());}
-function homeToShip(){document.getElementById('loreHome').classList.add('hide');showLoreLoader(()=>openExploreArk9());}
-function homeToProf(){document.getElementById('loreHome').classList.add('hide');showLoreLoader(()=>openProfessionTrees());}
-function homeToShipwright(){document.getElementById('loreHome').classList.add('hide');showLoreLoader(()=>openShipwright());}
-function homeToHaven(){document.getElementById('loreHome').classList.add('hide');showLoreLoader(()=>openHavenMap());}
+function returnToLoreHome(){ try{stopPlayableFlight()}catch(e){}
+ try{closeAllOverlays()}catch(e){}
+ try{document.getElementById('overlay').classList.remove('show')}catch(e){}
+ try{document.getElementById('flightDeck').classList.remove('open')}catch(e){}
+ try{document.querySelectorAll('.cinema.open').forEach(x=>x.classList.remove('open'))}catch(e){}
+ let h=document.getElementById('loreHome');
+ if(h){h.classList.remove('hide');h.classList.remove('dimmed');h.style.backgroundImage=`url('${loreHomeArt}')`;}refreshHomeSituation();
+}
+function leaveLoreHomeForArea(){
+ let h=document.getElementById('loreHome');
+ if(h){h.classList.remove('hide');h.classList.add('dimmed');}
+}
+
+function showLoreHome(){returnToLoreHome()}
+function enterLoreGame(){leaveLoreHomeForArea();showLoreLoader(()=>openExploreArk9());}
+function homeToGalaxy(){leaveLoreHomeForArea();showLoreLoader(()=>openLivingGalaxy());}
+function homeToShip(){leaveLoreHomeForArea();showLoreLoader(()=>openExploreArk9());}
+function homeToProf(){leaveLoreHomeForArea();showLoreLoader(()=>openProfessionTrees());}
+function homeToShipwright(){leaveLoreHomeForArea();showLoreLoader(()=>openShipwright());}
+function homeToHaven(){leaveLoreHomeForArea();showLoreLoader(()=>openHavenMap());}
 
 /* ===== PROFESSION TREES ===== */
 const skillTrees={
@@ -4016,11 +4106,11 @@ function openShipwright(){
  setArea('SHIPWRIGHT BAY');
  let body=`<div class="stationHero" style="background-image:url('${shipwrightArt}')"><div class="cap"><b>SHIPWRIGHT BAY</b><span>Install, repair, tune and reverse-engineer ARK-9 components.</span></div></div>
  <div class="componentGrid">${Object.entries(state.shipComponents).map(([k,c])=>`<div class="component"><b>${k.toUpperCase()} // ${c.name}</b><p>QUALITY ${c.q} · DURABILITY ${c.dur}%</p><div class="profBar"><i style="width:${c.dur}%"></i></div><button onclick="serviceComponent('${k}')">SERVICE</button><button onclick="tuneComponent('${k}')">EXPERIMENT</button></div>`).join('')}</div>
- <div class="sectionJump"><button onclick="openResourceLots()">RESOURCE LOTS</button><button onclick="openCrafting()">FABRICATION</button><button onclick="openFlightGame()">FLIGHT TEST</button></div>`;
+ <div class="sectionJump"><button onclick="openLootLocker()">LOOT LOCKER</button><button onclick="openResourceLots()">RESOURCE LOTS</button><button onclick="openCrafting()">FABRICATION</button><button onclick="openFlightGame()">FLIGHT TEST</button></div>`;
  openSheet('SHIPWRIGHT BAY',body);
 }
-function serviceComponent(k){let c=state.shipComponents[k];if(!c)return;if(state.scrap<3){toast('Need 3 scrap');return;}state.scrap-=3;c.dur=clamp(c.dur+14,0,100);gainProf('engineer',3);stationLog(k+' serviced.');openShipwright();}
-function tuneComponent(k){let c=state.shipComponents[k];if(!c)return;if(state.research<2){toast('Need 2 research');return;}state.research-=2;c.q=clamp(c.q+Math.floor(Math.random()*7)-1,1,100);c.dur=clamp(c.dur-4,0,100);gainProf('engineer',4);stationLog(k+' experimental tuning completed.');openShipwright();}
+function serviceComponent(k){ coreTick(35,'component service');let c=state.shipComponents[k];if(!c)return;if(state.scrap<3){toast('Need 3 scrap');return;}state.scrap-=3;c.dur=clamp(c.dur+14,0,100);gainProf('engineer',3);stationLog(k+' serviced.');openShipwright();}
+function tuneComponent(k){ coreTick(30,'component tuning');let c=state.shipComponents[k];if(!c)return;if(state.research<2){toast('Need 2 research');return;}state.research-=2;c.q=clamp(c.q+Math.floor(Math.random()*7)-1,1,100);c.dur=clamp(c.dur-4,0,100);gainProf('engineer',4);stationLog(k+' experimental tuning completed.');openShipwright();}
 
 /* ===== DUTY MISSIONS / SPACE ENCOUNTERS ===== */
 function openDutyBoard(){
@@ -4039,7 +4129,7 @@ function nextDutyEncounter(){
  'Duty missions continuously generate another event until you stand down.');
  openSheet('DUTY ENCOUNTER',body);
 }
-function resolveDuty(choice){
+function resolveDuty(choice){ coreTick(30,'space duty');
  if(choice==='approach'){let win=Math.random()*100<55+state.profLevel.pilot*5+state.profLevel.security*3;if(win){state.bazaarCredits+=18;state.scrap+=4;gainProf('pilot',4);gainProf('security',2);stationLog('Duty encounter resolved.')}else{state.flightHull=clamp(state.flightHull-7,0,100);stationLog('Duty encounter damaged ARK-9.');}}
  else{state.flightFuel=clamp(state.flightFuel-2,0,100);gainProf('pilot',2);}
  nextDutyEncounter();
@@ -4068,7 +4158,7 @@ function openHavenMap(){
  <div class="sectionJump"><button onclick="openSettlement()">CITY GOVERNMENT</button><button onclick="openLivingGalaxy()">GALAXY</button></div>`;
  openSheet(state.settlementName+' MAP',body);
 }
-function buildCity(k,cost){if(state.scrap<cost){toast('Need '+cost+' scrap');return;}state.scrap-=cost;state.cityBuildings[k]=true;state.cityCitizens+=2;stationLog('Built '+k+' at '+state.settlementName+'.');gainProf('merchant',4);openHavenMap();}
+function buildCity(k,cost){ coreTick(240,'settlement construction');if(state.scrap<cost){toast('Need '+cost+' scrap');return;}state.scrap-=cost;state.cityBuildings[k]=true;state.cityCitizens+=2;recordHistory('Haven-9 built '+k.toUpperCase());stationLog('Built '+k+' at '+state.settlementName+'.');gainProf('merchant',4);openHavenMap();}
 function enterCityBuilding(k){
  if(k==='medical')return openMedicalBayGame();if(k==='cantina')return openCantina();if(k==='fabricator')return openCrafting();if(k==='shuttle')return openTravelTerminal();if(k==='research')return openRoom('research');if(k==='market')return openWorldMarket();openSettlement();
 }
@@ -4078,6 +4168,346 @@ function checkHiddenPath(n=1){
  state.hiddenResonant=clamp((state.hiddenResonant||0)+n,0,100);
  if(state.hiddenResonant>=60&&!state.skillUnlocks.resonant){state.skillUnlocks.resonant=true;stationLog('UNKNOWN PROFESSION SIGNAL DETECTED. ORION refuses classification.');toast('Something changed in the Resonance Deck.');}
  save();
+}
+
+
+/* ===== SHIP OPERATIONS CORE ===== */
+const majorAreas=[
+ ['ARK-9 HOME','Persistent cinematic command hub.','PLANETARY EXPLORATION','returnToLoreHome()'],
+ ['EXPLORE ARK-9','Whole ship area map and ship systems.','COMMAND OPERATIONS','openExploreArk9()'],
+ ['SHIP OPS CORE','Dependencies, incidents, shifts and readiness.','COMMAND OPERATIONS','openShipOpsCore()'],
+ ['FLIGHT CONTROL','Helm, navigation, sensors, docking and duty missions.','FLIGHT DECK','openFlightGame()'],
+ ['TRANSIT ELEVATOR','Move between physical ship decks.','ELEVATOR','openElevator()'],
+ ['MEDICAL BAY','Triage, diagnostics, treatment, pharmacy, recovery.','MEDICAL','openMedicalBayGame()'],
+ ['ENGINEERING','Reactor, power, machine shop and shipwright.','ENGINEERING','openDeckEngineeringArea()'],
+ ['RESEARCH','Science, archive, Matrix and anomaly systems.','RESEARCH','openDeckResearchArea()'],
+ ['CARGO / HANGAR','Stores, shuttle, EVA, salvage and logistics.','CARGO / STORES','openDeckCargoArea()'],
+ ['CREW DECK','Quarters, social spaces, schedules and morale.','LIVING QUARTERS','openCrewDeckDeep()'],
+ ['SECURITY','Defense, escort and tactical systems.','SECURITY','openRoom("security")'],
+ ['RESONANCE','Ring, Resonance and hidden-path systems.','RESONANCE DECK','openResonanceDeck()'],
+ ['LIVING GALAXY','Worlds, professions, markets and contracts.','PLANETARY EXPLORATION','openLivingGalaxy()'],
+ ['BAZAAR','Dockmaster, market, salvage, crew market, contracts.','CREW MARKET','openBazaar()'],
+ ['SHIPWRIGHT','Components, service, tuning and resource quality.','ENGINEERING','openShipwright()'],
+ ['RESOURCE SURVEY','Dynamic material lots and exploration.','PLANETARY EXPLORATION','openResourceLots()'],
+ ['CRAFTING','Fabrication and manufactured goods.','FABRICATOR BAY','openCrafting()'],
+ ['HAVEN-9','Settlement map, buildings and specialization.','CREW COMMONS','openHavenMap()'],
+ ['PROFESSIONS','Career levels and branching skill trees.','CREW MANAGEMENT','openProfessionTrees()'],
+ ['MISSION TERMINALS','Sandbox jobs and contract progression.','STORY CAMPAIGN','openMissionTerminal()'],
+ ['SPACE DUTY','Open-ended patrol, rescue and salvage encounters.','FLIGHT DECK','openDutyBoard()'],
+ ['CREW SCHEDULES','Named crew locations, shifts and availability.','CREW NETWORK','openCrewSchedules()'],
+ ['GALACTIC ARCHIVE','Lore, discoveries and faction knowledge.','GALACTIC ARCHIVE','openGalacticArchive()'],
+ ['FACTIONS','Standing, politics and diplomacy.','FACTION NETWORK','openFactionNetwork()'],
+ ['SIMULATION CORE','Training and simulation missions.','SIMULATION CORE','openSimulationLayer()'],
+ ['MATRIX RAIN LAB','Programmable signal rain and hidden data.','MATRIX RAIN LAB','openRainLab()'],
+ ['MISSION DIRECTOR','Main campaign requirements and story flow.','MISSION DIRECTOR','openMissionDirector()'],
+ ['PHYSICAL DECK MAP','Walk ARK-9 decks and enter rooms physically.','COMMAND OPERATIONS','openPhysicalDeck()'],
+ ['PLAYABLE FLIGHT','Steer the ship through live space encounters.','FLIGHT DECK','openPlayableFlight()'],
+ ['CAPTAIN INVENTORY','Personal tools, keys, medical items and loot.','CREW NETWORK','openCaptainInventory()'],
+ ['GALACTIC ECONOMY','World prices and trade routes.','CREW MARKET','openGalaxyEconomy()'],
+ ['LIVE CREW NETWORK','See where named crew are currently located.','CREW NETWORK','openLiveCrew()'],
+ ['CAPTAIN HISTORY','Persistent ship history generated by play.','GALACTIC ARCHIVE','openCaptainHistory()']
+];
+
+function shipClockText(){
+ let m=Math.floor(state.shipMinutes||0)%(24*60),h=Math.floor(m/60),mm=m%60;
+ return String(h).padStart(2,'0')+':'+String(mm).padStart(2,'0');
+}
+function currentShift(){return ['ALPHA','BETA','GAMMA'][Math.floor((state.shipMinutes||0)/480)%3]}
+function calcOpsCore(){
+ let engBonus=state.departmentAssignments.engineering==='Mara Venn'?5:2; let eng=clamp(Math.round((state.engIntegrity*.35+(100-state.maintenanceBacklog)*.25+(100-state.reactorTemp)*.15+state.busVoltage*.15+(100-state.shipStress)*.10)+engBonus),0,100);
+ let crew=clamp(Math.round((100-state.crewFatigue)*.45+state.crewRest*.25+state.morale*.15+state.crewCohesion*.15),0,100);
+ let medBonus=state.departmentAssignments.medical==='Dr. Sato'?5:2; let med=clamp(Math.round(state.medReadiness*.45+(100-state.medicalLoad)*.25+state.medDeviceCharge*.15+state.medDeviceSterility*.15+medBonus),0,100);
+ let log=clamp(Math.round((100-state.supplyPressure)*.35+state.food*.2+state.waterReserve*.2+state.storageOrder*.15+crew*.1),0,100);
+ let sec=clamp(Math.round(state.securityLevel*.5+(100-state.incidentRisk)*.25+crew*.15+state.shipComponents.shield.q*.1),0,100);
+ let sci=clamp(Math.round(Math.min(100,state.researchProgress)*.35+state.sensorConfidence*.25+state.simIntegrity*.15+state.deepScanCharge*.15+crew*.1),0,100);
+ let flight=clamp(Math.round(state.flightHull*.2+state.flightFuel*.18+state.flightNav*.18+eng*.18+crew*.16+sec*.1),0,100);
+ let econ=clamp(Math.round(Math.min(100,state.bazaarRep)*.25+Math.min(100,state.bazaarCredits/3)*.25+log*.2+state.cityRank*8+state.profLevel.merchant*4),0,100);
+ let haven=clamp(Math.round(state.cityRank*14+Math.min(30,state.cityCitizens)+Math.min(25,state.cityTreasury/40)+econ*.15),0,100);
+ state.engineeringOutput=eng;state.crewAvailability=crew;state.medicalCapacity=med;state.logisticsCapacity=log;
+ state.securityCapacity=sec;state.researchCapacity=sci;state.flightReadiness=flight;state.economyHealth=econ;state.havenSupport=haven;
+ state.shipStress=clamp(Math.round((state.maintenanceBacklog+state.medicalLoad+state.supplyPressure+state.incidentRisk+state.crewFatigue)/5),0,100);
+ return {eng,crew,med,log,sec,sci,flight,econ,haven,stress:state.shipStress};
+}
+function coreTick(minutes=15,reason='operation'){
+ state.shipMinutes=(state.shipMinutes||0)+minutes;
+ let c=calcOpsCore();
+ state.reactorTemp=clamp(state.reactorTemp+(c.eng<45?2:-1),0,100);
+ state.crewFatigue=clamp(state.crewFatigue+Math.max(0,Math.round(minutes/120)),0,100);
+ state.food=clamp(state.food-Math.max(0,Math.floor(minutes/240)),0,100);
+ state.waterReserve=clamp(state.waterReserve-Math.max(0,Math.floor(minutes/240)),0,100);
+ state.elevatorPower=clamp(state.elevatorPower-Math.max(0,Math.floor(minutes/180)),0,100);
+ if(c.med<45)state.medicalLoad=clamp(state.medicalLoad+1,0,100);
+ if(c.log<40)state.supplyPressure=clamp(state.supplyPressure+2,0,100);
+ if(c.eng<40)state.maintenanceBacklog=clamp(state.maintenanceBacklog+2,0,100);
+ if(c.crew<35)state.morale=clamp(state.morale-1,0,100);
+ maybeCreateCoreIncident(reason);
+ save();
+}
+function maybeCreateCoreIncident(reason){
+ let c=calcOpsCore(),risk=Math.max(3,Math.round(c.stress*.18)+(c.eng<45?5:0)+(c.med<45?4:0)+(c.log<45?4:0));
+ if(Math.random()*100>risk||state.shipIncidents.length>=4)return;
+ let pool=[
+  ['COOLANT LOOP FAULT','engineering','Engineering output -8 until serviced.'],
+  ['CREW MEDICAL CASE','medical','A named crew member requires Medical attention.'],
+  ['CARGO SHORTFALL','logistics','Supply pressure increases until Logistics responds.'],
+  ['SENSOR BUS DROPOUT','research','Navigation and research confidence reduced.'],
+  ['SECURITY ALERT','security','Incident risk rises until Security responds.'],
+  ['LIFT POWER SAG','elevator','Elevator power reduced and fault chance increases.']
+ ];
+ let x=pool[Math.floor(Math.random()*pool.length)];
+ if(!state.shipIncidents.some(i=>i.title===x[0])){state.shipIncidents.push({title:x[0],dept:x[1],text:x[2],age:0});recordHistory('INCIDENT: '+x[0]);}
+}
+function resolveCoreIncident(i){
+ let x=state.shipIncidents[i];if(!x)return;
+ if(x.dept==='engineering'){if(state.scrap<3){toast('Need 3 scrap');return;}state.scrap-=3;state.maintenanceBacklog=clamp(state.maintenanceBacklog-12,0,100);state.engIntegrity=clamp(state.engIntegrity+7,0,100);gainProf('engineer',3);}
+ if(x.dept==='medical'){state.medicalLoad=clamp(state.medicalLoad-10,0,100);state.medReadiness=clamp(state.medReadiness+5,0,100);gainProf('medic',3);}
+ if(x.dept==='logistics'){state.supplyPressure=clamp(state.supplyPressure-12,0,100);state.food=clamp(state.food+4,0,100);gainProf('merchant',2);}
+ if(x.dept==='research'){state.sensorConfidence=clamp(state.sensorConfidence+8,0,100);state.flightNav=clamp(state.flightNav+4,0,100);gainProf('explorer',2);}
+ if(x.dept==='security'){state.incidentRisk=clamp(state.incidentRisk-12,0,100);state.securityLevel=clamp(state.securityLevel+5,0,100);gainProf('security',3);}
+ if(x.dept==='elevator'){state.elevatorPower=clamp(state.elevatorPower+18,0,100);state.elevatorFault=clamp(state.elevatorFault-8,0,100);gainProf('engineer',2);}
+ stationLog('Resolved '+x.title+'.');state.shipIncidents.splice(i,1);coreTick(20,'incident response');openShipOpsCore();
+}
+function opsCoreHTML(){
+ let c=calcOpsCore();
+ return `<div class="opsCore"><h3>SHIP OPERATIONS CORE // ${shipClockText()} // ${currentShift()} SHIFT</h3>
+ <p>Every department feeds another. Weaknesses propagate into flight, crew, missions and economy.</p>
+ <div class="coreGrid">
+ ${[['ENGINEERING',c.eng],['CREW',c.crew],['MEDICAL',c.med],['LOGISTICS',c.log],['SECURITY',c.sec],['RESEARCH',c.sci],['FLIGHT',c.flight],['ECONOMY',c.econ],['HAVEN-9',c.haven],['SHIP STRESS',c.stress]].map(x=>`<div class="coreCell"><b>${x[1]}%</b><span>${x[0]}</span></div>`).join('')}
+ </div></div>`;
+}
+
+function assignDepartment(dept,name){
+ state.departmentAssignments[dept]=name;state.crewFatigue=clamp(state.crewFatigue+1,0,100);stationLog(name+' assigned to '+dept+'.');coreTick(10,'crew assignment');openShipOpsCore();
+}
+
+function openShipOpsCore(){
+ setArea('SHIP OPERATIONS CORE');let c=calcOpsCore();
+ let deps=[
+  ['ENGINEERING','Powers Flight, Medical, Elevators and Fabrication.','openDeckEngineeringArea()'],
+  ['CREW','Staff every department; fatigue lowers all output.','openCrewSchedules()'],
+  ['MEDICAL','Returns injured crew to duty and protects readiness.','openMedicalBayGame()'],
+  ['LOGISTICS','Feeds crew, missions, Bazaar and crafting.','openDeckCargoArea()'],
+  ['FLIGHT','Brings missions, salvage, resources and new worlds.','openFlightGame()'],
+  ['BAZAAR / ECONOMY','Turns salvage and crafted goods into supplies and credits.','openBazaar()'],
+  ['RESEARCH','Improves navigation, components and story discoveries.','openDeckResearchArea()'],
+  ['HAVEN-9','Long-term bonuses, services and population support.','openHavenMap()']
+ ];
+ let incidents=state.shipIncidents.length?state.shipIncidents.map((x,i)=>`<div class="incident"><b>${x.title}</b><p>${x.text}</p><button onclick="resolveCoreIncident(${i})">RESPOND</button></div>`).join(''):'<div class="incident"><b>NO ACTIVE INCIDENTS</b><p>Ship systems are stable enough for normal operations.</p></div>';
+ let assign=`<div class="commandBoard"><h3>DEPARTMENT ASSIGNMENTS</h3><p>Named crew are now part of ship logic. Reassigning consumes time and affects workload.</p>
+ <div class="depGrid">
+ <div class="depCard"><b>ENGINEERING // ${state.departmentAssignments.engineering}</b><button onclick="assignDepartment('engineering','Mara Venn')">MARA VENN</button><button onclick="assignDepartment('engineering','Kei Mora')">KEI MORA</button></div>
+ <div class="depCard"><b>MEDICAL // ${state.departmentAssignments.medical}</b><button onclick="assignDepartment('medical','Dr. Sato')">DR. SATO</button><button onclick="assignDepartment('medical','Vesa Linn')">VESA LINN</button></div>
+ <div class="depCard"><b>FLIGHT // ${state.departmentAssignments.flight}</b><button onclick="assignDepartment('flight','Ivo Rell')">IVO RELL</button><button onclick="assignDepartment('flight','Mika Ren')">MIKA REN</button></div>
+ <div class="depCard"><b>SECURITY // ${state.departmentAssignments.security}</b><button onclick="assignDepartment('security','Bram Holt')">BRAM HOLT</button><button onclick="assignDepartment('security','Tala Quill')">TALA QUILL</button></div>
+ </div></div>`;
+ let body=homeSituationHTML()+opsCoreHTML()+assign+`<div class="flowArrow">ENGINEERING → SHIP SYSTEMS → MISSIONS → RESOURCES → BAZAAR/CRAFTING → CREW/HAVEN-9 → ENGINEERING</div>
+ <div class="depGrid">${deps.map(x=>`<div class="depCard"><b>${x[0]}</b><p>${x[1]}</p><button onclick="${x[2]}">OPEN AREA</button></div>`).join('')}</div>
+ <div class="commandBoard"><h3>ACTIVE INCIDENTS</h3>${incidents}</div>
+ <div class="sectionJump"><button onclick="coreTick(60,'watch');openShipOpsCore()">ADVANCE 1 SHIP HOUR</button><button onclick="openAllAreas()">ALL AREAS</button><button onclick="openPhysicalDeck()">PHYSICAL DECK</button><button onclick="openLiveCrew()">LIVE CREW</button><button onclick="returnToLoreHome()">ARK-9 HOME</button></div>`;
+ openSheet('SHIP OPERATIONS CORE',body);
+}
+function openAllAreas(){
+ setArea('MASTER AREA DIRECTORY');
+ let body=opsCoreHTML()+`<div class="commandBoard"><h3>ALL WORKING AREAS</h3><p>Every major playable area in the current build is listed here. Enter any area directly, then return to ARK-9 HOME or this directory.</p></div>
+ <div class="areaDirectory">${majorAreas.map(a=>`<div class="entry"><div class="thumb" style="background-image:url('${areaArtFor(a[2])}')"></div><div class="txt"><b>${a[0]}</b><p>${a[1]}</p><button onclick="${a[3]}">ENTER AREA</button></div></div>`).join('')}</div>`;
+ openSheet('ALL AREAS',body);
+}
+
+
+/* ===== LIVING SHIP CORE ===== */
+const deckLayouts={
+ A:{name:'COMMAND',rooms:[
+  ['COMMAND HUB',8,18,'openShipOpsCore()'],['FLIGHT CONTROL',38,12,'openFlightGame()'],['NAVIGATION',68,18,'openNavigationPlot()'],['SENSOR PIT',38,58,'openSensorPit()'],['ELEVATOR',70,62,'openElevator()']]},
+ B:{name:'MEDICAL',rooms:[
+  ['TRIAGE',8,16,'openMedTriage()'],['DIAGNOSTICS',38,12,'openMedDiagnostics()'],['TREATMENT',68,16,'openMedTreatment()'],['PHARMACY',14,60,'openMedPharmacy()'],['RECOVERY',46,63,'openMedRecovery()'],['ELEVATOR',76,60,'openElevator()']]},
+ C:{name:'ENGINEERING',rooms:[
+  ['REACTOR',8,16,'openRoom("engineering")'],['MACHINE SHOP',38,12,'openStaffedArea("machineShop")'],['SHIPWRIGHT',68,16,'openShipwright()'],['POWER BUS',14,60,'openMegaArea("POWER BUS A")'],['FABRICATION',46,63,'openCrafting()'],['ELEVATOR',76,60,'openElevator()']]},
+ D:{name:'RESEARCH',rooms:[
+  ['SCIENCE LAB',8,16,'openRoom("research")'],['ARCHIVE',38,12,'openGalacticArchive()'],['MATRIX',68,16,'openRainLab()'],['SIMULATION',14,60,'openSimulationLayer()'],['RESOURCE LAB',46,63,'openResourceLots()'],['ELEVATOR',76,60,'openElevator()']]},
+ E:{name:'CARGO / HANGAR',rooms:[
+  ['CARGO STORES',8,16,'openRoom("storage")'],['HANGAR',38,12,'openRoom("hangar")'],['SALVAGE',68,16,'openBazaarSalvage()'],['BAZAAR LINK',14,60,'openBazaar()'],['EVA LOCK',46,63,'openMegaArea("EVA AIRLOCK")'],['ELEVATOR',76,60,'openElevator()']]},
+ F:{name:'CREW',rooms:[
+  ['QUARTERS',8,16,'openCrewDeckDeep()'],['GALLEY',38,12,'openCrewZone("galley")'],['ARCADE',68,16,'openArcadeDeck()'],['COMMONS',14,60,'openCrewZone("rec")'],['CANTINA',46,63,'openCantina()'],['ELEVATOR',76,60,'openElevator()']]},
+ G:{name:'RESONANCE',rooms:[
+  ['RESONANCE',8,16,'openResonanceDeck()'],['RING CONTROL',38,12,'openRingAccess()'],['QUARANTINE',68,16,'openMegaArea("QUARANTINE VAULT")'],['BETWEEN POST',14,60,'openMegaArea("BETWEEN LISTENING POST")'],['ARTIFACT ROOM',46,63,'openMegaArea("RING PHASE ROOM")'],['ELEVATOR',76,60,'openElevator()']]}
+};
+function openPhysicalDeck(deck=state.playerDeck){
+ state.playerDeck=deck;let d=deckLayouts[deck]||deckLayouts.A;setArea('DECK '+deck+' // '+d.name);
+ if(!d.rooms.some(r=>r[0]===state.playerRoom))state.playerRoom=d.rooms[0][0];
+ let idx=d.rooms.findIndex(r=>r[0]===state.playerRoom);if(idx<0)idx=0;
+ let pr=d.rooms[idx];
+ let rooms=d.rooms.map((r,i)=>`<button class="deckRoom ${r[0]===state.playerRoom?'active':''}" style="left:${r[1]}%;top:${r[2]}%" onclick="walkDeckRoom('${deck}',${i})">${r[0]}<small>${r[0]===state.playerRoom?'YOU ARE HERE':'WALK HERE'}</small></button>`).join('');
+ let body=opsCoreHTML()+`<div class="commandBoard"><h3>DECK ${deck} // ${d.name}</h3><p>Walk through the ship. Selecting a room moves the captain there; entering it opens that room's actual gameplay.</p></div>
+ <div class="deckMap">${rooms}<div class="playerDot" style="left:calc(${pr[1]}% + 30px);top:calc(${pr[2]}% + 38px)"></div></div>
+ <div class="sectionJump"><button onclick="enterCurrentRoom()">ENTER ${state.playerRoom}</button><button onclick="openCaptainInventory()">CAPTAIN INVENTORY</button><button onclick="openElevator()">ELEVATOR</button><button onclick="openAllAreas()">ALL AREAS</button></div>`;
+ openSheet('PHYSICAL DECK MAP',body);
+}
+function walkDeckRoom(deck,i){
+ let d=deckLayouts[deck],r=d.rooms[i];if(!r)return;state.playerDeck=deck;state.playerRoom=r[0];coreTick(3,'walk deck');stationLog('Captain moved to '+r[0]+'.');openPhysicalDeck(deck);
+}
+function enterCurrentRoom(){
+ let d=deckLayouts[state.playerDeck]||deckLayouts.A,r=d.rooms.find(x=>x[0]===state.playerRoom)||d.rooms[0];
+ try{eval(r[3])}catch(e){toast('Room unavailable');}
+}
+function deckForArea(name){
+ name=String(name||'').toUpperCase();
+ if(/MED|TRIAGE|DIAGNOSTIC|RECOVERY|PHARM/.test(name))return 'B';
+ if(/ENGINE|REACTOR|POWER|SHIPWRIGHT|FABRIC/.test(name))return 'C';
+ if(/RESEARCH|SCIENCE|MATRIX|ARCHIVE|SIM/.test(name))return 'D';
+ if(/CARGO|HANGAR|EVA|SALVAGE|BAZAAR/.test(name))return 'E';
+ if(/CREW|QUARTER|ARCADE|GALLEY|CANTINA|COMMON/.test(name))return 'F';
+ if(/RESONANCE|RING|QUARANTINE|BETWEEN|ARTIFACT/.test(name))return 'G';
+ return 'A';
+}
+
+/* ===== CAPTAIN INVENTORY / LOOT ===== */
+function openCaptainInventory(){
+ let body=`<div class="stationHero" style="background-image:url('${areaArtFor('CREW NETWORK')}')"><div class="cap"><b>CAPTAIN INVENTORY</b><span>Personal equipment used for doors, missions and emergencies.</span></div></div>
+ <div class="invGrid">${state.personalInventory.map((x,i)=>`<div class="invCard"><b>${x.name}</b><p>TYPE ${x.type.toUpperCase()} · QTY ${x.qty}</p><button onclick="useInventoryItem(${i})">USE / INSPECT</button></div>`).join('')}</div>
+ <div class="sectionJump"><button onclick="openLootLocker()">LOOT LOCKER</button><button onclick="openPhysicalDeck()">RETURN TO DECK</button></div>`;
+ openSheet('CAPTAIN INVENTORY',body);
+}
+function useInventoryItem(i){
+ let x=state.personalInventory[i];if(!x)return;
+ if(x.type==='med'&&x.qty>0){x.qty--;state.crewFatigue=clamp(state.crewFatigue-3,0,100);stationLog('Captain used '+x.name+'.');}
+ if(x.type==='tool')stationLog(x.name+' ready for field operations.');
+ if(x.type==='key')stationLog(x.name+' grants restricted-access clearance.');
+ save();openCaptainInventory();
+}
+function generateLoot(kind='salvage'){
+ let names=['VESTA SUPERCONDUCTOR','NIGHTGLASS CRYSTAL','TAU DRIVE COUPLER','BUILDER MEMORY SHARD','HELIOS COOLANT CORE','OLD ARK NAV CHIP'];
+ let item={name:names[Math.floor(Math.random()*names.length)],kind,quality:45+Math.floor(Math.random()*56),condition:50+Math.floor(Math.random()*51),mass:1+Math.floor(Math.random()*8)};
+ state.lootItems.unshift(item);state.lootItems=state.lootItems.slice(0,20);stationLog('Recovered '+item.name+'.');if(item.quality>=85)recordHistory('Rare loot recovered: '+item.name+' Q'+item.quality);save();return item;
+}
+function openLootLocker(){
+ let body=`<div class="stationHero" style="background-image:url('${areaArtFor('SALVAGE SORT')}')"><div class="cap"><b>LOOT LOCKER</b><span>Recovered mission objects, rare materials and components.</span></div></div>
+ <div class="lootGrid">${state.lootItems.map((x,i)=>`<div class="lootCard"><b>${x.name}</b><p>QUALITY ${x.quality} · CONDITION ${x.condition}% · MASS ${x.mass}</p><button onclick="convertLoot(${i})">SEND TO SHIPWRIGHT</button></div>`).join('')||'<div class="lootCard"><b>EMPTY</b><p>Fly duty, salvage wrecks, survey worlds, or board derelicts to find loot.</p></div>'}</div>`;
+ openSheet('LOOT LOCKER',body);
+}
+function convertLoot(i){
+ let x=state.lootItems[i];if(!x)return;
+ state.craftedGoods.push(x.name+' Q'+x.quality);state.lootItems.splice(i,1);state.craftingXP+=3;gainProf('engineer',2);stationLog('Transferred loot to Shipwright inventory.');openShipwright();
+}
+
+/* ===== LIVE CREW ===== */
+function crewLiveLocation(c,i){
+ let hr=Math.floor((state.shipMinutes||0)/60)%24;
+ if(hr<6)return 'QUARTERS';
+ if(hr<12)return ['ENGINEERING','MEDICAL','FLIGHT','RESEARCH','SECURITY','CARGO'][i%6];
+ if(hr<18)return ['WORK STATION','GALLEY','BAZAAR','HANGAR'][i%4];
+ return ['CANTINA','ARCADE','COMMONS','QUARTERS'][i%4];
+}
+function openLiveCrew(){
+ let crew=(typeof expandedCrew!=='undefined'?expandedCrew:[]).slice(0,32);
+ let body=`<div class="stationHero" style="background-image:url('${areaArtFor('CREW NETWORK')}')"><div class="cap"><b>LIVE CREW NETWORK</b><span>${shipClockText()} · ${currentShift()} shift · crew move with time.</span></div></div>
+ <div class="crewLiveGrid">${crew.map((c,i)=>{let loc=crewLiveLocation(c,i);return `<div class="crewLiveCard"><b>${c.name}</b><p>${c.role}<br>LOCATION: ${loc}<br>SHIFT: ${c.shift||['ALPHA','BETA','GAMMA'][i%3]}<br>STATUS: ${state.crewFatigue>70?'TIRED':'ACTIVE'}</p><button onclick="state.playerDeck=deckForArea('${loc}');state.playerRoom='${loc}';openPhysicalDeck()">GO TO CREW AREA</button></div>`}).join('')}</div>`;
+ openSheet('LIVE CREW NETWORK',body);
+}
+
+/* ===== PLAYABLE SPACE SCENE ===== */
+let flightGameTimer=null;
+function openPlayableFlight(){
+ setArea('PLAYABLE FLIGHT');
+ let body=`<div class="flightCanvasWrap"><canvas id="flightGameCanvas" width="900" height="480"></canvas>
+ <div class="flightHud"><div><b id="pfSpeed">0</b><span>SPEED</span></div><div><b id="pfFuel">${state.flightFuel}%</b><span>FUEL</span></div><div><b id="pfHull">${state.flightHull}%</b><span>HULL</span></div><div><b id="pfContact">${state.flightEncounter.type}</b><span>CONTACT</span></div></div>
+ <div class="flightBtns"><button onpointerdown="flightInput('left',1)" onpointerup="flightInput('left',0)">TURN LEFT</button><button onpointerdown="flightInput('thrust',1)" onpointerup="flightInput('thrust',0)">THRUST</button><button onpointerdown="flightInput('right',1)" onpointerup="flightInput('right',0)">TURN RIGHT</button><button onclick="flightBrake()">BRAKE</button><button onclick="flightScanEncounter()">SCAN</button><button onclick="flightInteractEncounter()">INTERACT</button></div></div>
+ <div class="sectionJump"><button onclick="stopPlayableFlight();openFlightGame()">RETURN TO FLIGHT CONTROL</button><button onclick="stopPlayableFlight();openDutyBoard()">SPACE DUTY</button></div>`;
+ openSheet('PLAYABLE FLIGHT',body);startPlayableFlight();
+}
+const flightKeys={left:0,right:0,thrust:0};
+function flightInput(k,v){flightKeys[k]=v}
+function startPlayableFlight(){
+ stopPlayableFlight();let c=document.getElementById('flightGameCanvas');if(!c)return;
+ if(!state.flightEncounter.active&&Math.random()<.75)spawnFlightEncounter();
+ flightGameTimer=setInterval(updatePlayableFlight,50);
+}
+function stopPlayableFlight(){if(flightGameTimer){clearInterval(flightGameTimer);flightGameTimer=null}}
+function spawnFlightEncounter(){
+ let types=['DERELICT','DISTRESS BEACON','UNKNOWN SHIP','SALVAGE CLOUD','ANOMALY'];
+ state.flightEncounter={type:types[Math.floor(Math.random()*types.length)],distance:65+Math.floor(Math.random()*30),active:true};
+}
+function updatePlayableFlight(){
+ let c=document.getElementById('flightGameCanvas');if(!c){stopPlayableFlight();return}
+ let ctx=c.getContext('2d'),w=c.width,h=c.height;
+ if(flightKeys.left)state.flightHeading-=2.5;if(flightKeys.right)state.flightHeading+=2.5;
+ if(flightKeys.thrust&&state.flightFuel>0){state.flightVX+=Math.cos(state.flightHeading*Math.PI/180)*.035;state.flightVY+=Math.sin(state.flightHeading*Math.PI/180)*.035;state.flightFuel=Math.max(0,state.flightFuel-.015)}
+ state.flightX=(state.flightX+state.flightVX+100)%100;state.flightY=(state.flightY+state.flightVY+100)%100;
+ if(state.flightEncounter.active)state.flightEncounter.distance=Math.max(0,state.flightEncounter.distance-Math.hypot(state.flightVX,state.flightVY)*.45);
+ ctx.fillStyle='#020609';ctx.fillRect(0,0,w,h);
+ for(let i=0;i<90;i++){let x=(i*97+state.flightX*7)%w,y=(i*53+state.flightY*5)%h;ctx.fillStyle=i%7===0?'#7bdfff':'#779099';ctx.fillRect(x,y,1.5,1.5)}
+ ctx.save();ctx.translate(w/2,h/2);ctx.rotate((state.flightHeading+90)*Math.PI/180);ctx.fillStyle='#a8ecff';ctx.beginPath();ctx.moveTo(0,-18);ctx.lineTo(-12,14);ctx.lineTo(0,8);ctx.lineTo(12,14);ctx.closePath();ctx.fill();ctx.restore();
+ if(state.flightEncounter.active){let d=state.flightEncounter.distance,x=w*.78,y=h*.35;ctx.strokeStyle=d<25?'#ff9b72':'#7bdfff';ctx.strokeRect(x-18,y-18,36,36);ctx.fillStyle='#cfefff';ctx.font='13px monospace';ctx.fillText(state.flightEncounter.type,x-80,y-28);ctx.fillText(Math.round(d)+' KM',x-30,y+34)}
+ let sp=Math.round(Math.hypot(state.flightVX,state.flightVY)*100);
+ let e=document.getElementById('pfSpeed');if(e)e.textContent=sp;
+ e=document.getElementById('pfFuel');if(e)e.textContent=Math.round(state.flightFuel)+'%';
+ e=document.getElementById('pfHull');if(e)e.textContent=Math.round(state.flightHull)+'%';
+ e=document.getElementById('pfContact');if(e)e.textContent=state.flightEncounter.active?state.flightEncounter.type:'CLEAR';
+}
+function flightBrake(){state.flightVX*=.45;state.flightVY*=.45;stationLog('Flight brake applied.')}
+function flightScanEncounter(){
+ if(!state.flightEncounter.active){spawnFlightEncounter();return;}
+ state.research+=1;state.flightNav=clamp(state.flightNav+1,0,100);stationLog('Scanned '+state.flightEncounter.type+'.');
+}
+function flightInteractEncounter(){
+ let e=state.flightEncounter;if(!e.active){toast('No contact');return;}
+ if(e.distance>30){toast('Get closer to the contact');return;}
+ if(e.type==='DERELICT'||e.type==='SALVAGE CLOUD'){generateLoot('space');state.scrap+=3;gainProf('explorer',2);}
+ if(e.type==='DISTRESS BEACON'){state.medPatients=clamp(state.medPatients+1,0,3);state.morale=clamp(state.morale+2,0,100);gainProf('medic',2);}
+ if(e.type==='UNKNOWN SHIP'){state.securityLevel=clamp(state.securityLevel+2,0,100);gainProf('security',2);}
+ if(e.type==='ANOMALY'){state.research+=4;checkHiddenPath(2);}
+ stationLog('Resolved space encounter: '+e.type+'.');state.flightEncounter={type:'NONE',distance:0,active:false};coreTick(30,'flight encounter');spawnFlightEncounter();
+}
+
+/* ===== ECONOMY ROUTES ===== */
+function ensureWorldPrices(){
+ sandboxWorlds.forEach((w,i)=>{
+  if(!state.worldPrices[w.name])state.worldPrices[w.name]={ore:10+i*2,organics:12+(5-i)*2,crystal:20+i*3,food:14+((i*7)%9),med:18+((i*5)%11)};
+ });
+}
+function openGalaxyEconomy(){
+ ensureWorldPrices();
+ let body=`<div class="stationHero" style="background-image:url('${areaArtFor('CREW MARKET')}')"><div class="cap"><b>GALACTIC ECONOMY</b><span>Prices vary by world. Buy low, haul cargo, sell high.</span></div></div>
+ <div class="economyGrid">${sandboxWorlds.map((w,i)=>{let p=state.worldPrices[w.name];return `<div class="economyCard"><b>${w.name}</b><p>ORE ${p.ore} · ORGANICS ${p.organics} · CRYSTAL ${p.crystal}<br>FOOD ${p.food} · MED ${p.med}</p><button onclick="openWorldMarket(${i})">OPEN MARKET</button></div>`}).join('')}</div>`;
+ openSheet('GALACTIC ECONOMY',body);
+}
+
+/* ===== ORION / SITUATION DIRECTOR ===== */
+function determineSituation(){
+ calcOpsCore();
+ if(state.shipIncidents.length)return {title:'ACTIVE SHIP INCIDENT',text:state.shipIncidents[0].title,go:'openShipOpsCore()'};
+ if(state.medPatients>0&&state.medicalLoad>30)return {title:'MEDICAL NEEDS ATTENTION',text:state.medPatients+' active patient(s)',go:'openMedicalBayGame()'};
+ if(state.maintenanceBacklog>45||state.reactorTemp>85)return {title:'ENGINEERING DEGRADATION',text:'Maintenance '+state.maintenanceBacklog+'% · Reactor '+state.reactorTemp+'%',go:'openDeckEngineeringArea()'};
+ if(state.flightEncounter.active)return {title:'SPACE CONTACT',text:state.flightEncounter.type,go:'openPlayableFlight()'};
+ if(state.activeContracts.length)return {title:'ACTIVE CONTRACT',text:state.activeContracts[0].type+' at '+state.activeContracts[0].world,go:'openContractsLog()'};
+ let ph=currentCore();if(ph&&state.corePhase<corePhases.length-1)return {title:'MAIN STORY',text:ph.title,go:'directorGo()'};
+ return {title:'ARK-9 STABLE',text:'Choose a mission, profession, world, or duty.',go:'openLivingGalaxy()'};
+}
+function orionMessage(){
+ let s=determineSituation();
+ if(s.title.includes('MEDICAL'))return 'Dr. Sato is requesting command attention in Medical.';
+ if(s.title.includes('ENGINEERING'))return 'Mara reports declining engineering margin. Delay will affect Flight and Fabrication.';
+ if(s.title.includes('INCIDENT'))return 'An unresolved ship incident is propagating into dependent systems.';
+ if(s.title.includes('SPACE'))return 'Captain, an unidentified contact is inside operational range.';
+ if(s.title.includes('CONTRACT'))return 'A contracted job is active. Completion will affect credits and profession growth.';
+ if(s.title.includes('STORY'))return 'The impossible signal remains our strategic priority.';
+ return 'ARK-9 is stable. This is the best time to trade, build, train, explore, or expand Haven-9.';
+}
+function continueCurrentSituation(){let s=determineSituation();try{eval(s.go)}catch(e){openLivingGalaxy()}}
+function homeSituationHTML(){
+ let s=determineSituation();
+ return `<div class="orionPanel"><b>ORION-4 // ${s.title}</b><p>${orionMessage()}<br>${s.text}</p></div><button class="situationBtn ${s.title.includes('INCIDENT')?'emergencyFlash':''}" onclick="continueCurrentSituation()">▶ CONTINUE CURRENT SITUATION</button>`;
+}
+
+/* ===== CAPTAIN HISTORY ===== */
+function recordHistory(text){
+ let entry='DAY '+(state.day||1)+' · '+shipClockText()+' · '+text;
+ if(state.captainHistory[0]!==entry)state.captainHistory.unshift(entry);
+ state.captainHistory=state.captainHistory.slice(0,50);save();
+}
+function openCaptainHistory(){
+ let body=`<div class="stationHero" style="background-image:url('${areaArtFor('GALACTIC ARCHIVE')}')"><div class="cap"><b>CAPTAIN HISTORY</b><span>ARK-9 writes its own history as you play.</span></div></div>
+ <div class="playLog">${state.captainHistory.map(x=>`<div>${x}</div>`).join('')||'<div>No major events recorded yet.</div>'}</div>`;
+ openSheet('CAPTAIN HISTORY',body);
 }
 
 function openExploreArk9(){
@@ -4140,6 +4570,8 @@ function openExpandedShipHub(){
  body+=`<div class="sectionJump"><button onclick="openMegaExpansion()">48 DEEP SHIP AREAS</button><button onclick="openReserveCrew()">80-PERSON CREW</button></div>`;
  body+=`<div class="sectionJump"><button onclick="openDailyOperations()">DAILY OPERATIONS</button><button onclick="openExploreArk9()">REFRESH EXPLORE ARK-9</button></div>`;
  body+=`<div class="sectionJump"><button onclick="openLivingGalaxy()">LIVING GALAXY</button><button onclick="openProfessions()">PROFESSIONS</button><button onclick="openMissionTerminal()">MISSION TERMINALS</button></div>`;
+ body+=`<div class="sectionJump"><button onclick="openShipOpsCore()">SHIP OPS CORE</button><button onclick="openAllAreas()">ALL AREAS</button></div>`;
+ body+=`<div class="sectionJump"><button onclick="openPhysicalDeck()">PHYSICAL SHIP</button><button onclick="openPlayableFlight()">PLAYABLE FLIGHT</button><button onclick="openLiveCrew()">LIVE CREW</button><button onclick="openGalaxyEconomy()">GALACTIC ECONOMY</button><button onclick="openCaptainHistory()">CAPTAIN HISTORY</button></div>`;
  body+=`<div class="sectionJump"><button onclick="openMissionDirector()">MAIN STORY / NEXT ACTION</button><button onclick="openMainMenu()">COMMAND MENU</button></div>`;
  body+=`<div class="sectionJump"><button onclick="openExploreArk9()">EXPLORE ARK-9 HOME</button><button onclick="openMainMenu()">MAIN MENU</button></div>`;
  openSheet('ARK-9 SHIP NETWORK',body);
@@ -4849,6 +5281,7 @@ document.addEventListener('keydown',globalMenuKeys);
 <section id="loreHome" class="hide"><div class="loreHomeShade">
  <div class="homeLogo">ESCAPE GODS<small>ARK-9 // A LIVING GALAXY</small></div>
  <div class="homeLore">The Ring did not lead home. It opened a scattered human frontier of settlements, factions, lost fleets and impossible worlds. ARK-9 is no longer only escaping. Its crew can work, trade, build, heal, explore, fight, perform, govern and belong. ORION-4 has one warning: somewhere beyond the mapped systems, ARK-1 is still waiting.</div>
+ <div id="homeSituationMount"></div>
  <div class="homePrimary">
   <button onclick="enterLoreGame()">CONTINUE ARK-9<small>Return to your ship and current story.</small></button>
   <button onclick="homeToGalaxy()">LIVING GALAXY<small>Worlds, professions, missions and settlement.</small></button>
@@ -4856,9 +5289,20 @@ document.addEventListener('keydown',globalMenuKeys);
   <button onclick="homeToProf()">PROFESSIONS<small>Skills, careers and specialization.</small></button>
   <button onclick="homeToShipwright()">SHIPWRIGHT<small>Components, repairs and engineering.</small></button>
   <button onclick="homeToHaven()">HAVEN-9<small>Your growing settlement.</small></button>
+   <button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openShipOpsCore())">SHIP OPS CORE<small>See dependencies, incidents, readiness and shifts.</small></button>
+  <button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openAllAreas())">ALL AREAS<small>Open every working area in this build.</small></button>
+ <button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openPhysicalDeck())">PHYSICAL SHIP<small>Walk the decks and enter rooms.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openPlayableFlight())">PLAYABLE FLIGHT<small>Steer ARK-9 through live encounters.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openLiveCrew())">LIVE CREW<small>Find named crew around the ship.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openGalaxyEconomy())">GALACTIC ECONOMY<small>Trade routes and changing prices.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openCaptainHistory())">CAPTAIN HISTORY<small>Review the history your playthrough created.</small></button></div>
+ <div class="homeTicker">ORION-4 // “A ship is more than metal. A galaxy is more than destinations. What survives depends on what you build between them.”</div><div id="resonantHomeReveal" class="homeTicker" style="display:none">UNKNOWN PATH // ORION-4 CLASSIFICATION FAILURE // RESONANCE PROFILE DETECTED</div>
+ <div class="homeVisualStrip">
+  <div style="background-image:url('${areaArtFor('FLIGHT DECK')}')"><span>FLIGHT DECK</span></div>
+  <div style="background-image:url('${areaArtFor('LIVING QUARTERS')}')"><span>CREW</span></div>
+  <div style="background-image:url('${areaArtFor('RING CONTROL')}')"><span>RING NETWORK</span></div>
+  <div style="background-image:url('${areaArtFor('CREW MARKET')}')"><span>BAZAAR</span></div>
+  <div style="background-image:url('${areaArtFor('PLANETARY EXPLORATION')}')"><span>GALAXY</span></div>
+  <div style="background-image:url('${areaArtFor('RESONANCE DECK')}')"><span>RESONANCE</span></div>
  </div>
- <div class="homeTicker">ORION-4 // “A ship is more than metal. A galaxy is more than destinations. What survives depends on what you build between them.”</div>
 </div></section>
+<button class="hubBackBtn" onclick="returnToLoreHome()">ARK-9 HOME</button>
 </body>
 </html>
 
