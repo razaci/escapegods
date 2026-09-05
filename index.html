@@ -1176,6 +1176,34 @@ repeating-linear-gradient(90deg,rgba(50,255,120,.09) 0 1px,transparent 1px 22px)
 .emergencyFlash{animation:eflash 1s infinite}@keyframes eflash{0%,100%{box-shadow:0 0 0 rgba(255,95,70,0)}50%{box-shadow:0 0 20px rgba(255,95,70,.7)}}
 @media(max-width:620px){.flightHud{grid-template-columns:repeat(2,1fr)}.flightBtns{grid-template-columns:repeat(2,1fr)}.invGrid,.lootGrid,.crewLiveGrid,.economyGrid{grid-template-columns:1fr}}
 
+
+/* ===== THE FIRST ARK CAMPAIGN ===== */
+.campaignHero{min-height:180px;background-size:cover;background-position:center;border:1px solid #46616d;position:relative;margin:7px 0}
+.campaignHero>div{position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,8,11,.94),rgba(2,8,11,.3));padding:12px;display:flex;flex-direction:column;justify-content:flex-end}
+.campaignHero b{font:900 17px ui-monospace,monospace}.campaignHero span{font:7px/1.5 ui-monospace,monospace;color:#a1b5bd;max-width:560px}
+.storyBeat{border:1px solid #344a54;background:#091419;padding:8px;margin:6px 0}.storyBeat.locked{opacity:.48}.storyBeat.done{border-color:#487264}
+.storyBeat b{font:900 8px ui-monospace,monospace}.storyBeat p{font:7px/1.5 ui-monospace,monospace;color:#91a6ae}
+.storyBeat button{border:1px solid #4b6570;background:#14252c;color:#eef9fc;padding:8px;font:900 7px ui-monospace,monospace}
+.evidenceGrid,.arkGrid,.crewArcGrid,.endingGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:7px 0}
+.evidenceCard,.arkCard,.crewArc,.endingCard{border:1px solid #344a54;background:#0a1519;padding:8px}.evidenceCard b,.arkCard b,.crewArc b,.endingCard b{font:900 8px ui-monospace,monospace}.evidenceCard p,.arkCard p,.crewArc p,.endingCard p{font:7px/1.45 ui-monospace,monospace;color:#8da2ab}
+.transmission{border-left:3px solid #65cce9;background:#07151b;padding:9px;margin:7px 0;font:7px/1.6 ui-monospace,monospace;color:#b6d4df}
+.storyAlert{border:1px solid #73544b;background:#1b100d;padding:8px;margin:7px 0}
+.storyAlert b{font:900 9px ui-monospace,monospace}.storyAlert p{font:7px/1.5 ui-monospace,monospace;color:#c4aba1}
+@media(max-width:620px){.evidenceGrid,.arkGrid,.crewArcGrid,.endingGrid{grid-template-columns:1fr}}
+
+
+/* ===== ROOM STRATEGY DRILLS — TAB LOCAL / NO PERSISTENT CONSEQUENCES ===== */
+.strategyLab{border:1px solid #42616e;background:#071318;padding:8px;margin:8px 0}
+.strategyLab h3{margin:0 0 4px;font:900 10px ui-monospace,monospace}.strategyLab>p{font:7px/1.5 ui-monospace,monospace;color:#8fa5ae}
+.strategySteps{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:7px}
+.strategyCard{border:1px solid #354c56;background:#0b171c;padding:7px;min-height:88px}
+.strategyCard b{display:block;font:900 8px ui-monospace,monospace}.strategyCard p{font:7px/1.45 ui-monospace,monospace;color:#8ca1aa}
+.strategyCard button{width:100%;border:1px solid #4d6874;background:#14262e;color:#f1faff;padding:8px;font:900 7px ui-monospace,monospace}
+.strategyCard.used{border-color:#609274;background:#0b1b18}.strategyCard.used button{opacity:.55}
+.drillMeter{height:9px;border:1px solid #405963;margin:7px 0}.drillMeter i{display:block;height:100%;width:0;background:#7bcde8;transition:width .3s}
+.drillReadout{border-left:3px solid #68c9e8;background:#081820;padding:7px;font:7px/1.5 ui-monospace,monospace;color:#b5d4df;margin:6px 0}
+@media(max-width:620px){.strategySteps{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -1696,6 +1724,18 @@ if(state.colonyInfluence===undefined)state.colonyInfluence=12;
 if(state.diplomacyScore===undefined)state.diplomacyScore=18;
 if(state.salvageSkill===undefined)state.salvageSkill=24;
 if(state.commandXP===undefined)state.commandXP=0;
+if(state.firstArkMission===undefined)state.firstArkMission=0;
+if(state.firstArkAct===undefined)state.firstArkAct=0;
+if(!state.storyEvidence)state.storyEvidence={};
+if(!state.storyFlags)state.storyFlags={};
+if(!state.arkStanding)state.arkStanding={ark2:0,ark3:0,ark4:0,ark5:0,ark6:0,ark7:0,ark8:0};
+if(!state.crewArc)state.crewArc={mara:0,sato:0,ivo:0,nyx:0,bram:0,kei:0,tala:0,orion:0};
+if(state.storyEventsSeen===undefined)state.storyEventsSeen=0;
+if(!Array.isArray(state.storyEventHistory))state.storyEventHistory=[];
+if(state.firstArkEnding===undefined)state.firstArkEnding='';
+if(state.storySignal===undefined)state.storySignal=0;
+if(state.storyQuiet===undefined)state.storyQuiet=0;
+
 if(state.playerDeck===undefined)state.playerDeck='A';
 if(state.playerRoom===undefined)state.playerRoom='COMMAND HUB';
 if(!state.personalInventory)state.personalInventory=[{name:'CAPTAIN DATAPAD',type:'tool',qty:1},{name:'ACCESS CARD A7',type:'key',qty:1},{name:'FIELD SCANNER',type:'tool',qty:1},{name:'MED INJECTOR',type:'med',qty:1}];
@@ -2428,11 +2468,120 @@ function render(){
  if(document.getElementById('etaRead'))document.getElementById('etaRead').textContent=state.target==='SILENT VESSEL'?'ETA 00:04:18':'ETA --';
  document.getElementById('viewTarget').textContent='TARGET: '+state.target;document.getElementById('rangeText').textContent='RANGE '+state.range;renderDashboard();save();
 }
+
+/* ===== TAB-LOCAL ROOM STRATEGY ENGINE =====
+   These drills deliberately do NOT write to state/save. Closing the tab resets them. */
+let roomDrill={key:'',score:0,used:{},message:'Select a strategy.'};
+
+const strategyProfiles={
+ FLIGHT:[
+  ['SCAN FIRST','Gather information before committing to a maneuver.'],
+  ['KEEP MARGIN','Preserve fuel and maneuvering room instead of spending everything early.'],
+  ['CONTROL CLOSURE','Reduce relative speed before attempting an approach.'],
+  ['ABORT WINDOW','Keep a clear exit option while conditions are uncertain.']
+ ],
+ ENGINEERING:[
+  ['OBSERVE','Read indicators and identify the affected subsystem before changing anything.'],
+  ['ISOLATE','In this fictional console, separate the simulated fault from neighboring systems.'],
+  ['CHANGE ONE THING','Adjust one simulated variable at a time so cause and effect stay readable.'],
+  ['VERIFY','Check the fictional readout after the change before declaring the drill complete.']
+ ],
+ MEDICAL:[
+  ['PRIORITIZE','In the fictional triage puzzle, address the most urgent displayed condition first.'],
+  ['CHECK DATA','Compare the game’s displayed indicators before choosing a treatment card.'],
+  ['ONE INTERVENTION','Play one fictional treatment option, then reassess the game readout.'],
+  ['RECOVERY CHECK','Confirm the simulated patient has moved into the stable game state.']
+ ],
+ SECURITY:[
+  ['ASSESS','Identify objective, exits and hazards shown by the fictional tactical board.'],
+  ['CREATE DISTANCE','Prefer avoidance and separation over unnecessary confrontation.'],
+  ['PROTECT ROUTE','Keep the game’s evacuation path available while solving the objective.'],
+  ['DE-ESCALATE','Use the non-confrontational game option when it can resolve the encounter.']
+ ],
+ RESEARCH:[
+  ['BASELINE','Record the normal fictional signal before testing a hypothesis.'],
+  ['HYPOTHESIS','Choose one explanation that can be checked by the game data.'],
+  ['COMPARE','Change one simulated condition and compare it with the baseline.'],
+  ['REPLICATE','Repeat the fictional observation before accepting the result.']
+ ],
+ LOGISTICS:[
+  ['COUNT','Check simulated stock before committing resources.'],
+  ['PRIORITIZE','Reserve scarce game inventory for the highest-priority request.'],
+  ['BUFFER','Keep a small fictional reserve instead of running stock to zero.'],
+  ['REORDER','Use the game forecast to replenish before simulated demand peaks.']
+ ],
+ TRADE:[
+  ['COMPARE','Check the fictional buy and sell prices before choosing a route.'],
+  ['COST THE TRIP','Include simulated fuel and cargo space when comparing profits.'],
+  ['DIVERSIFY','Avoid committing every cargo slot to one fictional commodity.'],
+  ['EXIT PLAN','Know the second-best market before launching the trade run.']
+ ],
+ CREW:[
+  ['CHECK LOAD','Look at the game’s fatigue and assignment readouts before assigning work.'],
+  ['MATCH SKILL','Put the fictional crew member with the best matching role on the task.'],
+  ['ROTATE','Move tired simulated crew off duty instead of stacking more work on them.'],
+  ['REVIEW','Check the next shift before finalizing the assignment.']
+ ],
+ RESONANCE:[
+  ['BASELINE SIGNAL','Capture the fictional normal pattern before touching the anomaly.'],
+  ['LOW-ENERGY TEST','Use the smallest simulated probe first.'],
+  ['COMPARE PATTERNS','Look for repeatable differences rather than one dramatic reading.'],
+  ['DISENGAGE','End the fictional test if the anomaly becomes unstable.']
+ ],
+ COMMAND:[
+  ['DEFINE OBJECTIVE','State what success means before spending ship resources.'],
+  ['CHECK DEPENDENCIES','See which fictional departments the decision will affect.'],
+  ['KEEP RESERVE','Preserve some simulated capacity for surprises.'],
+  ['REASSESS','Update the plan when new game information appears.']
+ ]
+};
+function strategyCategory(title){
+ let t=String(title||'').toUpperCase();
+ if(/FLIGHT|HELM|NAV|SENSOR|DOCK|SPACE|PILOT/.test(t))return 'FLIGHT';
+ if(/ENGINE|REACTOR|POWER|SHIPWRIGHT|FABRIC|COOLANT|RCS/.test(t))return 'ENGINEERING';
+ if(/MED|TRIAGE|DIAGNOSTIC|PHARM|RECOVERY|TREAT/.test(t))return 'MEDICAL';
+ if(/SECURITY|ARMORY|TACTICAL|DEFENSE|BOARDING/.test(t))return 'SECURITY';
+ if(/RESEARCH|SCIENCE|ARCHIVE|MATRIX|SIMULATION|LAB/.test(t))return 'RESEARCH';
+ if(/CARGO|STORAGE|HANGAR|SUPPLY|SALVAGE|EVA/.test(t))return 'LOGISTICS';
+ if(/BAZAAR|MARKET|TRADE|ECONOMY|VENDOR/.test(t))return 'TRADE';
+ if(/CREW|QUARTER|GALLEY|CANTINA|ARCADE|COMMONS|SCHEDULE/.test(t))return 'CREW';
+ if(/RESONANCE|RING|BETWEEN|ANOMALY/.test(t))return 'RESONANCE';
+ return 'COMMAND';
+}
+function strategyHTML(title){
+ let cat=strategyCategory(title),cards=strategyProfiles[cat]||strategyProfiles.COMMAND;
+ let key=cat+'|'+title;
+ if(roomDrill.key!==key)roomDrill={key,score:0,used:{},message:'Choose a strategy. This drill exists only on this screen.'};
+ return `<div class="strategyLab"><h3>${cat} STRATEGY DRILL // LOCAL SIMULATION</h3>
+ <p>Practice recognizable planning principles against this room's fictional console. Nothing here changes ship state, inventory, crew, story, save data, or another tab.</p>
+ <div class="drillMeter"><i style="width:${roomDrill.score}%"></i></div>
+ <div class="drillReadout">${roomDrill.message}</div>
+ <div class="strategySteps">${cards.map((c,i)=>`<div class="strategyCard ${roomDrill.used[i]?'used':''}"><b>${i+1}. ${c[0]}</b><p>${c[1]}</p><button onclick="playRoomStrategy('${key.replace(/'/g,"\\'")}',${i})">${roomDrill.used[i]?'PRACTICED':'PRESS TO PRACTICE'}</button></div>`).join('')}</div>
+ <div class="sectionJump"><button onclick="resetRoomStrategy('${key.replace(/'/g,"\\'")}')">RESET THIS DRILL</button></div></div>`;
+}
+function playRoomStrategy(key,i){
+ if(roomDrill.key!==key)roomDrill={key,score:0,used:{},message:'Strategy drill started.'};
+ let title=key.split('|').slice(1).join('|'),cat=key.split('|')[0],cards=strategyProfiles[cat]||strategyProfiles.COMMAND;
+ roomDrill.used[i]=true;
+ let count=Object.keys(roomDrill.used).length;
+ roomDrill.score=Math.round(count/cards.length*100);
+ roomDrill.message=cards[i][0]+' // '+cards[i][1]+(count===cards.length?' // DRILL COMPLETE. RESET OR LEAVE THE SCREEN.':'');
+ let b=document.getElementById('sheetBody');if(b){
+   let lab=b.querySelector('.strategyLab');if(lab){let temp=document.createElement('div');temp.innerHTML=strategyHTML(title);lab.replaceWith(temp.firstElementChild);}
+ }
+}
+function resetRoomStrategy(key){
+ roomDrill={key,score:0,used:{},message:'Drill reset. No persistent game values were changed.'};
+ let title=key.split('|').slice(1).join('|'),b=document.getElementById('sheetBody');
+ if(b){let lab=b.querySelector('.strategyLab');if(lab){let temp=document.createElement('div');temp.innerHTML=strategyHTML(title);lab.replaceWith(temp.firstElementChild);}}
+}
+
 function openSheet(title,body){
  leaveLoreHomeForArea();refreshHomeSituation();
  document.getElementById('sheetTitle').textContent=title;
  let tail='';
- document.getElementById('sheetBody').innerHTML=(title==='MISSION DIRECTOR'?body:missionDirectorHTML()+opsCoreHTML()+body)+tail;
+ let strategyPanel=strategyHTML(title);
+ document.getElementById('sheetBody').innerHTML=(title==='MISSION DIRECTOR'?strategyPanel+body:missionDirectorHTML()+opsCoreHTML()+strategyPanel+body)+tail;
  document.getElementById('overlay').classList.add('show');
 }
 function closeSheet(){try{stopPlayableFlight()}catch(e){}document.getElementById('overlay').classList.remove('show');returnToLoreHome()}
@@ -3810,7 +3959,7 @@ function openLivingGalaxy(){
  let body=`<div class="stationHero" style="background-image:url('${areaArtFor('PLANETARY EXPLORATION')}')"><div class="cap"><b>LIVING GALAXY</b><span>Travel. Work. Trade. Build. Choose what ARK-9 becomes.</span></div></div>
  <div class="commandBoard"><h3>SANDBOX LOOP</h3><p>Pick a profession → take missions → travel to worlds → survey/fight/trade/craft → earn credits and skill → grow HAVEN-9 → improve faction standing → unlock harder worlds and contracts.</p></div>
  <div class="galaxyGrid">${sandboxWorlds.map((w,i)=>`<div class="galaxyCard"><div class="art" style="background-image:url('${areaArtFor(w.art)}')"></div><div class="body"><b>${w.name}</b><p>${w.type}<br>${w.desc}</p><button onclick="openWorld(${i})">OPEN WORLD</button></div></div>`).join('')}</div>
- <div class="sectionJump"><button onclick="openProfessionTrees()">PROFESSION TREES</button><button onclick="openMissionTerminal()">MISSION TERMINALS</button><button onclick="openHavenMap()">HAVEN-9 MAP</button><button onclick="openCrafting()">CRAFTING</button><button onclick="openResourceLots()">RESOURCE SURVEY</button><button onclick="openShipwright()">SHIPWRIGHT</button><button onclick="openDutyBoard()">SPACE DUTY</button><button onclick="openCrewSchedules()">CREW SCHEDULES</button><button onclick="openGalaxyEconomy()">GALACTIC ECONOMY</button></div>`;
+ <div class="sectionJump"><button onclick="openProfessionTrees()">PROFESSION TREES</button><button onclick="openMissionTerminal()">MISSION TERMINALS</button><button onclick="openHavenMap()">HAVEN-9 MAP</button><button onclick="openCrafting()">CRAFTING</button><button onclick="openResourceLots()">RESOURCE SURVEY</button><button onclick="openShipwright()">SHIPWRIGHT</button><button onclick="openDutyBoard()">SPACE DUTY</button><button onclick="openCrewSchedules()">CREW SCHEDULES</button><button onclick="openGalaxyEconomy()">GALACTIC ECONOMY</button><button onclick="openFirstArkCampaign()">FIRST ARK CAMPAIGN</button></div>`;
  openSheet('LIVING GALAXY',body);
 }
 function openWorld(i){
@@ -4204,7 +4353,11 @@ const majorAreas=[
  ['CAPTAIN INVENTORY','Personal tools, keys, medical items and loot.','CREW NETWORK','openCaptainInventory()'],
  ['GALACTIC ECONOMY','World prices and trade routes.','CREW MARKET','openGalaxyEconomy()'],
  ['LIVE CREW NETWORK','See where named crew are currently located.','CREW NETWORK','openLiveCrew()'],
- ['CAPTAIN HISTORY','Persistent ship history generated by play.','GALACTIC ARCHIVE','openCaptainHistory()']
+ ['CAPTAIN HISTORY','Persistent ship history generated by play.','GALACTIC ARCHIVE','openCaptainHistory()'],
+ ['THE FIRST ARK','40-mission main campaign, evidence, crew arcs and endings.','STORY CAMPAIGN','openFirstArkCampaign()'],
+ ['FIRST ARK EVIDENCE','Primary discoveries and impossible chronology.','EVIDENCE BOARD','openFirstArkEvidence()'],
+ ['THE EIGHT ARKS','Civilizations descended from the Ark fleet.','PLANETARY EXPLORATION','openArkCivilizations()'],
+ ['CREW STORY ARCS','Character mysteries and conversations.','CREW NETWORK','openCrewStoryArcs()']
 ];
 
 function shipClockText(){
@@ -4239,7 +4392,7 @@ function coreTick(minutes=15,reason='operation'){
  if(c.log<40)state.supplyPressure=clamp(state.supplyPressure+2,0,100);
  if(c.eng<40)state.maintenanceBacklog=clamp(state.maintenanceBacklog+2,0,100);
  if(c.crew<35)state.morale=clamp(state.morale-1,0,100);
- maybeCreateCoreIncident(reason);
+ maybeCreateCoreIncident(reason);try{maybeFirstArkEvent(false)}catch(e){}
  save();
 }
 function maybeCreateCoreIncident(reason){
@@ -4302,7 +4455,7 @@ function openShipOpsCore(){
  let body=homeSituationHTML()+opsCoreHTML()+assign+`<div class="flowArrow">ENGINEERING → SHIP SYSTEMS → MISSIONS → RESOURCES → BAZAAR/CRAFTING → CREW/HAVEN-9 → ENGINEERING</div>
  <div class="depGrid">${deps.map(x=>`<div class="depCard"><b>${x[0]}</b><p>${x[1]}</p><button onclick="${x[2]}">OPEN AREA</button></div>`).join('')}</div>
  <div class="commandBoard"><h3>ACTIVE INCIDENTS</h3>${incidents}</div>
- <div class="sectionJump"><button onclick="coreTick(60,'watch');openShipOpsCore()">ADVANCE 1 SHIP HOUR</button><button onclick="openAllAreas()">ALL AREAS</button><button onclick="openPhysicalDeck()">PHYSICAL DECK</button><button onclick="openLiveCrew()">LIVE CREW</button><button onclick="returnToLoreHome()">ARK-9 HOME</button></div>`;
+ <div class="sectionJump"><button onclick="coreTick(60,'watch');openShipOpsCore()">ADVANCE 1 SHIP HOUR</button><button onclick="openAllAreas()">ALL AREAS</button><button onclick="openPhysicalDeck()">PHYSICAL DECK</button><button onclick="openLiveCrew()">LIVE CREW</button><button onclick="openFirstArkCampaign()">FIRST ARK</button><button onclick="returnToLoreHome()">ARK-9 HOME</button></div>`;
  openSheet('SHIP OPERATIONS CORE',body);
 }
 function openAllAreas(){
@@ -4336,7 +4489,7 @@ function openPhysicalDeck(deck=state.playerDeck){
  let idx=d.rooms.findIndex(r=>r[0]===state.playerRoom);if(idx<0)idx=0;
  let pr=d.rooms[idx];
  let rooms=d.rooms.map((r,i)=>`<button class="deckRoom ${r[0]===state.playerRoom?'active':''}" style="left:${r[1]}%;top:${r[2]}%" onclick="walkDeckRoom('${deck}',${i})">${r[0]}<small>${r[0]===state.playerRoom?'YOU ARE HERE':'WALK HERE'}</small></button>`).join('');
- let body=opsCoreHTML()+`<div class="commandBoard"><h3>DECK ${deck} // ${d.name}</h3><p>Walk through the ship. Selecting a room moves the captain there; entering it opens that room's actual gameplay.</p></div>
+ let body=opsCoreHTML()+`<div class="commandBoard"><h3>DECK ${deck} // ${d.name}</h3><p>Walk through the ship. Every entered room now includes a local strategy drill with pressable tactics. The drill resets when you leave and never changes ship state.</p></div>
  <div class="deckMap">${rooms}<div class="playerDot" style="left:calc(${pr[1]}% + 30px);top:calc(${pr[2]}% + 38px)"></div></div>
  <div class="sectionJump"><button onclick="enterCurrentRoom()">ENTER ${state.playerRoom}</button><button onclick="openCaptainInventory()">CAPTAIN INVENTORY</button><button onclick="openElevator()">ELEVATOR</button><button onclick="openAllAreas()">ALL AREAS</button></div>`;
  openSheet('PHYSICAL DECK MAP',body);
@@ -4478,6 +4631,7 @@ function determineSituation(){
  if(state.maintenanceBacklog>45||state.reactorTemp>85)return {title:'ENGINEERING DEGRADATION',text:'Maintenance '+state.maintenanceBacklog+'% · Reactor '+state.reactorTemp+'%',go:'openDeckEngineeringArea()'};
  if(state.flightEncounter.active)return {title:'SPACE CONTACT',text:state.flightEncounter.type,go:'openPlayableFlight()'};
  if(state.activeContracts.length)return {title:'ACTIVE CONTRACT',text:state.activeContracts[0].type+' at '+state.activeContracts[0].world,go:'openContractsLog()'};
+ let fa=firstArkSituation();if(fa)return fa;
  let ph=currentCore();if(ph&&state.corePhase<corePhases.length-1)return {title:'MAIN STORY',text:ph.title,go:'directorGo()'};
  return {title:'ARK-9 STABLE',text:'Choose a mission, profession, world, or duty.',go:'openLivingGalaxy()'};
 }
@@ -4488,6 +4642,7 @@ function orionMessage(){
  if(s.title.includes('INCIDENT'))return 'An unresolved ship incident is propagating into dependent systems.';
  if(s.title.includes('SPACE'))return 'Captain, an unidentified contact is inside operational range.';
  if(s.title.includes('CONTRACT'))return 'A contracted job is active. Completion will affect credits and profession growth.';
+ if(s.title.includes('THE FIRST ARK'))return 'The impossible chronology remains our strategic priority. Continue the current First Ark objective.';
  if(s.title.includes('STORY'))return 'The impossible signal remains our strategic priority.';
  return 'ARK-9 is stable. This is the best time to trade, build, train, explore, or expand Haven-9.';
 }
@@ -4507,6 +4662,194 @@ function openCaptainHistory(){
  let body=`<div class="stationHero" style="background-image:url('${areaArtFor('GALACTIC ARCHIVE')}')"><div class="cap"><b>CAPTAIN HISTORY</b><span>ARK-9 writes its own history as you play.</span></div></div>
  <div class="playLog">${state.captainHistory.map(x=>`<div>${x}</div>`).join('')||'<div>No major events recorded yet.</div>'}</div>`;
  openSheet('CAPTAIN HISTORY',body);
+}
+
+const firstArkActs=[["I","117 YEARS LATE","ARK-9 exits the Ring 117 years off course. A human distress beacon waits where no humans should exist."],["II","THE OTHER SHIP","A dead duplicate ARK-9 carries logs written by the captain decades in the future."],["III","HAVEN","The crew establishes Haven-9, then discovers the settlement has already existed for centuries."],["IV","THE EIGHT","Coordinates reveal seven other Ark civilizations and one missing origin ship."],["V","THE CREW PROBLEM","Medical and Research discover that some crew histories are older than the people carrying them."],["VI","ORION","ARK-9's AI begins obeying captain authorizations timestamped centuries in the future."],["VII","THE GODS","The Resonance network reveals G.O.D.S.\u2014observers manipulating which human futures become real."],["VIII","THE FIRST ARK","ARK-1 waits above an Earth where the Ark Program has not yet begun."]];
+const firstArkMissions=[["RING WAKE","Flight","Stabilize ARK-9 after the impossible transit.","openShipOpsCore()","ring_wake"],["CLOCK ERROR","Research","Confirm that the transit clock is really 117 years wrong.","openDeckResearchArea()","clock_error"],["HUMAN BEACON","Flight","Scan the impossible human distress signal.","openPlayableFlight()","human_beacon"],["CONTACT VECTOR","Navigation","Plot a cautious approach to the beacon.","openNavigationPlot()","contact_vector"],["SAME REGISTRY","Flight","Identify the silent vessel as ARK-9.","openSensorPit()","same_registry"],["BOARDING LOCK","Security","Prepare a boarding team for the dead duplicate.","openRoom('security')","boarding_lock"],["DEAD BRIDGE","Physical Ship","Enter the duplicate's bridge and recover its recorder.","openPhysicalDeck('A')","dead_bridge"],["DAY 41","Archive","Restore the first future Captain's Log.","openGalacticArchive()","day41"],["117 BODIES","Medical","Compare duplicate crew remains with living ARK-9 records.","openMedDiagnostics()","bodies117"],["DON'T FOLLOW THE MAP","Research","Decode the damaged warning left by the other captain.","openDeckResearchArea()","dont_map"],["A PLACE TO STAY","Haven-9","Choose the frontier world where the crew can build.","openHavenMap()","place_stay"],["FIRST FOUNDATIONS","Haven-9","Build enough infrastructure to make Haven-9 real.","openHavenMap()","foundations"],["THE QUIET WEEK","Crew","Let ARK-9 live normally long enough for Haven to feel like home.","openLiveCrew()","quiet_week"],["BENEATH THE MARKET","Haven-9","Investigate human construction found below a new building.","openHavenMap()","beneath_market"],["NINE HUNDRED YEARS","Archive","Date the buried HAVEN-9 MUNICIPAL AUTHORITY seal.","openGalacticArchive()","nine_hundred"],["EIGHT COORDINATES","Research","Decode the eight Ark coordinates hidden below Haven.","openDeckResearchArea()","eight_coords"],["ARK-3 MARKET","Living Galaxy","Make contact with the trade civilization descended from ARK-3.","openLivingGalaxy()","ark3_market"],["ARK-2 BORDER","Space Duty","Survive first contact with ARK-2's militarized descendants.","openDutyBoard()","ark2_border"],["ARK-6 GARDEN","Diplomacy","Visit the peaceful colony that claims it remembers ARK-9.","openProfessionTrees()","ark6_garden"],["THE EMPTY COORDINATE","Flight","Travel to the location assigned to missing ARK-1.","openPlayableFlight()","empty_coordinate"],["CELLULAR AGE","Medical","Investigate a crew member whose biological lineage is centuries old.","openMedDiagnostics()","cellular_age"],["MEMORY INTERVIEW","Crew","Question crew without telling them what Medical discovered.","openLiveCrew()","memory_interview"],["MARA'S REACTOR","Engineering","Follow Mara when she recognizes machinery she has never seen.","openDeckEngineeringArea()","mara_reactor"],["NYX REMEMBERS","Research","Nyx recalls a Ring coordinate before Research calculates it.","openDeckResearchArea()","nyx_remembers"],["THE MANIFEST LIES","Archive","Compare all versions of ARK-9's crew manifest.","openGalacticArchive()","manifest_lies"],["UNORDERED POWER","Engineering","Trace an unauthorized power reroute to Deck G.","openDeckEngineeringArea()","unordered_power"],["CAPTAIN AUTHORIZATION","Command","Inspect the authorization: it carries your credentials.","openShipOpsCore()","capt_auth"],["YEAR +327","Archive","Verify the command timestamp\u2014327 years in ARK-9's future.","openCaptainHistory()","year327"],["ORION REFUSES","ORION","Force ORION to explain why it cannot answer.","openFirstArkCampaign()","orion_refuses"],["DECK G OPENS","Resonance","Follow ORION's hidden power route into Resonance.","openResonanceDeck()","deckg_opens"],["RESONANT","Resonance","Learn to perceive information moving backward through the Ring.","openResonanceDeck()","resonant"],["POSSIBLE FUTURES","Matrix","Observe futures becoming data before becoming history.","openRainLab()","possible_futures"],["G.O.D.S.","Archive","Decode the researchers' name for the entities in the network.","openGalacticArchive()","gods"],["THEIR WAR","Factions","Discover that future human civilizations are competing over which history survives.","openFactionNetwork()","their_war"],["ESCAPE PREDESTINATION","Mission Director","Choose whether ARK-9 will keep following the path laid out for it.","openMissionDirector()","escape_predestination"],["FIRST ARK SIGNAL","Flight","Recover a signal from a coordinate that should be empty.","openPlayableFlight()","first_signal"],["BLUE EARTH","Flight","Cross the final Ring and find a healthy Earth.","openPlayableFlight()","blue_earth"],["PROGRAM NOT AUTHORIZED","Archive","Learn that this Earth has not approved the Ark Program yet.","openGalacticArchive()","not_authorized"],["THE LOOP","Research","Prove ARK-1 sent the Ark designs into its own past.","openDeckResearchArea()","the_loop"],["ESCAPE GODS","Command","Decide what ARK-9 does with a future that created its own beginning.","openFirstArkEndings()","escape_gods"]];
+const firstArkEvents=[["ENGINEERING","Mara asks why a coolant manifold has tool marks matching her preferred repair pattern.","mara"],["MEDICAL","Sato finds an old surgical scar in duplicate records that matches a living crew member.","sato"],["FLIGHT","Ivo dreams a navigation solution and wakes to find it already entered into the helm.","ivo"],["RESEARCH","Nyx writes a sequence of Ring coordinates backward without realizing it.","nyx"],["SECURITY","Bram discovers a sealed armory locker bearing his own authorization.","bram"],["LOGISTICS","Kei receives a cargo manifest for supplies ARK-9 has not purchased yet.","kei"],["RESONANCE","Tala hears her own voice answering a transmission before she sends it.","tala"],["ORION","ORION pauses for 4.7 seconds, then says: 'I remember this conversation differently.'","orion"],["HAVEN-9","A child in Haven draws ARK-1 above Earth despite never seeing an Ark schematic.","haven"],["BAZAAR","A trader offers an ARK-9 component stamped with a manufacture date 82 years from now.","bazaar"],["ARCHIVE","An old colony census contains three current ARK-9 surnames.","archive"],["FLIGHT","A sensor ghost follows ARK-9 for exactly 117 seconds and disappears.","flight"],["MEDICAL","A routine blood panel contains a protein marker not expected to evolve for centuries.","medical"],["CREW","Two crew members independently remember the same room that does not exist on ARK-9.","crew"],["RING","The Ring transmits a single phrase: TURN AROUND.","ring"],["HAVEN-9","Excavators find another municipal foundation below an untouched field.","haven"]];
+
+/* ===== ESCAPE GODS: THE FIRST ARK ===== */
+function firstArkActForMission(i){return Math.min(7,Math.floor(i/5))}
+function firstArkCurrent(){
+ let i=Math.min(state.firstArkMission,firstArkMissions.length-1),m=firstArkMissions[i],a=firstArkActs[firstArkActForMission(i)];
+ return {i,m,a};
+}
+function firstArkEvidence(title,text,key){
+ if(!state.storyEvidence[key]){state.storyEvidence[key]={title,text,day:state.day||1,time:shipClockText()};state.storySignal++;recordHistory('EVIDENCE: '+title);}
+ save();
+}
+function firstArkRequirement(i){
+ if(i===0)return calcOpsCore().eng>=35;
+ if(i===5)return state.securityLevel>=35;
+ if(i===11)return Object.values(state.cityBuildings||{}).filter(Boolean).length>=2;
+ if(i===12)return (state.shipMinutes||0)>=720;
+ if(i===17)return state.galaxyRep&&state.galaxyRep.outer>=0;
+ if(i===20)return state.medReadiness>=35;
+ if(i===25)return state.engineeringOutput>=35;
+ if(i===30)return state.hiddenResonant>=20||state.skillUnlocks.resonant;
+ if(i===35)return state.flightReadiness>=35;
+ return true;
+}
+function missionEvidence(i){
+ const ev=[
+ ['TRANSIT CLOCK','Ring transit duration: 117 years.','transit117'],
+ ['ASTROMETRIC DRIFT','The stars confirm the clock error.','stars117'],
+ ['HUMAN DISTRESS','Beacon protocol matches ARK-9.','humanproto'],
+ ['BEACON VECTOR','Signal source is inside reachable space.','beaconvec'],
+ ['DUPLICATE REGISTRY','The silent ship identifies itself as ARK-9.','dupreg'],
+ ['BOARDING CLEARANCE','Security clears the duplicate for entry.','boardclear'],
+ ['FUTURE RECORDER','Recorder contains captain-authenticated logs.','futurerecorder'],
+ ['DAY 41 LOG','Future log says: We found Haven-9. Don’t build it.','day41ev'],
+ ['DUPLICATE CREW','Dead crew DNA matches living crew.','dupcrew'],
+ ['DAMAGED WARNING','Recovered phrase: Don’t follow the map.','mapwarning'],
+ ['HAVEN SITE','A viable colony site becomes Haven-9.','havensite'],
+ ['FOUNDATIONS','Haven-9 becomes a functioning settlement.','havenbuilt'],
+ ['CREW ATTACHMENT','Crew begin referring to Haven as home.','havenhome'],
+ ['BURIED STRUCTURE','Human construction predates the settlement.','buriedhaven'],
+ ['MUNICIPAL SEAL','HAVEN-9 seal dates roughly 900 years old.','seal900'],
+ ['ARK COORDINATES','Eight Ark destinations recovered.','eightarks'],
+ ['ARK-3 CONTACT','Trade descendants recognize Ark-era protocols.','ark3ev'],
+ ['ARK-2 CONTACT','Military descendants classify ARK-9 as a historical threat.','ark2ev'],
+ ['ARK-6 MEMORY','ARK-6 claims ARK-9 visited generations ago.','ark6ev'],
+ ['ARK-1 ABSENCE','The first coordinate contains no Ark.','ark1empty'],
+ ['CELLULAR LINEAGE','One living crew lineage is centuries old.','cellage'],
+ ['MEMORY CONFLICT','Crew memories disagree with objective records.','memconflict'],
+ ['MARA RECOGNITION','Mara recognizes technology she never learned.','maraev'],
+ ['NYX COORDINATE','Nyx remembers a future navigation solution.','nyxev'],
+ ['MANIFEST VERSIONS','Multiple manifests list the same crew across centuries.','manifestversions'],
+ ['DECK G REROUTE','ORION secretly powers Resonance.','deckgreroute'],
+ ['YOUR AUTHORIZATION','The reroute carries captain credentials.','yourauth'],
+ ['FUTURE TIMESTAMP','Authorization date is +327 years.','future327'],
+ ['ORION LIMIT','ORION is prohibited from explaining the command.','orionlimit'],
+ ['RESONANCE ACCESS','The hidden route into Deck G opens.','resaccess'],
+ ['BACKWARD INFORMATION','Ring data can arrive before it is transmitted.','backdata'],
+ ['POSSIBLE HISTORIES','The network models futures as competing physical states.','possibilities'],
+ ['G.O.D.S. DEFINITION','Geometric Observers of Dimensional Structure.','godsdef'],
+ ['FUTURE CONFLICT','Far-future human civilizations manipulate earlier history.','futurewar'],
+ ['PREDESTINATION','ARK-9 is following a route constructed by possible futures.','predest'],
+ ['ARK-1 BEACON','Missing ARK-1 finally transmits.','ark1beacon'],
+ ['PRE-ARK EARTH','Earth is healthy and the Ark Program has not begun.','prearkearth'],
+ ['PROGRAM STATUS','ARK PROGRAM: NOT YET AUTHORIZED.','programstatus'],
+ ['CAUSAL LOOP','ARK-1 transmitted the designs that eventually created ARK-1.','causalloop'],
+ ['FINAL TRUTH','The warning contains a second line: They’re trapped too.','finaltruth']
+ ]; let e=ev[i]||['UNKNOWN','Unclassified evidence.','unknown'+i];firstArkEvidence(e[0],e[1],e[2]);
+}
+function completeFirstArkMission(){
+ let c=firstArkCurrent();if(state.firstArkEnding)return;
+ if(!firstArkRequirement(c.i)){toast('The ship is not ready for this objective yet.');return;}
+ missionEvidence(c.i);
+ let m=c.m;recordHistory('FIRST ARK: '+m[0]+' completed.');
+ // consequences by act
+ let act=firstArkActForMission(c.i);
+ if(act===0){state.research+=2;state.flightNav=clamp(state.flightNav+2,0,100)}
+ if(act===1){state.securityLevel=clamp(state.securityLevel+2,0,100);state.medicalLoad=clamp(state.medicalLoad+2,0,100)}
+ if(act===2){state.cityTreasury+=40;state.cityCitizens+=1}
+ if(act===3){state.galaxyRep.outer=clamp((state.galaxyRep.outer||0)+2,0,100);gainProf('diplomat',2)}
+ if(act===4){state.crewCohesion=clamp(state.crewCohesion+2,0,100)}
+ if(act===5){state.hiddenResonant=clamp(state.hiddenResonant+4,0,100)}
+ if(act===6){checkHiddenPath(5);state.research+=3}
+ state.firstArkMission=Math.min(firstArkMissions.length-1,state.firstArkMission+1);
+ state.firstArkAct=firstArkActForMission(state.firstArkMission);
+ state.storyQuiet=0;coreTick(30,'story mission');maybeFirstArkEvent(true);save();
+ if(c.i===39)openFirstArkEndings();else openFirstArkCampaign();
+}
+function maybeFirstArkEvent(force=false){
+ state.storyQuiet=(state.storyQuiet||0)+1;
+ if(!force && (state.storyQuiet<3||Math.random()>.22))return;
+ let candidates=firstArkEvents.filter((e,i)=>!state.storyEventHistory.includes(i));
+ if(!candidates.length)return;
+ let e=candidates[Math.floor(Math.random()*candidates.length)],idx=firstArkEvents.indexOf(e);
+ state.storyEventHistory.push(idx);state.storyEventsSeen++;state.storyQuiet=0;
+ if(state.crewArc[e[2]]!==undefined)state.crewArc[e[2]]++;
+ recordHistory('STORY EVENT: '+e[0]+' // '+e[1]);
+ stationLog(e[0]+': '+e[1]);save();
+}
+function openFirstArkCampaign(){
+ setArea('THE FIRST ARK');let c=firstArkCurrent(),act=firstArkActForMission(c.i),a=firstArkActs[act];
+ let start=act*5,end=Math.min(start+5,firstArkMissions.length);
+ let beats=firstArkMissions.slice(start,end).map((m,j)=>{let i=start+j,done=i<c.i,cur=i===c.i,locked=i>c.i;return `<div class="storyBeat ${done?'done':''} ${locked?'locked':''}"><b>${String(i+1).padStart(2,'0')} // ${m[0]}</b><p>${m[1]} // ${m[2]}</p>${cur?`<button onclick="${m[3]}">GO TO ${m[1].toUpperCase()}</button> <button onclick="completeFirstArkMission()">RESOLVE OBJECTIVE</button>`:done?'<span>COMPLETE</span>':'<span>LOCKED</span>'}</div>`}).join('');
+ let recent=state.storyEventHistory.slice(-4).reverse().map(i=>`<div class="transmission">${firstArkEvents[i][0]} // ${firstArkEvents[i][1]}</div>`).join('');
+ let body=`<div class="campaignHero" style="background-image:url('${areaArtFor(act<2?'FLEET GRAVEYARD':act<4?'PLANETARY EXPLORATION':act<6?'CREW NETWORK':'RING NETWORK')}')"><div><b>ACT ${a[0]} // ${a[1]}</b><span>${a[2]}</span></div></div>
+ <div class="orionPanel"><b>ORION-4 // CURRENT OBJECTIVE</b><p>${c.m[0]}<br>${c.m[2]}</p></div>
+ ${beats}
+ <div class="commandBoard"><h3>RECENT STORY DISTURBANCES</h3>${recent||'<p>Nothing impossible has happened recently. Enjoy it.</p>'}</div>
+ <div class="sectionJump"><button onclick="openFirstArkEvidence()">EVIDENCE BOARD</button><button onclick="openArkCivilizations()">THE EIGHT ARKS</button><button onclick="openCrewStoryArcs()">CREW ARCS</button><button onclick="openCaptainHistory()">CAPTAIN HISTORY</button></div>`;
+ openSheet('ESCAPE GODS // THE FIRST ARK',body);
+}
+function openFirstArkEvidence(){
+ let vals=Object.values(state.storyEvidence);
+ let body=`<div class="campaignHero" style="background-image:url('${areaArtFor('EVIDENCE BOARD')}')"><div><b>EVIDENCE BOARD</b><span>${vals.length}/40 primary discoveries recovered.</span></div></div>
+ <div class="evidenceGrid">${vals.map(x=>`<div class="evidenceCard"><b>${x.title}</b><p>${x.text}<br>RECOVERED DAY ${x.day} // ${x.time}</p></div>`).join('')||'<div class="evidenceCard"><b>NO EVIDENCE</b><p>Follow the First Ark campaign to begin assembling the impossible chronology.</p></div>'}</div>`;
+ openSheet('FIRST ARK // EVIDENCE',body);
+}
+const arkCivilizations=[
+ ['ARK-1','THE ORIGIN','Missing. Its coordinate is empty until the final act.','ark1'],
+ ['ARK-2','THE CITADEL','A militarized civilization built around survival doctrine.','ark2'],
+ ['ARK-3','THE EXCHANGE','A distributed trade civilization where contracts became law.','ark3'],
+ ['ARK-4','THE CHORUS','Humans deeply integrated with machine cognition.','ark4'],
+ ['ARK-5','THE PILGRIMS','Entered the Ring Network and stopped maintaining ordinary territory.','ark5'],
+ ['ARK-6','THE GARDEN','A peaceful ecological civilization that claims to remember ARK-9.','ark6'],
+ ['ARK-7','THE ASH','A civilization destroyed by a conflict over predicted futures.','ark7'],
+ ['ARK-8','THE LANTERN','Still broadcasting from beyond mapped space.','ark8']
+];
+function openArkCivilizations(){
+ let unlocked=Math.max(1,Math.floor(state.firstArkMission/5));
+ let body=`<div class="campaignHero" style="background-image:url('${areaArtFor('PLANETARY EXPLORATION')}')"><div><b>THE EIGHT ARKS</b><span>Each Ark became a different answer to survival.</span></div></div>
+ <div class="arkGrid">${arkCivilizations.map((a,i)=>`<div class="arkCard ${i>unlocked?'locked':''}"><b>${a[0]} // ${i>unlocked?'UNKNOWN':a[1]}</b><p>${i>unlocked?'Coordinate remains encrypted.':a[2]}</p>${i>0&&i<=unlocked?`<button onclick="state.arkStanding.${a[3]}=clamp((state.arkStanding.${a[3]}||0)+1,-100,100);gainProf('diplomat',1);coreTick(20,'Ark diplomacy');openArkCivilizations()">DIPLOMATIC CONTACT</button>`:''}</div>`).join('')}</div>`;
+ openSheet('THE EIGHT ARKS',body);
+}
+function openCrewStoryArcs(){
+ let chars=[
+ ['MARA VENN','mara','Engineering chief. Begins recognizing machines she has never seen.'],
+ ['DR. SATO','sato','Discovers biological evidence that challenges the crew chronology.'],
+ ['IVO RELL','ivo','Navigation solutions arrive in his dreams before the computer calculates them.'],
+ ['NYX CALDER','nyx','The first crew member to consciously remember a possible future.'],
+ ['BRAM HOLT','bram','Finds security authorizations issued by versions of himself.'],
+ ['KEI MORA','kei','Cargo records begin arriving before the cargo exists.'],
+ ['TALA QUILL','tala','Hears transmissions before they are sent.'],
+ ['ORION-4','orion','Knows more than its permission architecture allows it to say.']
+ ];
+ let body=`<div class="campaignHero" style="background-image:url('${areaArtFor('CREW NETWORK')}')"><div><b>CREW STORY ARCS</b><span>The mystery changes people differently. Their discoveries grow through ordinary ship life.</span></div></div>
+ <div class="crewArcGrid">${chars.map(c=>`<div class="crewArc"><b>${c[0]} // ARC ${state.crewArc[c[1]]||0}</b><p>${c[2]}</p><button onclick="state.crewArc.${c[1]}=clamp((state.crewArc.${c[1]}||0)+1,0,5);state.crewCohesion=clamp(state.crewCohesion+1,0,100);coreTick(20,'crew conversation');recordHistory('Crew conversation: ${c[0]}');openCrewStoryArcs()">TALK</button></div>`).join('')}</div>`;
+ openSheet('CREW ARCS',body);
+}
+function endingScores(){
+ return {
+  build:(state.cityRank||1)*8+(state.cityCitizens||0)+(state.crewCohesion||0)/4+(state.galaxyRep.outer||0),
+  between:(state.hiddenResonant||0)+(state.profLevel.explorer||1)*8+(state.research||0)/2,
+  destroy:(state.securityLevel||0)+(state.profLevel.security||1)*10+(100-state.incidentRisk),
+  home:(state.morale||0)+(state.crewAvailability||0)+(state.crewRest||0),
+  free:(state.storySignal||0)*3+(state.storyEventsSeen||0)*2+(state.hiddenResonant||0)+(Object.keys(state.storyEvidence||{}).length)
+ };
+}
+function openFirstArkEndings(){
+ let s=endingScores(),opts=[
+ ['BUILD A NEW TIMELINE','Refuse the loop and build a human future around Haven-9.',s.build,'BUILD'],
+ ['ENTER THE BETWEEN','Follow the Resonant path beyond ordinary chronology.',s.between,'BETWEEN'],
+ ['DESTROY THE RING','End the machinery that lets futures manipulate the past.',s.destroy,'DESTROY'],
+ ['TAKE THEM HOME','Choose ARK-9 and its people over the cosmic argument.',s.home,'HOME'],
+ ['FREE THE GODS','Hidden path: the observers may be trapped in the same causal prison.',s.free,'FREE']
+ ];
+ let body=`<div class="campaignHero" style="background-image:url('${areaArtFor('RING NETWORK')}')"><div><b>ESCAPE GODS</b><span>ARK-1 waits above a blue Earth. There was never a beginning—unless you create one.</span></div></div>
+ <div class="storyAlert"><b>RESTORED WARNING</b><p>DON'T ESCAPE.<br>TURN AROUND.<br>THEY'RE TRAPPED TOO.</p></div>
+ <div class="endingGrid">${opts.map((o,i)=>{let req=i===4?140:75,ok=o[2]>=req;return `<div class="endingCard ${ok?'':'locked'}"><b>${o[0]}</b><p>${o[1]}<br>PATH STRENGTH ${Math.round(o[2])} / ${req}</p><button ${ok?'':'disabled'} onclick="chooseFirstArkEnding('${o[3]}')">${ok?'CHOOSE ENDING':'PATH NOT READY'}</button></div>`}).join('')}</div>`;
+ openSheet('THE FIRST ARK // ENDGAME',body);
+}
+function chooseFirstArkEnding(k){
+ let text={
+ BUILD:'ARK-9 refuses the inherited future. Haven-9 becomes the seed of a timeline no observer predicted.',
+ BETWEEN:'ARK-9 crosses into the Between, carrying human choice into the machinery of possible history.',
+ DESTROY:'The Ring Network goes dark. For the first time, tomorrow cannot send orders to yesterday.',
+ HOME:'ARK-9 turns away from the loop. The crew chooses one another, one world, and an ordinary future.',
+ FREE:'ARK-9 turns back toward the observers. Escape was never the mission. The final mission is liberation.'
+ }[k];
+ state.firstArkEnding=k;recordHistory('ENDING // '+k+' // '+text);save();
+ openSheet('ENDING // '+k,`<div class="campaignHero" style="background-image:url('${areaArtFor(k==='HOME'?'PLANETARY EXPLORATION':'RING NETWORK')}')"><div><b>${k==='FREE'?'FREE THE GODS':'ESCAPE GODS // '+k}</b><span>${text}</span></div></div><div class="transmission">ORION-4 // “For the first time, Captain, I do not know what happens next.”</div><div class="sectionJump"><button onclick="state.firstArkEnding='';save();openLivingGalaxy()">CONTINUE LIVING GALAXY</button><button onclick="returnToLoreHome()">ARK-9 HOME</button></div>`);
+}
+function firstArkSituation(){
+ if(state.firstArkEnding)return null;
+ let c=firstArkCurrent();
+ return {title:'THE FIRST ARK // '+c.a[1],text:c.m[0]+' — '+c.m[2],go:'openFirstArkCampaign()'};
 }
 
 function openExploreArk9(){
@@ -5290,7 +5633,7 @@ document.addEventListener('keydown',globalMenuKeys);
   <button onclick="homeToHaven()">HAVEN-9<small>Your growing settlement.</small></button>
    <button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openShipOpsCore())">SHIP OPS CORE<small>See dependencies, incidents, readiness and shifts.</small></button>
   <button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openAllAreas())">ALL AREAS<small>Open every working area in this build.</small></button>
- <button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openPhysicalDeck())">PHYSICAL SHIP<small>Walk the decks and enter rooms.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openPlayableFlight())">PLAYABLE FLIGHT<small>Steer ARK-9 through live encounters.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openLiveCrew())">LIVE CREW<small>Find named crew around the ship.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openGalaxyEconomy())">GALACTIC ECONOMY<small>Trade routes and changing prices.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openCaptainHistory())">CAPTAIN HISTORY<small>Review the history your playthrough created.</small></button></div>
+ <button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openPhysicalDeck())">PHYSICAL SHIP<small>Walk the decks and enter rooms.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openPlayableFlight())">PLAYABLE FLIGHT<small>Steer ARK-9 through live encounters.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openLiveCrew())">LIVE CREW<small>Find named crew around the ship.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openGalaxyEconomy())">GALACTIC ECONOMY<small>Trade routes and changing prices.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openCaptainHistory())">CAPTAIN HISTORY<small>Review the history your playthrough created.</small></button><button onclick="leaveLoreHomeForArea();showLoreLoader(()=>openFirstArkCampaign())">THE FIRST ARK<small>40-mission cinematic mystery campaign.</small></button></div>
  <div class="homeTicker">ORION-4 // “A ship is more than metal. A galaxy is more than destinations. What survives depends on what you build between them.”</div><div id="resonantHomeReveal" class="homeTicker" style="display:none">UNKNOWN PATH // ORION-4 CLASSIFICATION FAILURE // RESONANCE PROFILE DETECTED</div>
  <div class="homeVisualStrip">
   <div style="background-image:url('${areaArtFor('FLIGHT DECK')}')"><span>FLIGHT DECK</span></div>
